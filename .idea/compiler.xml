@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="login-microservice" />
         <module name="payment-service" />
+        <module name="service-microservice" />
         <module name="cart-microservice" />
         <module name="catalog-service" />
       </profile>
@@ -18,6 +19,7 @@
       <module name="catalog-service" target="11" />
       <module name="login-microservice" target="11" />
       <module name="payment-service" target="11" />
+      <module name="service-microservice" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -26,6 +28,7 @@
       <module name="catalog-service" options="-parameters" />
       <module name="login-microservice" options="-parameters" />
       <module name="payment-service" options="-parameters" />
+      <module name="service-microservice" options="-parameters" />
     </option>
   </component>
 </project>
