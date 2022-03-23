@@ -8,10 +8,11 @@
         <option value="$PROJECT_DIR$/cart-microservice/pom.xml" />
         <option value="$PROJECT_DIR$/login-microservice/pom.xml" />
         <option value="$PROJECT_DIR$/service-microservice/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka-server/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="adopt-11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="15" project-jdk-type="JavaSDK" />
   <component name="ProjectType">
     <option name="id" value="jpab" />
   </component>
