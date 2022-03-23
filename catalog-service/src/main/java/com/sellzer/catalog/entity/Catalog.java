@@ -16,6 +16,8 @@ public class Catalog
     @Id
     private String catalogId;
     private String catalogName;
-    private String catalogItemPrice;
+    private String catalogCategory;
+    private Integer quantity;
+    private double catalogItemPrice;
     private boolean catalogItemSubsided;
 }

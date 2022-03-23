@@ -25,7 +25,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cart-microservice" options="-parameters" />
-      <module name="catalog-service" options="-parameters" />
+      <module name="catalog-service" options="-parameters --add-modules java.base" />
       <module name="login-microservice" options="-parameters" />
       <module name="payment-service" options="-parameters" />
       <module name="service-microservice" options="-parameters" />
