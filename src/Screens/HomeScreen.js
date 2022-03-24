@@ -7,7 +7,8 @@ import data from '../data';
 //     )
 // }
 function HomeScreen (props){
-    return <ul className="products">
+    return (<div> <h2>Featured Products and Services</h2>
+    <ul className="products">
     {data.products.map(product =>
        <li>
         <div className="product">
@@ -25,5 +26,6 @@ function HomeScreen (props){
     }
 
   </ul>
+  </div>)
 }
 export default HomeScreen;

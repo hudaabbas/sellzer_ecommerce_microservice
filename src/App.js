@@ -6,7 +6,8 @@ import {BrowserRouter, Route, Link} from 'react-router-dom';
 
 import HomeScreen from './Screens/HomeScreen';
 import ProductScreen from './Screens/ProductScreen';
-
+import RegisterScreen from './Screens/RegisterScreen';
+import SigninScreen from './Screens/SigninScreen';
 
 function App() {
   const openMenu=() =>{
@@ -32,7 +33,8 @@ function App() {
                 </div>
 
                 <div className="header-links">
-                    <a href="signin">Sign In</a>
+                    {/* <a href="signin">Sign In</a> */}
+                    <Link to="/sigin">Sign In</Link>
                     <a href="cart.html">Cart</a>
                 </div>
             </header> 
@@ -42,7 +44,8 @@ function App() {
                 <button className="sidebar-close-button" onClick={closeMenu}>x</button>
                 <ul>
                     <li>
-                        <a href="index.html">Products</a>
+                
+                        {/* <a href="index.html">Products</a> */}
                     </li>
 
                     <li>
@@ -55,7 +58,8 @@ function App() {
                 <div className="content">
                   <Route path="/product/:id" component={ProductScreen} />
                   <Route path="/" exact= {true} component={HomeScreen}/>
-                   
+                  {/* <Route path="/signin" component={SigninScreen} />
+                  <Route path="/register" component={RegisterScreen} /> */}
                    {/* Can put products from HomeScreen here */}
                 </div>
             </main>
