@@ -7,11 +7,7 @@ import java.util.ArrayList; // import the ArrayList class
 
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
-//Product and Service
 
-//import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-//need to have access to Product microservice somehow???
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,5 +19,3 @@ public class Cart{
     private ArrayList<String> products = new ArrayList<>();  //string of productIds
     private ArrayList<String> services = new ArrayList<>(); //string of serviceIds
 }
-
-//connecting mongoDB to spring boot (java framework)

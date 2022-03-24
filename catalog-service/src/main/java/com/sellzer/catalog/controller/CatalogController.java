@@ -20,7 +20,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 public class CatalogController {
     @Autowired
     private CatalogService catalogService;
-    private CatalogRepository catalogRepository;
 
     @PostMapping("/")
     public Catalog saveCatalog(@RequestBody Catalog catalog){
@@ -33,7 +32,6 @@ public class CatalogController {
         log.info("inside ;ol");
         return catalogService.findCatalogById(catalogId);
     }
-
 
     @GetMapping("/price/{catalogItemPrice}")
     public Catalog findCatalogByCatalogItemPrice(@PathVariable("catalogItemPrice") double catalogItemPrice){
