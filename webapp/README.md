@@ -6,11 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 For Sellzers: 
-### `cd frontend`
-### `npm start`
+`cd src`
+`npm start`
 
 Make sure to install this:
-### `npm install react-router-dom@5.3.0` in same "frontend" folder
+`npm install react-router-dom@5.3.0` in same folder
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
