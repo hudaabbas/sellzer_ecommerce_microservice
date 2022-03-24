@@ -1,10 +1,10 @@
-package com.sellzer.zuulgate;
+package com.zellser.cloudgateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ZuulApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {
