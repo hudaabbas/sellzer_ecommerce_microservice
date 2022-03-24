@@ -5,7 +5,9 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CartRepository extends MongoRepository<Cart, String> 
+public interface CartRepository extends MongoRepository<Cart, String>
 {
     Cart findByCartId(String cartId);
 }
+    //Map<String, Boolean>  deleteCartById(String cartId);
+
