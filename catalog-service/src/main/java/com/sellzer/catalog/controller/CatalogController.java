@@ -36,25 +36,25 @@ public class CatalogController {
 
 
     @GetMapping("/price/{catalogItemPrice}")
-    public Catalog findCatalogByCatalogItemPrice(@PathVariable("catalogItemPrice") double catalogItemPrice){
+    public Catalog[] findCatalogByCatalogItemPrice(@PathVariable("catalogItemPrice") double catalogItemPrice){
         log.info("inside find catalog by price in controller");
         return  catalogService.findCatalogByCatalogItemPrice(catalogItemPrice);
     }
 
     @GetMapping("/name/{catalogName}")
-    public Catalog findCatalogByCatalogName(@PathVariable("catalogName") String catalogName){
+    public Catalog[] findCatalogByCatalogName(@PathVariable("catalogName") String catalogName){
         log.info("inside find catalog by name in controller");
         return  catalogService.findCatalogByCatalogName(catalogName);
     }
 
     @GetMapping("/category/{catalogCategory}")
-    public Catalog findCatalogByCatalogCategory(@PathVariable("catalogCategory") String catalogCategory){
+    public Catalog[] findCatalogByCatalogCategory(@PathVariable("catalogCategory") String catalogCategory){
         log.info("inside find catalog by category in controller");
         return  catalogService.findCatalogByCatalogCategory(catalogCategory);
     }
 
     @GetMapping("/quantity/{quantity}")
-    public Catalog findCatalogByQuantity(@PathVariable("quantity") Integer quantity){
+    public Catalog[] findCatalogByQuantity(@PathVariable("quantity") Integer quantity){
         log.info("inside find catalog by category in controller");
         return  catalogService.findCatalogByQuantity(quantity);
     }
