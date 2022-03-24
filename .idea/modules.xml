@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cart-microservice/cart-microservice.iml" filepath="$PROJECT_DIR$/cart-microservice/cart-microservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/catalog-service/catalog-service.iml" filepath="$PROJECT_DIR$/catalog-service/catalog-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/login-microservice/login-microservice.iml" filepath="$PROJECT_DIR$/login-microservice/login-microservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/payment-service/payment-service.iml" filepath="$PROJECT_DIR$/payment-service/payment-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/sellzer_ecommerce_microservice.iml" filepath="$PROJECT_DIR$/.idea/sellzer_ecommerce_microservice.iml" />
