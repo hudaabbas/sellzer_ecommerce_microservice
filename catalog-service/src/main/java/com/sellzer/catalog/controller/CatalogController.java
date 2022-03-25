@@ -5,11 +5,13 @@ import com.sellzer.catalog.repository.CatalogRepository;
 import com.sellzer.catalog.service.CatalogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.aggregation.VariableOperators;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
@@ -20,11 +22,30 @@ import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 public class CatalogController {
     @Autowired
     private CatalogService catalogService;
-
+    @Autowired
+    private CatalogRepository catalogRepository;
     @PostMapping("/")
     public Catalog saveCatalog(@RequestBody Catalog catalog){
         log.info("inside!");
         return catalogService.saveCatalog(catalog);
+    }
+
+    @GetMapping(value = "/")
+    public List<Catalog> getAllCatalogs() {
+        log.info("getAllCatalogs");
+        return catalogRepository.findAll();
+    }
+
+    @GetMapping(value = "/ascendSort/")
+    public List<Catalog> getAllCatalogsSortedPriceAscending() {
+        log.info("getAllCatalogs");
+        return catalogRepository.findAll(Sort.by("catalogItemPrice").ascending());
+    }
+
+    @GetMapping(value = "/descendSort/")
+    public List<Catalog> getAllCatalogsSortedPriceDescending() {
+        log.info("getAllCatalogs");
+        return catalogRepository.findAll(Sort.by(Sort.Order.desc("catalogItemPrice")));
     }
 
     @GetMapping("/{id}")
@@ -62,6 +83,5 @@ public class CatalogController {
         log.info("inside deletePayment() method of PaymentService");
         return catalogService.deleteCatalog(catalogId);
     }
-
 
 }
