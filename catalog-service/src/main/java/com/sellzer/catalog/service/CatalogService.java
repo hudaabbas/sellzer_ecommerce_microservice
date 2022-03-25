@@ -25,22 +25,22 @@ public class CatalogService {
         return catalogRepository.findByCatalogId(catalogId);
     }
 
-    public Catalog findCatalogByCatalogItemPrice(double catalogItemPrice){
+    public Catalog[] findCatalogByCatalogItemPrice(double catalogItemPrice){
         log.info("inside findCatalogByPrice() method of CataslogServoce");
         return catalogRepository.findCatalogByCatalogItemPrice(catalogItemPrice);
     }
 
-    public Catalog findCatalogByCatalogName(String catalogName) {
+    public Catalog[] findCatalogByCatalogName(String catalogName) {
         log.info("inside findCatalogById() method of CataslogServoce");
         return catalogRepository.findCatalogByCatalogName(catalogName);
     }
 
-    public Catalog findCatalogByCatalogCategory(String catalogCategory) {
+    public Catalog[] findCatalogByCatalogCategory(String catalogCategory) {
         log.info("inside findCatalogById() method of CataslogServoce");
         return catalogRepository.findCatalogByCatalogCategory(catalogCategory);
     }
 
-    public Catalog findCatalogByQuantity(Integer quantity) {
+    public Catalog[] findCatalogByQuantity(Integer quantity) {
         log.info("inside findCatalogById() method of CataslogServoce");
         return catalogRepository.findCatalogByQuantity(quantity);
     }
@@ -57,4 +57,5 @@ public class CatalogService {
         }
         return response;
     }
+
 }

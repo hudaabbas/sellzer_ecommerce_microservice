@@ -17,6 +17,9 @@ public class Catalog
     private String catalogId;
     private String catalogName;
     private String catalogCategory;
+    private String catalogDescription;
+    private String catalogBrand;
+    private String imageId;
     private Integer quantity;
     private double catalogItemPrice;
     private boolean catalogItemSubsided;

@@ -18,9 +18,7 @@ function App() {
   const closeMenu=() =>{
     document.querySelector(".sidebar").classList.remove("open");
   }
-  /*
 
-  */
   return (
     <BrowserRouter>
       <div className="grid-container">
@@ -35,8 +33,9 @@ function App() {
 
                 <div className="header-links">
                     {/* <a href="signin">Sign In</a> */}
-                    <Link to="/sigin">Sign In</Link>
                     <Link to="/cart">Cart</Link>
+                    <Link to="/register">Register</Link>
+                    <Link to="/signin">Sign In</Link>
                     {/* <a href="cart.html">Cart</a> */}
                 </div>
             </header> 
@@ -46,7 +45,7 @@ function App() {
                 <button className="sidebar-close-button" onClick={closeMenu}>x</button>
                 <ul>
                     <li>
-                
+                        <Link to="/">Products</Link>
                         {/* <a href="index.html">Products</a> */}
                     </li>
 
@@ -61,9 +60,8 @@ function App() {
                   <Route path="/product/:id" component={ProductScreen} />
                   <Route path="/" exact= {true} component={HomeScreen}/>
                   <Route path="/cart" component={CartScreen}/>
-                  {/* <Route path="/signin" component={SigninScreen} />
-                  <Route path="/register" component={RegisterScreen} /> */}
-                   {/* Can put products from HomeScreen here */}
+                  <Route path="/signin" component={SigninScreen}/>
+                  <Route path="/register" component={RegisterScreen} />
                 </div>
             </main>
 
