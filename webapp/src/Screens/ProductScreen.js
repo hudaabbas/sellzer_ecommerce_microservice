@@ -30,7 +30,7 @@ class ProductScreen extends React.Component {
 
                 {<div className='details'>
                     <div className='details-image'>
-                        {/* <img src={this.state.products.imageId} alt="product"></img> */}
+                        { <img src={this.state.products.imageId}  alt="product"></img> }
                     </div>
                     <div className='details-info'>
                         <ul>

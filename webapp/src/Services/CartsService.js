@@ -4,14 +4,21 @@ const CARTS_REST_API_URL = 'http://localhost:9003/carts/';
 
 class CartService {
 
-    getCarts(){
+    addCarts(){
         return axios({
-            method: 'get',
+            method: 'post',
             url: CARTS_REST_API_URL,
             withCredentials: false,
-            headers: {"Access-Control-Allow-Origin": "*"} 
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            data: {
+                'userId': 6785439,
+                'products': ["Nike Air Forces", "Puma Socks"],
+                'services': []
+            }
         });
-          //axios.get(CARTS_REST_API_URL);
     }
 }
 
