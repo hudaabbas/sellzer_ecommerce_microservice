@@ -11,6 +11,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/payments")
 @Slf4j
+@CrossOrigin(origins = "*")
 public class PaymentController {
 
     @Autowired

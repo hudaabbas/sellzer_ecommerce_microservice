@@ -19,6 +19,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 @RestController
 @RequestMapping("/catalogs")
 @Slf4j
+@CrossOrigin(origins = "*")
 public class CatalogController {
     @Autowired
     private CatalogService catalogService;
