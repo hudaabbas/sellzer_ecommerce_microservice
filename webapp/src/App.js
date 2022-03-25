@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React,{useState} from 'react';
+import React from 'react';
 import './App.css';
 import data from './data';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
