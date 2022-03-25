@@ -1,91 +1,108 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-// import { register } from '../actions/userActions';
+// import { signin } from '../Actions/userActions';
+import ReactDOM from "react-dom";
+import database from "../tmpUserInfo";
 
-function RegisterScreen(props) {
+function SigninScreen(){
+  // React States
+  const [errorMessages, setErrorMessages] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [rePassword, setRePassword] = useState('');
-  const userRegister = useSelector(state => state.userRegister);
-  const { loading, userInfo, error } = userRegister;
-  const dispatch = useDispatch();
+  // User Login info
+  
+  const errors = {
+    uname: "invalid username",
+    pass: "invalid password"
+  };
 
-  const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
-  useEffect(() => {
-    if (userInfo) {
-      props.history.push(redirect);
+  const handleSubmit = (event) => {
+    //Prevent page reload
+    // event.preventDefault();
+
+    var { uname, pass } = document.forms[0];
+
+    // Find user login info
+    const userData = database.find((user) => user.username === uname.value);
+
+    // Compare user info
+    if (userData) {
+      if (userData.password !== pass.value) {
+        // Invalid password
+        setErrorMessages({ name: "pass", message: errors.pass });
+      } else {
+        setIsSubmitted(true);
+      }
+    } else {
+      // Username not found
+      setErrorMessages({ name: "uname", message: errors.uname });
     }
-    return () => {
-      //
-    };
-  }, [userInfo]);
+  };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    // dispatch(register(name, email, password));
-  }
-  return <div className="form">
-    <form onSubmit={submitHandler} >
-      <ul className="form-container">
-        <li>
-          <h2>Create Account</h2>
-        </li>
-        <li>
-          {loading && <div>Loading...</div>}
-          {error && <div>{error}</div>}
-        </li>
-        <li>
-          <label htmlFor="name">
-            Name
-          </label>
-          <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
-          </input>
-        </li>
-        <li>
-          <label htmlFor="email">
-            Email
-          </label>
-          <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
-          </input>
-        </li>
-        <li>
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
-          </input>
-        </li>
-        <li>
-          <label htmlFor="rePassword">Re-Enter Password</label>
-          <input type="password" id="rePassword" name="rePassword" onChange={(e) => setRePassword(e.target.value)}>
-          </input>
-        </li>
-        <li>
-          <label htmlFor="PaymentInfo">Enter Payment Information</label>
-          <input type="number" id="payment" name="rePassword" onChange={(e) => setRePassword(e.target.value)}>
-          </input>
-        </li>
-        <li>
-          <label htmlFor="subsudized">Subsidized?</label>
-          <input type="checkbox" id="subsidized" name="subsidized" onChange={(e) => setRePassword(e.target.value)}>
-          {/* <input type="radio" id="yes" name="subsidized" value="Yes">
-          <label for="yes">Yes</label><br>
-          <input type="radio" id="no" name="subsidized" value="No">
-          <label for="no">No</label><br></br> */}
-          </input>
-        </li>
-        <li>
-          <button type="submit" className="button primary">Register</button>
-        </li>
-        <li>
-          Already have an account?
-          <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="button secondary text-center" >Sign In</Link>
+  // Generate JSX code for error message
+  const renderErrorMessage = (name) =>
+    name === errorMessages.name && (
+      <div className="error">{errorMessages.message}</div>
+    );
 
-        </li>
+  // JSX code for login form
+  const renderForm = (
+    <div className="form">
+      <form onSubmit={handleSubmit}>
+        <div className="input-container">
+          <label>Username </label>
+          <input type="text" name="uname" required />
+          {renderErrorMessage("uname")}
+        </div>
+        <div className="input-container">
+          <label>Password </label>
+          <input type="password" name="pass" required />
+          {renderErrorMessage("pass")}
+        </div>
 
-      </ul>
-    </form>
-  </div>
+        <div className="input-container">
+          <label>Email</label>
+          <input type="text" name="uname" required />
+          {renderErrorMessage("uname")}
+        </div>
+         {/* <div className="input-container">
+          <label>Payment Information (Optional- Can get rid of it) </label>
+          <input type="number" name="pass" required />
+          /* {renderErrorMessage("pass")} 
+        </div>  */}
+
+        <div className="input-container">
+          <label>Subsidized? </label>
+          <input type="checkbox" name="subsidized" required />
+          {/* {renderErrorMessage("pass")} */}
+        </div>
+        <div className="button-container">
+          <input type="submit" />
+        </div>
+        {/* <div className='back-2-result'>
+        <Link to="/">New to Sellzers?</Link>
+        </div> */}
+       {/* <Link to="/">Back to results</Link> <Link to="/"/> */}
+       
+      </form>
+      
+    </div>
+  );
+
+  return (
+    <div className="signin">
+      <div className="login-form">
+        <div className="title">Sign Up</div>
+        {isSubmitted ? <div>User is successfully registered</div> : renderForm}
+      </div>
+
+     
+      </div>
+      
+  );
 }
-export default RegisterScreen;
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<SigninScreen />, rootElement);
+export default SigninScreen;

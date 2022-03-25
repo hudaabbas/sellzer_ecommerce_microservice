@@ -41,8 +41,10 @@ function App() {
 
                 <div className="header-links">
                     {/* <a href="signin">Sign In</a> */}
+                    <Link to="/register">Register</Link>
                     <Link to="/signin">Sign In</Link>
-                    <a href="cart.html">Cart</a>
+
+                    {/* <a href="cart.html">Cart</a> */}
                 </div>
             </header> 
 
@@ -66,6 +68,7 @@ function App() {
                   <Route path="/product/:id" component={ProductScreen} />
                   <Route path="/" exact= {true} component={HomeScreen}/>
                   <Route path="/signin" component={SigninScreen}/>
+                  <Route path="/register" component={RegisterScreen} />
                   {/* <Route path="/signin" component={SigninScreen} />
                   <Route path="/register" component={RegisterScreen} /> */}
                    {/* Can put products from HomeScreen here */}
