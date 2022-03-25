@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React from 'react';
+import React,{useState} from 'react';
 import './App.css';
 import data from './data';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
@@ -17,9 +17,16 @@ function App() {
   const closeMenu=() =>{
     document.querySelector(".sidebar").classList.remove("open");
   }
+
   /*
 
   */
+
+
+
+
+
+
   return (
     <BrowserRouter>
       <div className="grid-container">
@@ -34,7 +41,7 @@ function App() {
 
                 <div className="header-links">
                     {/* <a href="signin">Sign In</a> */}
-                    <Link to="/sigin">Sign In</Link>
+                    <Link to="/signin">Sign In</Link>
                     <a href="cart.html">Cart</a>
                 </div>
             </header> 
@@ -44,7 +51,7 @@ function App() {
                 <button className="sidebar-close-button" onClick={closeMenu}>x</button>
                 <ul>
                     <li>
-                
+                        <Link to="/">Products</Link>
                         {/* <a href="index.html">Products</a> */}
                     </li>
 
@@ -58,6 +65,7 @@ function App() {
                 <div className="content">
                   <Route path="/product/:id" component={ProductScreen} />
                   <Route path="/" exact= {true} component={HomeScreen}/>
+                  <Route path="/signin" component={SigninScreen}/>
                   {/* <Route path="/signin" component={SigninScreen} />
                   <Route path="/register" component={RegisterScreen} /> */}
                    {/* Can put products from HomeScreen here */}
