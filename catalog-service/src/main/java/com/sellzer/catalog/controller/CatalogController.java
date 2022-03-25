@@ -17,6 +17,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 @RestController
 @RequestMapping("/catalogs")
 @Slf4j
+@CrossOrigin(origins = "*")
 public class CatalogController {
     @Autowired
     private CatalogService catalogService;
@@ -36,7 +37,7 @@ public class CatalogController {
 
 
     @GetMapping("/price/{catalogItemPrice}")
-    public Catalog findCatalogByCatalogItemPrice(@PathVariable("catalogItemPrice") double catalogItemPrice){
+    public Catalog[] findCatalogByCatalogItemPrice(@PathVariable("catalogItemPrice") double catalogItemPrice){
         log.info("inside find catalog by price in controller");
         return  catalogService.findCatalogByCatalogItemPrice(catalogItemPrice);
     }

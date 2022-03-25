@@ -17,6 +17,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/carts")
 @Slf4j
+@CrossOrigin(origins = "*")
 public class CartController {
     @Autowired
     private CartService cartservice;

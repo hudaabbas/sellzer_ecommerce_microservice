@@ -25,7 +25,7 @@ public class CatalogService {
         return catalogRepository.findByCatalogId(catalogId);
     }
 
-    public Catalog findCatalogByCatalogItemPrice(double catalogItemPrice){
+    public Catalog[] findCatalogByCatalogItemPrice(double catalogItemPrice){
         log.info("inside findCatalogByPrice() method of CataslogServoce");
         return catalogRepository.findCatalogByCatalogItemPrice(catalogItemPrice);
     }

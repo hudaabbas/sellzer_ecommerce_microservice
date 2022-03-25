@@ -18,8 +18,10 @@ function App() {
     document.querySelector(".sidebar").classList.remove("open");
   }
   /*
+  
 
   */
+
   return (
     <BrowserRouter>
       <div className="grid-container">
