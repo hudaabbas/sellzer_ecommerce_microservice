@@ -7,12 +7,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="login-microservice" />
         <module name="payment-service" />
-        <module name="eureka-server" />
         <module name="service-microservice" />
         <module name="cart-microservice" />
         <module name="catalog-service" />
+        <module name="login-microservice" />
+        <module name="zuul" />
+        <module name="eureka-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +23,7 @@
       <module name="login-microservice" target="11" />
       <module name="payment-service" target="11" />
       <module name="service-microservice" target="11" />
+      <module name="zuul" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -32,6 +34,7 @@
       <module name="login-microservice" options="-parameters" />
       <module name="payment-service" options="-parameters" />
       <module name="service-microservice" options="-parameters" />
+      <module name="zuul" options="-parameters" />
     </option>
   </component>
 </project>
