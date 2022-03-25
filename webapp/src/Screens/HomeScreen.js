@@ -33,9 +33,9 @@ class HomeScreen extends React.Component {
                 <Link to={'product/' +product.catalogId}>{product.catalogName}</Link>
                 {/* <a href="product.html">{product.name}</a> */}
             </div>
-            <div className="product-brand">{product.brand}</div>
+            <div className="product-brand">{product.catalogBrand}</div>
             <div className="product-price"> ${product.catalogItemPrice}</div>
-            <div className="product-rating">{product.rating}</div>
+            <div className="product-rating">{product.catalogCategory}</div>
         </div>
     </li>)
     }

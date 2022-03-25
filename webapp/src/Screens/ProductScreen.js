@@ -30,7 +30,9 @@ class ProductScreen extends React.Component {
 
                 {<div className='details'>
                     <div className='details-image'>
-                        { <img src={this.state.products.imageId}  alt="product"></img> }
+                        <video width="820" height="540" loop autoplay="autoplay">
+                            <source src="https://static.nike.com/a/videos/q_90,vc_vp9/d0f7de5f-a845-4614-9b89-9b9455714b0d/video.webm" type="video/mp4"/>
+                        </video>                
                     </div>
                     <div className='details-info'>
                         <ul>
@@ -45,7 +47,7 @@ class ProductScreen extends React.Component {
                             <li>
                                 Description:
                                 <div>
-                                    {this.state.products.catalogCategory}
+                                    {this.state.products.catalogDescription}
                                 </div>
                             </li>
                         </ul>
@@ -58,7 +60,7 @@ class ProductScreen extends React.Component {
                             </li>
 
                             {<li>
-                                Status: ${this.state.products.status}
+                                Category: {this.state.products.catalogCategory}
                             </li> }
 
                             <li>
