@@ -2,10 +2,15 @@ package com.sellzer.service.controller;
 // import org.springframework.data.jpa.repository.JpaRepository;
 import com.sellzer.service.entity.ServiceJob;
 import com.sellzer.service.service.ServiceService;
+import com.sellzer.service.repository.ServiceRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 import java.util.Map;
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/services")
@@ -14,11 +19,31 @@ import java.util.Map;
 public class ServiceController{
     @Autowired
     private ServiceService serviceService;
+    @Autowired
+    private ServiceRepository serviceRepository;
 
     @PostMapping("/") // as a URL endpoint
     public ServiceJob saveService(@RequestBody ServiceJob service) {
         log.info("Inside saveService method of ServiceController");
         return  serviceService.saveService(service);
+    }
+
+    @GetMapping(value = "/")
+    public List<ServiceJob> getAllServices() {
+        log.info("getting all services");
+        return serviceRepository.findAll();
+    }
+
+    @GetMapping(value = "/ascendSort/")
+    public List<ServiceJob> getAllServiceSortedPriceAscending() {
+        log.info("getting services ascending");
+        return serviceRepository.findAll(Sort.by("servicePrice").ascending());
+    }
+
+    @GetMapping(value = "/descendSort/")
+    public List<ServiceJob> getAllServiceSortedPriceDescending() {
+        log.info("getting services descending");
+        return serviceRepository.findAll(Sort.by(Sort.Order.desc("servicePrice")));
     }
 
     @GetMapping("/{id}") // path variable
