@@ -15,11 +15,12 @@ class CatalogService {
         });
     }
 
-    getProduct(){
+    getProduct(id){
         axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
         return axios({
             method: 'get',
-            url: 'http://localhost:9005/catalogs/623ce8a4e4bd6e1d0fdf1d3d', //+this.props.match.params.id,
+            url: 'http://localhost:9005/catalogs/' + id,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
