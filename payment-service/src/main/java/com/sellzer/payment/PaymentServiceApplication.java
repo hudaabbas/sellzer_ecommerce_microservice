@@ -8,7 +8,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-
 public class PaymentServiceApplication {
 
 	public static void main(String[] args) {

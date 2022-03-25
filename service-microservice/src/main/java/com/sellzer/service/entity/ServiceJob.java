@@ -19,6 +19,6 @@ public class ServiceJob{
     private String serviceType;
     private Long servicePrice;
     private String serviceProvider;
-    private ArrayList<String> serviceLocations; // changed from initial design!
+    private String serviceLocation; // changed from initial design!
 
 }

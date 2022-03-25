@@ -14,8 +14,10 @@ import org.springframework.data.annotation.Id;
 
 public class Login {
 
-    @Id
     // list properties here
+
+    @Id
+    private String loginId;
     private String email;
     private String password;
     private Boolean verification;

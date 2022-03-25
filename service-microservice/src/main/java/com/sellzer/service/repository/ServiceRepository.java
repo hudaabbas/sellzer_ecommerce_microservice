@@ -8,4 +8,9 @@ import com.sellzer.service.entity.ServiceJob;
 public interface ServiceRepository extends MongoRepository <ServiceJob, String>{
 
     ServiceJob findByServiceID(String serviceID);
+    ServiceJob[] findServiceByServiceName(String serviceName);
+    ServiceJob[] findServiceByServiceType(String serviceCategory);
+    ServiceJob[] findServiceByServicePrice(double servicePrice);
+    ServiceJob[] findServiceByServiceProvider(String serviceProvider);
+    ServiceJob[] findServiceByServiceLocation(String serviceLocation);
 }
