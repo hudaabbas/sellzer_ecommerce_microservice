@@ -8,6 +8,7 @@ import HomeScreen from './Screens/HomeScreen';
 import ProductScreen from './Screens/ProductScreen';
 import RegisterScreen from './Screens/RegisterScreen';
 import SigninScreen from './Screens/SigninScreen';
+import CartScreen from './Screens/CartScreen';
 
 function App() {
   const openMenu=() =>{
@@ -35,7 +36,8 @@ function App() {
                 <div className="header-links">
                     {/* <a href="signin">Sign In</a> */}
                     <Link to="/sigin">Sign In</Link>
-                    <a href="cart.html">Cart</a>
+                    <Link to="/cart">Cart</Link>
+                    {/* <a href="cart.html">Cart</a> */}
                 </div>
             </header> 
 
@@ -58,6 +60,7 @@ function App() {
                 <div className="content">
                   <Route path="/product/:id" component={ProductScreen} />
                   <Route path="/" exact= {true} component={HomeScreen}/>
+                  <Route path="/cart" component={CartScreen}/>
                   {/* <Route path="/signin" component={SigninScreen} />
                   <Route path="/register" component={RegisterScreen} /> */}
                    {/* Can put products from HomeScreen here */}
