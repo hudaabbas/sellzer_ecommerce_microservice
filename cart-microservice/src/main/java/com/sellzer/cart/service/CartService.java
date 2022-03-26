@@ -30,7 +30,7 @@ public class CartService {
     }
 
 
-    public Map<String, Boolean>  deleteCartById(String cartId)
+    public Map<String, Boolean> deleteCartById(String cartId)
     {
         Cart cart = cartRepository.findByCartId(cartId);
         Map<String, Boolean> response = new HashMap<>();
@@ -101,4 +101,8 @@ public class CartService {
     }
 
 
+    public Cart findByUserId(String userId) {
+        //log.info("inside findCartById() method of CartService");
+        return cartRepository.findByUserId(userId);
+    }
 }

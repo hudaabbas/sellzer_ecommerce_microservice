@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface CartRepository extends MongoRepository<Cart, String>
 {
     Cart findByCartId(String cartId);
+
+    Cart findByUserId(String userId);
 }
     //Map<String, Boolean>  deleteCartById(String cartId);
 
