@@ -104,6 +104,58 @@ a:hover{
   margin-bottom: 1rem;
 }
 
+/* SERVICE HOME SCREEN */
+
+.toggle-bar{
+  display: flex;
+  padding: 2;
+  flex: 0 1 34rem;
+  margin: 1rem;
+  height: 50rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.service {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.service li {
+  list-style-type: none;
+  padding: 0;
+  flex: 0 1 34rem;
+  margin: 1rem;
+  height: 50rem;
+  border-bottom: .1rem #c0c0c0 solid;
+}
+.service{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.service-name{
+  font-size: 2rem;
+  font-weight: bold;
+}
+.service-type{
+  font-size: 1.2rem;
+  color:#808080;
+}
+.service-price{
+  font-size: 2rem;
+  font-weight: bold;
+}
+.service-image{
+  max-width: 34rem;
+  max-height: 34rem;
+}
+.service-category{
+  margin-bottom: 1rem;
+}
+
 .details{
   display: flex;
   justify-content: space-between;

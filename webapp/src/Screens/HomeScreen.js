@@ -21,11 +21,11 @@ class HomeScreen extends React.Component {
     }
 
     render (){
-    return (<div> <h2>Featured Products and Services</h2>
+    return (<div> <h2>Featured Products</h2>
     <ul className="products">
     {this.state.products.map(
         product =>
-       <li>
+        <li>
         <div className="product">
         <Link to={'product/' +product.catalogId}></Link>
         <img className="product-image" src={product.imageId} alt="product"></img>
