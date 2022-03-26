@@ -15,7 +15,7 @@ class ProductScreen extends React.Component {
     }
 
     componentDidMount(){
-        CatalogService.getProduct().then((response) => {
+        CatalogService.getProduct(this.props.match.params.id).then((response) => {
             console.log(response.data);
             this.setState({ products: response.data})
         });
@@ -24,41 +24,15 @@ class ProductScreen extends React.Component {
     render (){
         return (
             <div>
-                <h1 className = "text-center"> Users List</h1>
-                {/* <table className = "table table-striped">
-                    <thead>
-                        <tr>
-
-                            <td> User Id</td>
-                            <td> User First Name</td>
-                            <td> User Last Name</td>
-                            <td> User Email Id</td>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                    {
-                            // this.state.products.map(
-                            //     user => 
-                            //     <tr key = {user.catalogName}>
-                            //             <td> {user.catalogName}</td>   
-                            //             <td> {user.catalogItemPrice}</td>   
-                            //             <td> {user.catalogCategory}</td>   
-                            //             <td> {user.catalogItemSubsided}</td>   
-                            //     </tr>
-                            // )
-                        }
-
-                    </tbody>
-                </table> */}
-
                 <div className='back-2-result'>
                     <Link to="/">Back to results</Link>
                 </div>
 
                 {<div className='details'>
                     <div className='details-image'>
-                        {/* <img src={this.state.products.imageId} alt="product"></img> */}
+                        <video width="820" height="540" loop autoplay="autoplay">
+                            <source src="https://static.nike.com/a/videos/q_90,vc_vp9/d0f7de5f-a845-4614-9b89-9b9455714b0d/video.webm" type="video/mp4"/>
+                        </video>                
                     </div>
                     <div className='details-info'>
                         <ul>
@@ -73,7 +47,7 @@ class ProductScreen extends React.Component {
                             <li>
                                 Description:
                                 <div>
-                                    {this.state.products.catalogCategory}
+                                    {this.state.products.catalogDescription}
                                 </div>
                             </li>
                         </ul>
@@ -86,7 +60,7 @@ class ProductScreen extends React.Component {
                             </li>
 
                             {<li>
-                                Status: ${this.state.products.status}
+                                Category: {this.state.products.catalogCategory}
                             </li> }
 
                             <li>
