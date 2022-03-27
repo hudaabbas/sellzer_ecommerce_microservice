@@ -24,7 +24,6 @@ class ServiceJobScreen extends React.Component {
     render (){
         return (
             <div>
-
                 <div className='back-2-result'>
                     <Link to="/">Back to results</Link>
                 </div>

@@ -116,8 +116,6 @@ class ServicesScreen extends React.Component {
                         </button>
                     </div>
                 </div>
-
-
             </div>
 
             <ul className="services">
@@ -125,7 +123,7 @@ class ServicesScreen extends React.Component {
                     service =>
                         <li>
                             <div className="service">
-                                <Link to={'service/' +service.serviceID}></Link>
+                                <Link to={'service-home/' +service.serviceID}></Link>
                                 {/*<img className="service-image" src={service.imageId} alt="service"></img>*/}
                                 <div className="service-name">
                                     <Link to={service.serviceID}>{service.serviceName}</Link>
