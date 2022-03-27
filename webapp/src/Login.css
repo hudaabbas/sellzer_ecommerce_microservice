@@ -1,7 +1,7 @@
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 .login-block{
 
-background: #7261be; /* fallback for old browsers */
+background: #3b73ac; /* fallback for old browsers */
 
 background: -webkit-linear-gradient(to bottom, #FFB88C, #7261be); /* Chrome 10-25, Safari 5.1-6 */
 
@@ -27,9 +27,9 @@ padding : 50px 0;
 
 .login-sec .copy-text{position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
 
-.login-sec .copy-text i{color:#9286c7;}
+.login-sec .copy-text i{color:#ff8000;}
 
-.login-sec .copy-text a{color:#7261be;}
+.login-sec .copy-text a{color:#ff8000;}
 
 .login-sec h2{margin-bottom: 20px;
 
@@ -37,7 +37,7 @@ font-weight: bold;
 
 font-size: 20px;
 
-color: #7261be;}
+color: #3b73ac;}
 
 .login-sec h2:after{content:" "; width:200px; height:5px;background: #25cf53;
 
@@ -58,12 +58,13 @@ margin-top: 8px; border-radius:3px; margin-left:auto;margin-right:auto}
 .login_container {
 
 padding: 0 2rem;
+color: #3b73ac
 
 }
 
 .linka{
 
-color:#7261be !important;
+color:#3b73ac !important;
 
 padding:0px !important;
 
@@ -71,7 +72,7 @@ padding:0px !important;
 
 .linka:hover{
 
-color:#7261be !important;
+color:#ff8000 !important;
 
 padding:0px !important;
 

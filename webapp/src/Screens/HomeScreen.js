@@ -30,7 +30,7 @@ class HomeScreen extends React.Component {
         <Link to={'product/' +product.catalogId}></Link>
         <img className="product-image" src={product.imageId} alt="product"></img>
             <div className="product-name">
-                <Link to={'product/' +product.catalogId}>{product.catalogName}</Link>
+                <Link to={this.props.match.params.uid + '/product/' +product.catalogId}>{product.catalogName}</Link>
                 {/* <a href="product.html">{product.name}</a> */}
             </div>
             <div className="product-brand">{product.catalogBrand}</div>

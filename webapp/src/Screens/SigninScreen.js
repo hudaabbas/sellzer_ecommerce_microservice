@@ -42,13 +42,13 @@ submituserRegistrationForm(e) {
       this.setState({
         users: response.data
       });
-      if(response.data.success){
+      if(response.data.password == this.state.password){
         localStorage.setItem("u_code", encodeURIComponent(JSON.stringify(response.data.data)));
         localStorage.setItem('is_done', true);
-        window.location.href = "/";
+        window.location.href = "/" + response.data.loginId;
         console.log("Login successfull");
       }else{
-        alert(response.data.message);
+        alert("Please try again!"); // //response.data.message);
       }
     }).catch(function (error) {
       console.log(error);
@@ -79,24 +79,7 @@ validateForm() {
   if (!this.state.password) {
     formIsValid = false;
     errors["password"] = "Please enter your password.";
-  }
-
-  if (typeof this.state.password !== "undefined") {
-    // if (!this.state.password.match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
-    // //   formIsValid = false;
-    // //   errors["password"] = "*Please enter secure and strong password.";
-    // // }
-    // console.log(this.state.user);
-    // if(!this.state.user){
-    //   formIsValid = false;
-    //   errors["password"] = "Invalid password or username. Please try again.";
-    // } else{
-    //   if (this.state.password !== this.state.user.password) {
-    //     formIsValid = false;
-    //     errors["password"] = "Invalid password or username. Please try again.";
-    //   }
-    // }
-  }
+  } 
 
   this.setState({
     errors: errors
@@ -108,42 +91,48 @@ validateForm() {
 render() {
 return (
   <div>
-    <div className="container">
-      <div className="row">
+    <div className="form">
+      {/* <div className="row">
         <div className="col-md-4 login-sec">
-          <h2 className="text-center">Login</h2>
+          <h2 className="text-center">Login</h2> */}
           <Form method="post" name="userRegistrationForm" onSubmit= {this.submituserRegistrationForm} >
-              <FormGroup>
-              <Label for="exampleEmail">Email</Label>
-              <Input type="email" name="email" id="exampleEmail" value={this.state.email} onChange={this.handleChangeEmail} placeholder="Email Id" />
-              <div className="errorMsg">{this.state.errors.email}</div>
+            <FormGroup>
+              <div className="input-container">
+                <Label for="exampleEmail">Email</Label>
+                <Input type="email" name="email" id="exampleEmail" value={this.state.email} onChange={this.handleChangeEmail} placeholder="Email" />
+                <div className="errorMsg">{this.state.errors.email}</div>
+              </div>
             </FormGroup>
             <FormGroup>
+              <div className="input-container">
               <Label for="examplePassword">Password</Label>
               <Input type="password" name="password" id="examplePassword" value={this.state.password} onChange={this.handleChangePassword} placeholder="Password" />
               <div className="errorMsg">{this.state.errors.password}</div>
+              </div>
             </FormGroup>
             <FormGroup check>
+              <div className="input-container">
               <Label check>
                 <Input type="checkbox" />{' '}
                 Remember Me
               </Label>
+              </div>
             </FormGroup>
             <div className="d-flex justify-content-center mt-3 login_container">
               <Button type="submit" className="btn btn-login">Submit</Button>
             </div>
-            <div className="mt-4">
+            <div className="input-container">
               <div className="d-flex justify-content-center links">
-                Don't have an account? <Link href="/signup" to="/signup" className="linka">Sign Up</Link>
+                Don't have an account? <Link href="/register" to="/register" className="linka">Sign Up</Link>
               </div>
               <div className="d-flex justify-content-center links">
                 <a className="linka">Forgot your password?</a>
               </div>
             </div>
           </Form>
-        </div>
-      </div>
-    </div>
+        {/* </div>
+      </div> */}
+    </div> 
   </div>
   ) 
 }
