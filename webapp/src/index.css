@@ -112,15 +112,120 @@ a:hover{
 }
 
 /* SERVICE HOME SCREEN */
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchService {
+  width: 50%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 0px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #000000;
+}
+
+.searchButton {
+  width: 40px;
+  height: 25px;
+  border: 1px solid #ffffff;
+  background: #63ad12;
+  align-self: center;
+  text-align: center;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 .toggle-bar{
-  display: flex;
-  padding: 2;
-  flex: 0 1 34rem;
-  margin: 1rem;
-  height: 50rem;
-  justify-content: center;
-  align-items: center;
+  width: 100px;
+}
+.toggleButton {
+  width: 100px;
+  height: 30px;
+  border: 1px solid #ffffff;
+  background: #63ad12;
+  text-align: center;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+}
+/*Resize the wrap to see the search bar change!*/
+
+
+.label-search {
+  margin-left: 60px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  width: 40px;
+  height: 36px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  width: 300px;
+  background-color: #04AA6D;
+  color: white;
+  /*padding: 16px;*/
+  font-size: 16px;
+  border: none;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #000000;
+  min-width: 87px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.wrap{
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  margin: auto;
 }
 
 .service {

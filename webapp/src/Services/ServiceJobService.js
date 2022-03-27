@@ -57,6 +57,20 @@ class ServiceJobService {
             }
         });
     }
+
+    searchByName(name){
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+        return axios({
+            method: 'get',
+            url: 'http://localhost:9002/services/name/' + name,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json;charset=UTF-8',
+            }
+        });
+    }
 }
 
 export default new ServiceJobService();

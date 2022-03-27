@@ -2,8 +2,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import data from '../data';
 import ServiceJobService from "../Services/ServiceJobService";
+import { useState, useEffect } from 'react';
+import { Card, Input } from 'semantic-ui-react'
 
 class ServicesScreen extends React.Component {
+
+    static searchName = useState('')
 
     constructor(props){
         console.log(props.match.params.id);
@@ -28,40 +32,55 @@ class ServicesScreen extends React.Component {
         }));
 
         {this.state.isToggleOn ?
-            (ServiceJobService.getServicesAscend().then((response) => {
-                console.log(response.data);
-                this.setState({ services :  response.data })
-            }))
-            :
-            (ServiceJobService.getServicesDescend().then((response) => {
-                console.log(response.data);
-                this.setState({ services :  response.data })
-            }))}
+        (ServiceJobService.getServicesAscend().then((response) => {
+            console.log(response.data);
+            this.setState({ services :  response.data })
+        }))
+        :
+        (ServiceJobService.getServicesDescend().then((response) => {
+            console.log(response.data);
+            this.setState({ services :  response.data })
+        }))}
 
     }
 
+    handleSearch() {
+
+        (ServiceJobService.searchByName(this.searchName).then((response) => {
+            console.log(response.data);
+            this.setState({ services :  response.data })
+        }))
+
+    }
+
+
+
     render (){
         return (<div> <h2>Featured Services</h2>
-            <div id="toggle-bar">
-                <button onClick={this.handleClick}>
-                    {this.state.isToggleOn ? 'CLICK FOR: Low to High' : 'CLICK FOR: High to Low'}
-                </button>
-            </div>
+            <div className="wrap">
+                <div className="row">
+                    <div className="column">
+                        Toggle: <span> </span>
+                        <button onClick={this.handleClick} className="toggleButton">
+                            {this.state.isToggleOn ? 'Low to High' : 'High to Low'}
+                        </button>
+                    </div>
+                    <div className="column">
+                        <input type="text" className="searchTerm" placeholder="search by service" onChange={event => this.searchName(event.target.value)} />
+                        <button type="submit" className="searchButton" onClick={this.handleSearch}>
+                            <i className="fa fa-search">send </i>
+                        </button>
+                    </div>
+                    <div className="column">
+                        <input type="text" className="searchTerm" placeholder="search by location"/>
+                        <button type="submit" className="searchButton">
+                            <i className="fa fa-search">send</i>
+                        </button>
+                    </div>
+                </div>
 
-            <form>
-                <label>
-                    Search for a service:
-                    <input type="text" name="name" />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
-            <form>
-                <label>
-                    Search for a service:
-                    <input type="text" name="name" />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+
+            </div>
 
             <ul className="services">
                 {this.state.services.map(
