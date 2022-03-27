@@ -90,6 +90,7 @@ validateForm() {
 render() {
   return (
     <div>
+      <div className="heading">Sign In</div>
       <div className="form">
         <Form method="post" name="userRegistrationForm" onSubmit= {this.submituserRegistrationForm} >
           <FormGroup>
