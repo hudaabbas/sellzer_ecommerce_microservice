@@ -15,20 +15,25 @@ class PaymentService {
         });
     }
 
-    postPayment(){
-        fetch('http://localhost:9004/payments/', {
-            method: 'POST',
+    postPayment(body){
+            return axios({
+            method: 'post',
+            url: 'http://localhost:9004/payments/',
+            withCredentials: false,
             headers: {
-                'Accept': 'application/json',
+                'Access-Control-Allow-Origin':'*',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                firstParam: 'yourValue',
-                secondParam: 'yourOtherValue',
-            })
-        })
+            data: body
+            //  body in this format: {
+            //     "email": "test5@gmail.com",
+            //     "password": "pass5",
+            //     "verification": 1,
+            //     "subsidized": 0
+            // }
+        });
     }
-
+   
     deletePayment(){
           fetch("http://localhost:9004/payments/6234a51750851c05d8c4ce71" + paymentId, requestOptions).then((response) => {
                 return response.json();
