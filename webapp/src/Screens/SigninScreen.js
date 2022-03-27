@@ -5,8 +5,7 @@ import './../Login.css';
 import LoginService from '../Services/LoginService';
 import axios from 'axios';
 
-export default class SigninScreen extends Component {
-
+class SigninScreen extends React.Component {
 
 constructor(props) {
   super(props);
@@ -43,12 +42,12 @@ submituserRegistrationForm(e) {
         users: response.data
       });
       if(response.data.password == this.state.password){
-        localStorage.setItem("u_code", encodeURIComponent(JSON.stringify(response.data.data)));
+        localStorage.setItem("u_code", encodeURIComponent(JSON.stringify(response.data.loginId)));
         localStorage.setItem('is_done', true);
-        window.location.href = "/" + response.data.loginId;
+        window.location.href = "/";
         console.log("Login successfull");
       }else{
-        alert("Please try again!"); // //response.data.message);
+        alert("Please try again!"); // response.data.message);
       }
     }).catch(function (error) {
       console.log(error);
@@ -89,51 +88,47 @@ validateForm() {
 }
 
 render() {
-return (
-  <div>
-    <div className="form">
-      {/* <div className="row">
-        <div className="col-md-4 login-sec">
-          <h2 className="text-center">Login</h2> */}
-          <Form method="post" name="userRegistrationForm" onSubmit= {this.submituserRegistrationForm} >
-            <FormGroup>
-              <div className="input-container">
-                <Label for="exampleEmail">Email</Label>
-                <Input type="email" name="email" id="exampleEmail" value={this.state.email} onChange={this.handleChangeEmail} placeholder="Email" />
-                <div className="errorMsg">{this.state.errors.email}</div>
-              </div>
-            </FormGroup>
-            <FormGroup>
-              <div className="input-container">
-              <Label for="examplePassword">Password</Label>
-              <Input type="password" name="password" id="examplePassword" value={this.state.password} onChange={this.handleChangePassword} placeholder="Password" />
-              <div className="errorMsg">{this.state.errors.password}</div>
-              </div>
-            </FormGroup>
-            <FormGroup check>
-              <div className="input-container">
-              <Label check>
-                <Input type="checkbox" />{' '}
-                Remember Me
-              </Label>
-              </div>
-            </FormGroup>
-            <div className="d-flex justify-content-center mt-3 login_container">
-              <Button type="submit" className="btn btn-login">Submit</Button>
-            </div>
+  return (
+    <div>
+      <div className="form">
+        <Form method="post" name="userRegistrationForm" onSubmit= {this.submituserRegistrationForm} >
+          <FormGroup>
             <div className="input-container">
-              <div className="d-flex justify-content-center links">
-                Don't have an account? <Link href="/register" to="/register" className="linka">Sign Up</Link>
-              </div>
-              <div className="d-flex justify-content-center links">
-                <a className="linka">Forgot your password?</a>
-              </div>
+              <Label for="exampleEmail">Email</Label>
+              <Input type="email" name="email" id="exampleEmail" value={this.state.email} onChange={this.handleChangeEmail} placeholder="Email" />
+              <div className="errorMsg">{this.state.errors.email}</div>
             </div>
-          </Form>
-        {/* </div>
-      </div> */}
-    </div> 
-  </div>
-  ) 
+          </FormGroup>
+          <FormGroup>
+            <div className="input-container">
+            <Label for="examplePassword">Password</Label>
+            <Input type="password" name="password" id="examplePassword" value={this.state.password} onChange={this.handleChangePassword} placeholder="Password" />
+            <div className="errorMsg">{this.state.errors.password}</div>
+            </div>
+          </FormGroup>
+          <FormGroup check>
+            <div className="input-container">
+            <Label check>
+              <Input type="checkbox" />{' '}
+              Remember Me
+            </Label>
+            </div>
+          </FormGroup>
+          <div className="d-flex justify-content-center mt-3 login_container">
+            <Button type="submit" className="btn btn-login">Submit</Button>
+          </div>
+          <div className="input-container">
+            <div className="d-flex justify-content-center links">
+              Don't have an account? <Link href="/register" to="/register" className="linka">Sign Up</Link>
+            </div>
+            <div className="d-flex justify-content-center links">
+              <a className="linka">Forgot your password?</a>
+            </div>
+          </div>
+        </Form>
+      </div> 
+    </div>
+    ) 
+  }
 }
-}
+export default SigninScreen;

@@ -56,9 +56,9 @@ function App() {
 
             <main className="main">
                 <div className="content">
-                  <Route path="/:uid/product/:id" exact= {true} component={ProductScreen} />
-                  <Route path="/:uid" component={HomeScreen}/>
-                  <Route path="/signin" component={SigninScreen} />
+                  <Route path="/product/:id" component={ProductScreen} />
+                  <Route path="/" exact= {true} component={HomeScreen}/>
+                  <Route path="/signin" component={SigninScreen}/>
                   <Route path="/register" component={RegisterScreen} />
                 </div>
             </main>

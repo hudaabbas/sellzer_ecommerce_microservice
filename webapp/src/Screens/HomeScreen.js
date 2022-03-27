@@ -6,7 +6,6 @@ import CatalogService from '../Services/CatalogService';
 class HomeScreen extends React.Component {
 
     constructor(props){
-        console.log(props.match.params.id);
         super(props)
         this.state = {
             products:[]
@@ -14,6 +13,7 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount(){
+        console.log(window.localStorage.getItem('u_code'));
         CatalogService.getCatalog().then((response) => {
             console.log(response.data);
             this.setState({ products: response.data})
@@ -30,7 +30,7 @@ class HomeScreen extends React.Component {
         <Link to={'product/' +product.catalogId}></Link>
         <img className="product-image" src={product.imageId} alt="product"></img>
             <div className="product-name">
-                <Link to={this.props.match.params.uid + '/product/' +product.catalogId}>{product.catalogName}</Link>
+                <Link to={'product/' +product.catalogId}>{product.catalogName}</Link>
                 {/* <a href="product.html">{product.name}</a> */}
             </div>
             <div className="product-brand">{product.catalogBrand}</div>
