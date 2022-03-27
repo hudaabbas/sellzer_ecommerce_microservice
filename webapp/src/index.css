@@ -295,6 +295,14 @@ input[type="submit"]:hover {
   margin: 10px;
 }
 
+.input-container2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+  width: 25%;
+}
+
 /* Sidebar */
 
 .brand button {
