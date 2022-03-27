@@ -171,6 +171,7 @@ render() {
             </FormGroup> */}
             <FormGroup>
             <div className="input-container2">
+              <Label>Category</Label> 
                 <select>
                     <option value={this.state.category} onChange={this.handleChangeCategory}>Apparel</option>
                     <option value={this.state.category} onChange={this.handleChangeCategory}> Shoes</option>
