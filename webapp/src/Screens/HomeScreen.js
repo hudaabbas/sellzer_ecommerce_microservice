@@ -6,7 +6,6 @@ import CatalogService from '../Services/CatalogService';
 class HomeScreen extends React.Component {
 
     constructor(props){
-        console.log(props.match.params.id);
         super(props)
         this.state = {
             products:[]
@@ -14,6 +13,7 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount(){
+        console.log(window.localStorage.getItem('u_code'));
         CatalogService.getCatalog().then((response) => {
             console.log(response.data);
             this.setState({ products: response.data})
