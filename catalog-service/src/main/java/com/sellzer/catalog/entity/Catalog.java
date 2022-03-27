@@ -20,6 +20,9 @@ public class Catalog
     private String catalogDescription;
     private String catalogBrand;
     private String imageId;
+    private String imageId2;
+    private String sizes;
+    private String videoId;
     private Integer quantity;
     private double catalogItemPrice;
     private boolean catalogItemSubsided;
