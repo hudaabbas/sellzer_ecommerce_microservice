@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/payment-service/payment-service.iml" filepath="$PROJECT_DIR$/payment-service/payment-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/sellzer_ecommerce_microservice.iml" filepath="$PROJECT_DIR$/.idea/sellzer_ecommerce_microservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-microservice/service-microservice.iml" filepath="$PROJECT_DIR$/service-microservice/service-microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zuul/.mvn/wrapper/wrapper.iml" filepath="$PROJECT_DIR$/zuul/.mvn/wrapper/wrapper.iml" />
       <module fileurl="file://$PROJECT_DIR$/zuul/zuul.iml" filepath="$PROJECT_DIR$/zuul/zuul.iml" />
     </modules>
   </component>
