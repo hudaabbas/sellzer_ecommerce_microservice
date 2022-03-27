@@ -26,6 +26,25 @@ class LoginService {
             }
         });
     }
+
+    addUser(body){
+        return axios({
+            method: 'post',
+            url: 'http://localhost:9000/logins/',
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: body
+            //  body in this format: {
+            //     "email": "test5@gmail.com",
+            //     "password": "pass5",
+            //     "verification": 1,
+            //     "subsidized": 0
+            // }
+        });
+    }
 }
 
 export default new LoginService();
