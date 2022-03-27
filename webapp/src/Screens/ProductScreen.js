@@ -30,9 +30,11 @@ class ProductScreen extends React.Component {
 
                 {<div className='details'>
                     <div className='details-image'>
+                        <img className="product-image" src={this.state.products.imageId} alt="product"></img>
+                        {/* if(this.state.products.imageId != null)
                         <video width="820" height="540" loop autoplay="autoplay">
-                            <source src="https://static.nike.com/a/videos/q_90,vc_vp9/d0f7de5f-a845-4614-9b89-9b9455714b0d/video.webm" type="video/mp4"/>
-                        </video>                
+                             <source src="https://static.nike.com/a/videos/q_90,vc_vp9/d0f7de5f-a845-4614-9b89-9b9455714b0d/video.webm" type="video/mp4"/>
+                        </video>                 */}
                     </div>
                     <div className='details-info'>
                         <ul>
