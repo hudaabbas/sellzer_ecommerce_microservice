@@ -88,6 +88,7 @@ validateForm() {
 render() {
   return (
     <div>
+      <div className="heading">Register</div>
       <div className="form">
         <Form method="post" name="userRegistrationForm" onSubmit= {this.submituserRegistrationForm} >
           <FormGroup>
@@ -106,6 +107,14 @@ render() {
           </FormGroup>
           <div className="d-flex justify-content-center mt-3 login_container">
             <Button type="submit" className="btn btn-login">Sign Up</Button>
+          </div>
+          <div className="input-container">
+            <div className="d-flex justify-content-center links">
+              Already have an account? <Link href="/signin" to="/signin" className="linka">Sign In</Link>
+            </div>
+            {/* <div className="d-flex justify-content-center links">
+              <a className="linka">Forgot your password?</a>
+            </div> */}
           </div>
         </Form>
       </div> 
