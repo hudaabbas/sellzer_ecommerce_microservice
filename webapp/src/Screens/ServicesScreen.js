@@ -3,18 +3,22 @@ import {Link} from 'react-router-dom';
 import data from '../data';
 import ServiceJobService from "../Services/ServiceJobService";
 import { useState, useEffect } from 'react';
-import { Card, Input } from 'semantic-ui-react'
 
 class ServicesScreen extends React.Component {
-
-    static searchName = useState('')
 
     constructor(props){
         console.log(props.match.params.id);
         super(props)
         this.state = {
-            services : []
+            services : [],
+            name : '',
+            location: ''
         }
+        this.handleChangeName = this.handleChangeName.bind(this);
+        this.handleChangeLocation = this.handleChangeLocation.bind(this);
+        this.submitSearchName = this.submitSearchName.bind(this);
+        this.submitSearchLocation = this.submitSearchLocation.bind(this);
+        this.handleRefresh = this.handleRefresh.bind(this);
     }
 
     componentDidMount(){
@@ -41,19 +45,42 @@ class ServicesScreen extends React.Component {
             console.log(response.data);
             this.setState({ services :  response.data })
         }))}
-
     }
 
-    handleSearch() {
+    handleRefresh() {
+        ServiceJobService.getService().then((response) => {
+            console.log(response.data);
+            this.setState({ services :  response.data })
+        })
+    }
 
-        (ServiceJobService.searchByName(this.searchName).then((response) => {
+
+    handleChangeName(e) {
+        this.setState({name:e.target.value});
+    }
+    handleChangeLocation(e) {
+        this.setState({location:e.target.value});
+    }
+
+    submitSearchName(e) {
+        e.preventDefault();
+        console.log(this.state.name);
+        (ServiceJobService.searchByName(this.state.name).then((response) => {
             console.log(response.data);
             this.setState({ services :  response.data })
         }))
-
+        this.setState({name : ''});
     }
 
-
+    submitSearchLocation(e) {
+        e.preventDefault();
+        console.log(this.state.location);
+        (ServiceJobService.searchByLocation(this.state.location).then((response) => {
+            console.log(response.data);
+            this.setState({ services :  response.data })
+        }))
+        this.setState({location : ''});
+    }
 
     render (){
         return (<div> <h2>Featured Services</h2>
@@ -66,15 +93,26 @@ class ServicesScreen extends React.Component {
                         </button>
                     </div>
                     <div className="column">
-                        <input type="text" className="searchTerm" placeholder="search by service" onChange={event => this.searchName(event.target.value)} />
-                        <button type="submit" className="searchButton" onClick={this.handleSearch}>
-                            <i className="fa fa-search">send </i>
-                        </button>
+                        <form onSubmit= {this.submitSearchName}>
+                            <input type="text" className="searchTerm" placeholder="search by service"
+                                   value={this.state.name} onChange={this.handleChangeName}/>
+                            <button type="submit" className="searchButton">
+                                <i className="fa fa-search">send</i>
+                            </button>
+                        </form>
+                    </div>
+                    <div className="">
+                        <form onSubmit= {this.submitSearchLocation}>
+                            <input type="text" className="searchTerm" placeholder="search by location"
+                                   value={this.state.location} onChange={this.handleChangeLocation}/>
+                            <button type="submit" className="searchButton">
+                                <i className="fa fa-search">send</i>
+                            </button>
+                        </form>
                     </div>
                     <div className="column">
-                        <input type="text" className="searchTerm" placeholder="search by location"/>
-                        <button type="submit" className="searchButton">
-                            <i className="fa fa-search">send</i>
+                        <button onClick={this.handleRefresh} className="toggleButton">
+                            Back To All Services
                         </button>
                     </div>
                 </div>
@@ -95,11 +133,11 @@ class ServicesScreen extends React.Component {
                                 </div>
                                 <div className="service-type">{service.serviceType}</div>
                                 <div className="service-price"> ${service.servicePrice}</div>
+                                <div className="service-location">{service.serviceLocation}</div>
                                 <div className="service-category">{service.serviceCategory}</div>
                             </div>
                         </li>)
                 }
-
             </ul>
         </div>)}
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import data from '../data';
 import {Link} from 'react-router-dom';
 import ServiceService from "../Services/ServiceJobService";
-import ReactSearchBox from "react-search-box";
 
 class ServiceJobScreen extends React.Component {
     // const product= data.products.find( x=> x._id === props.match.params.id);
@@ -59,9 +58,13 @@ class ServiceJobScreen extends React.Component {
                                 Price: ${this.state.service.servicePrice}
                             </li>
 
-                            {<li>
+                            <li>
                                 Type: {this.state.service.serviceType}
-                            </li> }
+                            </li>
+
+                            <li>
+                                Location: {this.state.service.serviceLocation}
+                            </li>
 
                             <li>
                                 <button className="button-primary-add"> Add to Cart</button>

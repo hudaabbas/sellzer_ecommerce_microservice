@@ -160,7 +160,7 @@ a:hover{
   width: 100px;
 }
 .toggleButton {
-  width: 100px;
+  min-width: 100px;
   height: 30px;
   border: 1px solid #ffffff;
   background: #63ad12;
@@ -177,22 +177,7 @@ a:hover{
 }
 
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
-  width: 40px;
-  height: 36px;
-  position: relative;
-  display: inline-block;
-}
 
-/* Dropdown Button */
-.dropbtn {
-  width: 300px;
-  background-color: #04AA6D;
-  color: white;
-  /*padding: 16px;*/
-  font-size: 16px;
-  border: none;
-}
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
@@ -204,25 +189,8 @@ a:hover{
   z-index: 1;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-
 .wrap{
-  width: 40%;
+  width: 50%;
   top: 50%;
   left: 50%;
   margin: auto;
