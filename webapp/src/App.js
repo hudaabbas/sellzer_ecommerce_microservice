@@ -11,6 +11,7 @@ import SigninScreen from './Screens/SigninScreen';
 import CartScreen from './Screens/CartScreen';
 import ServicesScreen from "./Screens/ServicesScreen";
 import ServiceJobScreen from "./Screens/ServiceJobScreen";
+import AddProductScreen from "./Screens/AddProductScreen";
 
 function App() {
   const openMenu=() =>{
@@ -67,6 +68,7 @@ function App() {
                   <Route path="/cart" component={CartScreen}/>
                   <Route path="/signin" component={SigninScreen}/>
                   <Route path="/register" component={RegisterScreen} />
+                  <Route path="/product" component={AddProductScreen} />
                 </div>
             </main>
 

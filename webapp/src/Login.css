@@ -51,7 +51,7 @@ padding : 50px 0;
     display: flex;
 }
 
-label[for=examplePassword], [for=exampleEmail]{
+label{
     color: black;
     font-weight: bold;
     text-align:left;
@@ -70,6 +70,25 @@ input[type="email"]{
     border-style: none none solid;
     border-bottom: 3px solid gray;
 }
+
+input{
+    background-color:white ;
+    padding: 5px;
+    border-style: none none solid;
+    border-bottom: 3px solid gray;
+}
+
+/* for addProduct page*/
+select{
+    display: flex;
+    position: relative;
+    min-width: 160px;
+    margin: 10px;
+    padding: 10px;
+    border: 3px solid gray;
+
+}
+
 
 .login-sec{padding: 50px 30px; position:relative;}
 
