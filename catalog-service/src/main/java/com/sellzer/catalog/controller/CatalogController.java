@@ -56,13 +56,14 @@ public class CatalogController {
         return catalogService.findCatalogById(catalogId);
     }
 
-    @GetMapping("/allProducts")
+    @PostMapping("/allProducts")
     public ArrayList<Catalog> findCatalogByIds(@RequestBody String[] catalogIds) {
         log.info("inside ;ol");
         ArrayList<Catalog> catalogs = new ArrayList<Catalog>();
         for(String catalogId: catalogIds) {
             catalogs.add(catalogService.findCatalogById(catalogId));
         }
+        log.info(String.valueOf(catalogs));
         log.info(String.valueOf(catalogs));
         return catalogs;
     }
