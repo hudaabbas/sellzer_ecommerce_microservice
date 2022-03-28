@@ -59,6 +59,10 @@ class CartScreen extends React.Component {
             if (response.status = 200) {
                 window.location.reload(false);
             }
+            else
+            {
+                alert("Failed to remove product from cart!");
+            }
         })
     }
 
@@ -70,6 +74,10 @@ class CartScreen extends React.Component {
             console.log(response.data);
             if (response.status = 200) {
                 window.location.reload(false);
+            }
+            else
+            {
+                alert("Failed to remove service from cart!");
             }
         })
     }
@@ -102,6 +110,17 @@ class CartScreen extends React.Component {
 
         CartService.createPayment(payment).then((response) => {
             console.log(response);
+            if (response.status = 200) {
+                localStorage.setItem("cart_id", encodeURIComponent(JSON.stringify(response.data.orderId)));
+                window.location.href = "/payment/cart_id";
+                console.log("Checkout successfull");
+            }
+            else
+            {
+                alert("Failed to checkout");
+            }
+            
+            
         });
     }
 
@@ -181,7 +200,9 @@ class CartScreen extends React.Component {
                 <div className="checkout">
                 <div className="total">Total: ${this.calculateTotal()}</div>
                 {/* <div class="items">2 items</div> */}
-                <button className="checkout-button" onClick={(e) => this.createPaymentObj(e, this.state.cartInfo.cartId,this.state.cartInfo.userId, this.calculateTotal())}>Checkout</button>
+                <button className="checkout-button" onClick={(e) => this.createPaymentObj(e, this.state.cartInfo.cartId,this.state.cartInfo.userId, this.calculateTotal())}>
+                    <Link to={"/payment/" + this.state.cartInfo.cartId} className="checkout">Checkout</Link>
+                </button>
                 </div>
                 
                 
