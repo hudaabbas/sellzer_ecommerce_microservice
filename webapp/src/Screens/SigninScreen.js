@@ -122,9 +122,9 @@ render() {
             <div className="d-flex justify-content-center links">
               Don't have an account? <Link href="/register" to="/register" className="linka">Sign Up</Link>
             </div>
-            <div className="d-flex justify-content-center links">
+            {/* <div className="d-flex justify-content-center links">
               <a className="linka">Forgot your password?</a>
-            </div>
+            </div> */}
           </div>
         </Form>
       </div> 
