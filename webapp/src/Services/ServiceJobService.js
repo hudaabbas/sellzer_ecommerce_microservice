@@ -16,6 +16,19 @@ class ServiceJobService {
         });
     }
 
+    addService(body){
+        return axios({
+            method: 'post',
+            url: 'http://localhost:9002/services/',
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: body
+        });
+    }
+
     getServiceById(id){
         axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 

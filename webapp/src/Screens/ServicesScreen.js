@@ -115,6 +115,9 @@ class ServicesScreen extends React.Component {
                             Back To All Services
                         </button>
                     </div>
+                    <div className="column">
+                        <Link to="/add-service" className="toggleButton">  Post A New Service  </Link>
+                    </div>
                 </div>
             </div>
 
@@ -132,7 +135,7 @@ class ServicesScreen extends React.Component {
                                 <div className="service-type">{service.serviceType}</div>
                                 <div className="service-price"> ${service.servicePrice}</div>
                                 <div className="service-location">{service.serviceLocation}</div>
-                                <div className="service-category">{service.serviceCategory}</div>
+                                <div className="service-category">{service.serviceProvider}</div>
                             </div>
                         </li>)
                 }

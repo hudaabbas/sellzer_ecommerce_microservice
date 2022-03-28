@@ -41,6 +41,48 @@ class CatalogService {
             data: body
         });
     }
+
+    getProductsAscend(){
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+        return axios({
+            method: 'get',
+            url: 'http://localhost:9005/catalogs/ascendSort/',
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json;charset=UTF-8',
+            }
+        });
+    }
+
+    getProductsDescend(){
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+        return axios({
+            method: 'get',
+            url: 'http://localhost:9005/catalogs/descendSort/',
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json;charset=UTF-8',
+            }
+        });
+    }
+
+    searchByName(name){
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+        return axios({
+            method: 'get',
+            url: 'http://localhost:9005/catalogs/name/' + name,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json;charset=UTF-8',
+            }
+        });
+    }
 }
 
 export default new CatalogService();
