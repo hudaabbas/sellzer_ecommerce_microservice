@@ -42,7 +42,7 @@ submituserRegistrationForm(e) {
         users: response.data
       });
       if(response.data.password == this.state.password){
-        localStorage.setItem("u_code", encodeURIComponent(JSON.stringify(response.data.loginId)));
+        localStorage.setItem("u_code", response.data.loginId);
         localStorage.setItem('is_done', true);
         window.location.href = "/";
         console.log("Login successfull");

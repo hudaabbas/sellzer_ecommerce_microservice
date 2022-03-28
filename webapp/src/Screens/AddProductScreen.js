@@ -78,7 +78,6 @@ submituserRegistrationForm(e) {
     CatalogService.addProduct(data).then((response) => {
       console.log(response);
       if(response.status = 200){
-        localStorage.setItem('is_done', true);
         window.location.href = "/";
         console.log("Item added successfully");
       }else{

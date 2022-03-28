@@ -40,8 +40,7 @@ submituserRegistrationForm(e) {
     LoginService.addUser(data).then((response) => {
       console.log(response);
       if(response.status = 200){
-        localStorage.setItem("u_code", encodeURIComponent(JSON.stringify(response.data.loginId)));
-        localStorage.setItem('is_done', true);
+        localStorage.setItem("u_code", response.data.loginId);
         window.location.href = "/";
         console.log("User registered successfull");
       }else{
