@@ -8,19 +8,7 @@ spring:
     password:
   application:
     name: catalog-service
-  cloud:
-    kubernetes:
-      secrets:
-        name: db-secret
-        config:
-          enabled: true
-          sources:
-            namespace: default
-            name: mongo-conf
-            reload:
-              enabled: true
-              mode: polling
-              period: 1000
+
 management:
   endpoint:
     restart:

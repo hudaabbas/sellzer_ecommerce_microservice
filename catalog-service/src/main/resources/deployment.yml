@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-service
+spec:
+  selector:
+    matchLabels:
+      app: catalog-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: catalog-service
+    spec:
+      containers:
+        - name: catalog-service
+          image: gcr.io/<YOUR GCR REGISTRY NAME>/catalog
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            initialDelaySeconds: 20
+            httpGet:
+              port: 8080
+              path: /actuator/health
+          readinessProbe:
+            initialDelaySeconds: 30
+            httpGet:
+              port: 8080
+              path: /actuator/health
