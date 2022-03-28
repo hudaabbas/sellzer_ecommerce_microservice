@@ -129,8 +129,12 @@ a:hover{
   color: #9DBFAF;
 }
 
-.searchTerm:focus{
+.searchTerm{
   color: #000000;
+  margin: 5px;
+  padding: 16px;
+  /* border: 3px solid blue; */
+  /* text-align: center; */
 }
 
 .searchButton {
@@ -141,7 +145,16 @@ a:hover{
   align-self: center;
   text-align: center;
   border-radius: 0 20px 20px 0;
+  padding: 10rem;
   cursor: pointer;
+}
+
+
+.fa.fa-search{
+  /* border: 3px solid blue; */
+  display: flex;
+  margin: 0px;
+  padding: 0px;
 }
 
 .column {
@@ -160,14 +173,17 @@ a:hover{
   width: 100px;
 }
 .toggleButton {
-  min-width: 100px;
+  min-width: 160px;
   height: 30px;
   border: 1px solid #ffffff;
   background: #63ad12;
+  display: flex;
+  justify-content: center;
   text-align: center;
   color: #fff;
   border-radius: 20px;
   cursor: pointer;
+  padding: 6px;
 }
 /*Resize the wrap to see the search bar change!*/
 
@@ -193,7 +209,12 @@ a:hover{
   width: 50%;
   top: 50%;
   left: 50%;
+  /* border: 3px solid blue; */
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 5%; */
 }
 
 .service {
@@ -202,6 +223,29 @@ a:hover{
   align-items: center;
   flex-wrap: wrap;
 }
+
+.column{
+  /* border: 3px solid blue; */
+  display: flex;
+  border-radius: 10px;
+  /* background-color: white; */
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 6px;
+}
+
+
+.row{
+  /* border: 3px solid red; */
+  background-color: #d5faff;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px 0;
+}
+
 .service li {
   list-style-type: none;
   padding: 0;
@@ -386,14 +430,17 @@ input[type="submit"]:hover {
   color:#ffffff;
   cursor: pointer;
 }
+
 .sidebar{
   position: fixed;
   transition: all .5s;
   transform: translateX(-30rem);
   width: 30rem;
   background-color: #f0f0f0;
+  text-decoration: none;
   height: 100%;
 }
+
 .sidebar.open{
   transform: translateX(0);
 }

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import data from '../data';
 import CatalogService from '../Services/CatalogService';
 import {Button} from 'reactstrap';
-
+import '../index.css'
 class HomeScreen extends React.Component {
 
     constructor(props){

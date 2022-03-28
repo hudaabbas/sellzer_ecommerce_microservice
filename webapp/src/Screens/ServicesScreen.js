@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import data from '../data';
 import ServiceJobService from "../Services/ServiceJobService";
 import { useState, useEffect } from 'react';
+import '../index.css'
 
 class ServicesScreen extends React.Component {
 
@@ -87,7 +88,7 @@ class ServicesScreen extends React.Component {
             <div className="wrap">
                 <div className="row">
                     <div className="column">
-                        Toggle: <span> </span>
+                        <span> Toggle: </span>
                         <button onClick={this.handleClick} className="toggleButton">
                             {this.state.isToggleOn ? 'Low to High' : 'High to Low'}
                         </button>
@@ -101,7 +102,7 @@ class ServicesScreen extends React.Component {
                             </button>
                         </form>
                     </div>
-                    <div className="">
+                    <div className="column">
                         <form onSubmit= {this.submitSearchLocation}>
                             <input type="text" className="searchTerm" placeholder="search by location"
                                    value={this.state.location} onChange={this.handleChangeLocation}/>
