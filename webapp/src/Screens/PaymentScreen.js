@@ -58,24 +58,10 @@ class PaymentScreen extends React.Component {
             </div>
         
             <div class="centre-content">
-                <h1 class="price"><span>$</span>this.state.payments.total</h1>
+                <h1 class="price"><span>$</span>{this.state.payments.total}</h1>
                 <p class="course">
                 </p>
             </div>
-        
-            {/* <div class="last-content">
-                <button type="button" class="pay-now-btn">
-                Apply Coupons
-                </button>
-                <button type="button" class="pay-now-btn">
-                Pay with Netbanking
-                </button>
-        
-                <button type="button" class="pay-now-btn">
-                Netbanking options
-                </button> 
-            </div> */}
-        
             <div class="card-details">
                 <p>Pay using Credit or Debit card</p>
         
@@ -112,7 +98,7 @@ class PaymentScreen extends React.Component {
                     class="card-name-field"
                     placeholder="Enter your Name"/>
                 </div>
-            <Link to="/confirmation" className="btn btn-primary">Submit</Link>
+            <Link to={"/confirmation/"+this.state.payments.paymentId} className="btn btn-primary">Submit</Link>
             </div>
             </div>
         </body>
