@@ -46,6 +46,8 @@ function App() {
                 </div>
             </header> 
 
+            
+
             <aside className="sidebar">
                 <h3>Categories</h3>
                 <button className="sidebar-close-button" onClick={closeMenu}>x</button>
