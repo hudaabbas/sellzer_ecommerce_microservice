@@ -93,21 +93,21 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<from>
+						<image>gcr.io/distroless/java:11</image>
+					</from>
+					<to>
+						<image>gcr.io/us-docker.pkg.dev/sellzer/us.gcr.io/${project.artifactId}</image>
+					</to>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
-	<plugin>
-		<groupId>com.google.cloud.tools</groupId>
-		<artifactId>jib-maven-plugin</artifactId>
-		<version>1.8.0</version>
-		<configuration>
-			<from>
-				<image>gcr.io/distroless/java:11</image>
-			</from>
-			<to>
-				<image>gcr.io/<YOUR_GCP_REGISTRY>/${project.artifactId}</image>
-			</to>
-		</configuration>
-	</plugin>
 
 </project>

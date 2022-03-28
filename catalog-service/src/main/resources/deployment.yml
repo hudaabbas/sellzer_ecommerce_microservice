@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: catalog-service
-          image: gcr.io/<YOUR GCR REGISTRY NAME>/catalog
+          image: gcr.io/us-docker.pkg.dev/sellzer/us.gcr.io/catalog
           ports:
             - containerPort: 8080
           livenessProbe:
