@@ -19,4 +19,5 @@ public class Payment{
     private Integer orderId;
     private Integer customerId;
     private String paymentType;
+    private String total;
 }
