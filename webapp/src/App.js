@@ -11,6 +11,9 @@ import SigninScreen from './Screens/SigninScreen';
 import CartScreen from './Screens/CartScreen';
 import ServicesScreen from "./Screens/ServicesScreen";
 import ServiceJobScreen from "./Screens/ServiceJobScreen";
+import AddProductScreen from "./Screens/AddProductScreen";
+import PaymentScreen from './Screens/PaymentScreen';
+import OrderConfirmationScreen from './Screens/OrderConfirmationScreen'
 
 function App() {
   const openMenu=() =>{
@@ -43,6 +46,8 @@ function App() {
                 </div>
             </header> 
 
+            
+
             <aside className="sidebar">
                 <h3>Categories</h3>
                 <button className="sidebar-close-button" onClick={closeMenu}>x</button>
@@ -68,6 +73,9 @@ function App() {
                   <Route path="/cart/:id" component={CartScreen}/>
                   <Route path="/signin" component={SigninScreen}/>
                   <Route path="/register" component={RegisterScreen} />
+                  <Route path="/product" component={AddProductScreen} />
+                  <Route path="/payment/:id" component={PaymentScreen} />
+                  <Route path="/confirmation" component={OrderConfirmationScreen} />
                 </div>
             </main>
 

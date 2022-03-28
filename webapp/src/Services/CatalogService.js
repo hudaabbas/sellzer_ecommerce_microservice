@@ -28,6 +28,19 @@ class CatalogService {
             }
         });
     }
+
+    addProduct(body){
+        return axios({
+            method: 'post',
+            url: 'http://localhost:9005/catalogs/',
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: body
+        });
+    }
 }
 
 export default new CatalogService();
