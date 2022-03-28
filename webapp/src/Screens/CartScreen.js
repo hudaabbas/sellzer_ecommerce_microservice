@@ -111,8 +111,6 @@ class CartScreen extends React.Component {
         CartService.createPayment(payment).then((response) => {
             console.log(response);
             if (response.status = 200) {
-                localStorage.setItem("cart_id", encodeURIComponent(JSON.stringify(response.data.orderId)));
-                window.location.href = "/payment/cart_id";
                 console.log("Checkout successfull");
             }
             else
