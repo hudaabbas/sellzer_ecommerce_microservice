@@ -9,6 +9,8 @@ import ProductScreen from './Screens/ProductScreen';
 import RegisterScreen from './Screens/RegisterScreen';
 import SigninScreen from './Screens/SigninScreen';
 import CartScreen from './Screens/CartScreen';
+import ServicesScreen from "./Screens/ServicesScreen";
+import ServiceJobScreen from "./Screens/ServiceJobScreen";
 
 function App() {
   const openMenu=() =>{
@@ -50,7 +52,8 @@ function App() {
                     </li>
 
                     <li>
-                        <a href="index.html">Services</a>
+                        <Link to="/service-home/">Services</Link>
+                        {/*<a href="index.html">Services</a>*/}
                     </li>
                 </ul>
             </aside>
@@ -58,6 +61,8 @@ function App() {
             <main className="main">
                 <div className="content">
                   <Route path="/product/:id" component={ProductScreen} />
+                  <Route path="/service-home/" component={ServicesScreen} />
+                  <Route path="/service-home/:id" component={ServiceJobScreen} />
                   <Route path="/" exact= {true} component={HomeScreen}/>
                   <Route path="/cart/:id" component={CartScreen}/>
                   <Route path="/signin" component={SigninScreen}/>

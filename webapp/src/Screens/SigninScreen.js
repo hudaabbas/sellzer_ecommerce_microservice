@@ -1,91 +1,135 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-// import { signin } from '../Actions/userActions';
-import ReactDOM from "react-dom";
-import database from "../tmpUserInfo";
+import React, { Component } from 'react';
+import {Redirect, Link, router } from 'react-router-dom';
+import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import './../Login.css';
+import LoginService from '../Services/LoginService';
+import axios from 'axios';
 
-function SigninScreen(){
-  // React States
-  const [errorMessages, setErrorMessages] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+class SigninScreen extends React.Component {
 
-  // User Login info
-  
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password"
-  };
-
-  const handleSubmit = (event) => {
-    //Prevent page reload
-    // event.preventDefault();
-
-    var { uname, pass } = document.forms[0];
-
-    // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
-
-    // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
-    }
-  };
-
-  // Generate JSX code for error message
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    );
-
-  // JSX code for login form
-  const renderForm = (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <label>Username </label>
-          <input type="text" name="uname" required />
-          {renderErrorMessage("uname")}
-        </div>
-        <div className="input-container">
-          <label>Password </label>
-          <input type="password" name="pass" required />
-          {renderErrorMessage("pass")}
-        </div>
-        <div className="button-container">
-          <input type="submit" />
-        </div>
-        {/* <div className='back-2-result'>
-        <Link to="/">New to Sellzers?</Link>
-        </div> */}
-       {/* <Link to="/">Back to results</Link> <Link to="/"/> */}
-       
-      </form>
-      
-    </div>
-  );
-
-  return (
-    <div className="signin">
-      <div className="login-form">
-        <div className="title">Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
-      </div>
-
-     
-      </div>
-      
-  );
+constructor(props) {
+  super(props);
+  this.state={
+    email: '',
+    password:'',
+    errors: {},
+    users: []
+  }
+  this.handleChangeEmail = this.handleChangeEmail.bind(this);
+  this.handleChangePassword = this.handleChangePassword.bind(this);
+  this.submituserRegistrationForm = this.submituserRegistrationForm.bind(this);
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<SigninScreen />, rootElement);
+handleChangeEmail(e) {
+  this.setState({email:e.target.value});
+}
+
+handleChangePassword(e) {
+  this.setState({password:e.target.value});
+}
+
+submituserRegistrationForm(e) {
+  e.preventDefault();
+  if (this.validateForm()) {
+    var data={
+      "user_email":this.state.email,
+      "password":this.state.password
+    }
+    console.log(data);
+    LoginService.getEmail(this.state.email).then((response) => {
+      console.log(response.data);
+      this.setState({
+        users: response.data
+      });
+      if(response.data.password == this.state.password){
+        localStorage.setItem("u_code", encodeURIComponent(JSON.stringify(response.data.loginId)));
+        localStorage.setItem('is_done', true);
+        window.location.href = "/";
+        console.log("Login successfull");
+      }else{
+        alert("Please try again!"); // response.data.message);
+      }
+    }).catch(function (error) {
+      console.log(error);
+    });
+
+    console.log(this.state);
+  }
+}
+
+validateForm() {
+  let errors = {};
+  let formIsValid = true;
+  if (!this.state.email) {
+    formIsValid = false;
+    errors["email"] = "Please enter your email-ID.";
+  }
+
+  if (typeof this.state.email !== "undefined") {
+    //regular expression for email validation
+    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    if (!pattern.test(this.state.email)) {
+    formIsValid = false;
+    errors["email"] = "Please enter valid email-ID.";
+    }
+
+  }
+
+  if (!this.state.password) {
+    formIsValid = false;
+    errors["password"] = "Please enter your password.";
+  } 
+
+  this.setState({
+    errors: errors
+  });
+
+  return formIsValid;
+}
+
+render() {
+  return (
+    <div>
+      <div className="heading">Sign In</div>
+      <div className="form">
+        <Form method="post" name="userRegistrationForm" onSubmit= {this.submituserRegistrationForm} >
+          <FormGroup>
+            <div className="input-container">
+              <Label for="exampleEmail">Email</Label>
+              <Input type="email" name="email" id="exampleEmail" value={this.state.email} onChange={this.handleChangeEmail} placeholder="Email" />
+              <div className="errorMsg">{this.state.errors.email}</div>
+            </div>
+          </FormGroup>
+          <FormGroup>
+            <div className="input-container">
+            <Label for="examplePassword">Password</Label>
+            <Input type="password" name="password" id="examplePassword" value={this.state.password} onChange={this.handleChangePassword} placeholder="Password" />
+            <div className="errorMsg">{this.state.errors.password}</div>
+            </div>
+          </FormGroup>
+          <FormGroup check>
+            <div className="input-container">
+            <Label check>
+              <Input type="checkbox" />{' '}
+              Remember Me
+            </Label>
+            </div>
+          </FormGroup>
+          <div className="d-flex justify-content-center mt-3 login_container">
+            <Button type="submit" className="btn btn-login">Submit</Button>
+          </div>
+          <div className="input-container">
+            <div className="d-flex justify-content-center links">
+              Don't have an account? <Link href="/register" to="/register" className="linka">Sign Up</Link>
+            </div>
+            <div className="d-flex justify-content-center links">
+              <a className="linka">Forgot your password?</a>
+            </div>
+          </div>
+        </Form>
+      </div> 
+    </div>
+    ) 
+  }
+}
 export default SigninScreen;
