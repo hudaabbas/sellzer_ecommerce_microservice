@@ -45,21 +45,23 @@ function App() {
             </header> 
 
             <aside className="sidebar">
-                <h3>Categories</h3>
+                <h3 className="menu-title">Categories</h3>
                 <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-                <ul>
-                    <li>
-                        <Link to="/">Products</Link>
+                <ul className="menu">
+                    <li className="sidebar-category">
+                        <Link to="/" className="menu-category"> Products</Link>
                         {/* <a href="index.html">Products</a> */}
                     </li>
 
-                    <li>
-                        <Link to="/service-home/">Services</Link>
+                    <li className="sidebar-category">
+                        <Link to="/service-home/" className="menu-category">Services</Link>
                         {/*<a href="index.html">Services</a>*/}
                     </li>
                 </ul>
             </aside>
 
+
+            {/* Note: Currently assume main product page (/product) is same as home screen (/) */}
             <main className="main">
                 <div className="content">
                   <Route path="/product/:id" component={ProductScreen} />
@@ -69,7 +71,7 @@ function App() {
                   <Route path="/cart" component={CartScreen}/>
                   <Route path="/signin" component={SigninScreen}/>
                   <Route path="/register" component={RegisterScreen} />
-                  <Route path="/product" component={AddProductScreen} />
+                  <Route path="/add-product/" component={AddProductScreen} />
                   <Route path="/add-service" component={AddServiceScreen} />
                 </div>
             </main>
