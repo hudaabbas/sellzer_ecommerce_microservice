@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.aggregation.VariableOperators;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +54,18 @@ public class CatalogController {
     public Catalog findCatalogById(@PathVariable("id") String catalogId) {
         log.info("inside ;ol");
         return catalogService.findCatalogById(catalogId);
+    }
+
+    @PostMapping("/allProducts")
+    public ArrayList<Catalog> findCatalogByIds(@RequestBody String[] catalogIds) {
+        log.info("inside ;ol");
+        ArrayList<Catalog> catalogs = new ArrayList<Catalog>();
+        for(String catalogId: catalogIds) {
+            catalogs.add(catalogService.findCatalogById(catalogId));
+        }
+        log.info(String.valueOf(catalogs));
+        log.info(String.valueOf(catalogs));
+        return catalogs;
     }
 
     @GetMapping("/price/{catalogItemPrice}")

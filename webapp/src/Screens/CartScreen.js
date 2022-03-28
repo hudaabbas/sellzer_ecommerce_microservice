@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import CartService from '../Services/CartsService';
 
 
 class CartScreen extends React.Component {
@@ -9,122 +10,207 @@ class CartScreen extends React.Component {
         console.log(props.match.params.id);
         super(props)
         this.state = {
-            products:[]
+            cartInfo:[],
+            items:[],
+            itemDetails:[],
+            serviceList:[],
+            serviceDetails:[],
         }
+        // this.deleteItem = this.deleteItem.bind(this);
     }
+
+    componentDidMount(){
+
+        CartService.getUserId(this.props.match.params.id).then((response) => {
+            console.log("Product");
+            console.log(response.data.products);
+            console.log("Service");
+            console.log(response.data.services);
+            this.setState({ 
+                cartInfo: response.data,
+                cartID: response.data.cartId,
+                userID: this.props.match.params.id
+            })
+            this.setState({ 
+                items: response.data.products,
+                serviceList: response.data.services
+            }) 
+
+                CartService.getAllProducts(this.state.items).then((response) => {
+                    console.log("Product");
+                    console.log(response.data);
+                    this.setState({ itemDetails: response.data})
+                });
+                CartService.getAllServices(this.state.serviceList).then((response) => {
+                    console.log("Service");
+                    console.log(response.data);
+                    this.setState({ serviceDetails: response.data})
+                })              
+                     
+        });
+    }
+
+    deleteItem(e, pId){
+        e.preventDefault();
+        console.log("Here")
+        console.log(pId)
+        CartService.deleteProduct(pId, this.state.cartInfo.cartId).then((response) => {
+            console.log(response);
+            if (response.status = 200) {
+                window.location.reload(false);
+            }
+            else
+            {
+                alert("Failed to remove product from cart!");
+            }
+        })
+    }
+
+    deleteServices(e, sId){
+        e.preventDefault();
+        console.log("HERE")
+        console.log(sId)
+        CartService.deleteService(sId, this.state.cartInfo.cartId).then((response) => {
+            console.log(response.data);
+            if (response.status = 200) {
+                window.location.reload(false);
+            }
+            else
+            {
+                alert("Failed to remove service from cart!");
+            }
+        })
+    }
+
+    calculateTotal()
+    {
+        let total = 0;
+        for(let i = 0; i < this.state.itemDetails.length; i++)
+        {
+            total += this.state.itemDetails[i].catalogItemPrice;
+        }
+        for(let i = 0; i < this.state.serviceDetails.length; i++)
+        {
+            total += this.state.serviceDetails[i].servicePrice;
+        }
+        console.log(total);
+        return total;
+    }
+
+    createPaymentObj(e, cartID, userID, total)
+    {
+        e.preventDefault();
+        console.log(e)
+        var payment = {
+            "orderId": cartID,
+            "customerId": userID,
+            "paymentType": "debit",
+            "total": total
+        }
+
+        CartService.createPayment(payment).then((response) => {
+            console.log(response);
+            if (response.status = 200) {
+                localStorage.setItem("cart_id", encodeURIComponent(JSON.stringify(response.data.orderId)));
+                window.location.href = "/payment/cart_id";
+                console.log("Checkout successfull");
+            }
+            else
+            {
+                alert("Failed to checkout");
+            }
+            
+            
+        });
+    }
+
 // https://designmodo.com/shopping-cart-ui/
 
     render (){
         return (
 
-            <div class="shopping-cart">
+            <div className="shopping-cart">
                 {/* {<!-- Title -->} */}
-                <div class="title">
+                <div className="title">
                     Shopping Bag
                 </div>
-                
-                {/* {<!-- Product #1 -->} */}
-                <div class="item">
-                    <div class="buttons">
-                    <span class="delete-btn"></span>
-                    <span class="like-btn"></span>
-                    </div>
-                
-                    <div class="image">
-                    <img src="item-1.png" alt="" />
-                    </div>
-                
-                    <div class="description">
-                    <span>Common Projects</span>
-                    <span>Bball High</span>
-                    <span>White</span>
-                    </div>
-                
-                    <div class="quantity">
-                    <button class="plus-btn" type="button" name="button">
-                        <img src="plus.svg" alt="" />
-                    </button>
-                    <input type="text" name="name" value="1"></input>
-                    <button class="minus-btn" type="button" name="button">
-                        <img src="minus.svg" alt="" />
-                    </button>
-                    </div>
-                
-                    <div class="total-price">$549</div>
+                <div className="columnNames">
+                    <div>Item</div>
+                    <div>Price</div>
+                    <div>Remove</div>
                 </div>
                 
-                {/* {<!-- Product #2 -->} */}
-                <div class="item">
-                    <div class="buttons">
-                    <span class="delete-btn"></span>
-                    <span class="like-btn"></span>
-                    </div>
+                {/* {<!-- Product Items -->} */}
                 
-                    <div class="image">
-                    <img src="item-2.png" alt=""/>
+                {this.state.itemDetails.map(
+                    
+                    (item, i) =>
+                        <div className="product-item" key={i}>
+
+                        <div className='product-info'>
+                            <div className="image">
+                                <img width="80px" src={item.imageId} alt="" />
+                            </div>
+
+                            <div className="description">
+                                <span width="20px">{item.catalogName}</span>
+                                <span>{item.catalogBrand}</span>
+                                <span>{item.catalogCategory}</span>
+                        </div>
+
+                        <div className="total-price">${item.catalogItemPrice}</div>
+
+                        <button className="delete-btn" onClick={(e) => this.deleteItem(e, item.catalogId)}>
+                            <link href='https://css.gg/close.css' rel='stylesheet'></link>
+                            <i className="gg-close"></i>
+                        </button>
+
+                        </div>
                     </div>
+
+                )}
+
+
+                {/* {<!-- Service List -->} */}
                 
-                    <div class="description">
-                    <span>Maison Margiela</span>
-                    <span>Future Sneakers</span>
-                    <span>White</span>
+                {this.state.serviceDetails.map(
+                    
+                    (service, j) =>
+                    <div className="service-item" key={j}>
+
+                        <div className="description">
+                            <span width="20px">{service.serviceName}</span>
+                            <span>{service.serviceType}</span>
+                            <span>{service.serviceProvider}</span>
+                        </div>
+
+                        <div className="total-price">${service.servicePrice}</div>
+
+                        <button className="delete-btn" onClick={(e) => this.deleteServices(e, service.serviceID)}>
+                            <link href='https://css.gg/trash.css' rel='stylesheet'></link>
+                            <i class="gg-trash"></i>
+                        </button>
+
                     </div>
-                
-                    <div class="quantity">
-                    <button class="plus-btn" type="button" name="button">
-                        <img src="plus.svg" alt="" />
-                    </button>
-                    <input type="text" name="name" value="1"></input>
-                    <button class="minus-btn" type="button" name="button">
-                        <img src="minus.svg" alt="" />
-                    </button>
-                    </div>
-                
-                    <div class="total-price">$870</div>
+
+                )}
+
+                {/*Checkout Section*/}
+                <hr></hr>
+                <div className="checkout">
+                <div className="total">Total: ${this.calculateTotal()}</div>
+                {/* <div class="items">2 items</div> */}
+                <button className="checkout-button" onClick={(e) => this.createPaymentObj(e, this.state.cartInfo.cartId,this.state.cartInfo.userId, this.calculateTotal())}>
+                    <Link to={"/payment/" + this.state.cartInfo.cartId} className="checkout">Checkout</Link>
+                </button>
                 </div>
                 
-                {/* {<!-- Product #3 -->} */}
-                <div class="item">
-                    <div class="buttons">
-                    <span class="delete-btn"></span>
-                    <span class="like-btn"></span>
-                    </div>
                 
-                    <div class="image">
-                    <img src="item-3.png" alt="" />
-                    </div>
-                
-                    <div class="description">
-                    <span>Our Legacy</span>
-                    <span>Brushed Scarf</span>
-                    <span>Brown</span>
-                    </div>
-                
-                    <div class="quantity">
-                    <button class="plus-btn" type="button" name="button">
-                        <img src="plus.svg" alt="" />
-                    </button>
-                    <input type="text" name="name" value="1"></input>
-                    <button class="minus-btn" type="button" name="button">
-                        <img src="minus.svg" alt="" />
-                    </button>
-                    </div>
-                
-                    <div class="total-price">$349</div>
-                </div>
-                </div>
-        
+            </div>       
         )
     }
+
+
 }
-
-// function CartScreen (props){
-   
-//     // <h1>Hello</h1>
-//     return ( 
-
-    
-//     )
-// }
 
 export default CartScreen;

@@ -38,7 +38,8 @@ function App() {
 
                 <div className="header-links">
                     {/* <a href="signin">Sign In</a> */}
-                    <Link to="/cart">Cart</Link>
+                    <Link to={"/cart/"+ window.localStorage.getItem('u_code')}>Cart</Link>
+                    <Link to={"/payment/"+ window.localStorage.getItem('cart_id')}></Link>
                     <Link to="/register">Register</Link>
                     <Link to="/signin">Sign In</Link>
                     <Link to="/payment">Payment</Link>
@@ -68,7 +69,7 @@ function App() {
                   <Route path="/service-home/" component={ServicesScreen} />
                   <Route path="/service-home/:id" component={ServiceJobScreen} />
                   <Route path="/" exact= {true} component={HomeScreen}/>
-                  <Route path="/cart" component={CartScreen}/>
+                  <Route path="/cart/:id" component={CartScreen}/>
                   <Route path="/signin" component={SigninScreen}/>
                   <Route path="/register" component={RegisterScreen} />
                   <Route path="/product" component={AddProductScreen} />
