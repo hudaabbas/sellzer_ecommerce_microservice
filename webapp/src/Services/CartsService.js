@@ -120,6 +120,36 @@ class CartService {
                 
             });
     }
+
+    productExists(userId, productId)
+    {
+        return axios({
+            method: 'post',
+            url: 'http://localhost:9003/carts/productExists/' + userId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: productId // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
+            
+        });
+    }
+
+    addProduct(cartId, prodId)
+    {
+        return axios({
+            method: 'put',
+            url: 'http://localhost:9003/carts/products/' + cartId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: prodId // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
+            
+        });
+    }
     
 }
 

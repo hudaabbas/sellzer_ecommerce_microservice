@@ -2,12 +2,14 @@ import React from 'react';
 import data from '../data';
 import {Link} from 'react-router-dom';
 import CatalogService from '../Services/CatalogService';
+import CartsService from '../Services/CartsService';
 
 class ProductScreen extends React.Component {
    // const product= data.products.find( x=> x._id === props.match.params.id);
     
     constructor(props){
         console.log(props.match.params.id);
+        console.log(props.match.params.uid);
         super(props)
         this.state = {
             products:[]
@@ -19,6 +21,38 @@ class ProductScreen extends React.Component {
             console.log(response.data);
             this.setState({ products: response.data})
         });
+    }
+
+    addToCart(e, productId)
+    {
+        console.log("Product id: " + productId);
+        CartsService.productExists(this.props.match.params.uid, productId).then((response) => {
+            console.log("Product Exists:");
+            console.log(response.data);
+            if(response.data == false)
+            {
+                CartsService.getUserId(this.props.match.params.uid).then((response) => {
+                    console.log(response.data);
+                    CartsService.addProduct(response.data.cartId, productId).then((response) => {
+                        console.log(response.data);
+                        if(response.status == 200)
+                        {
+                            alert("Product added to cart!")
+                        }
+                        else
+                        {
+                            alert("Failed to add product to cart!");
+                        }
+                    })
+                })
+
+            }
+            else
+            {
+                alert("This product already exists in cart!");
+            }
+        })
+
     }
 
     render (){
@@ -76,7 +110,7 @@ class ProductScreen extends React.Component {
                             </li>
 
                             <li>
-                                <button className="button-primary-add"> Add to Cart</button>
+                                <button className="button-primary-add" onClick={(e) => this.addToCart(e, this.state.products.catalogId)}> Add to Cart</button>
                             </li>
                         </ul>
                     </div>
