@@ -16,8 +16,8 @@ public class Payment{
 
     @Id
     private String paymentId;
-    private Integer orderId;
-    private Integer customerId;
+    private String orderId;
+    private String customerId;
     private String paymentType;
     private String total;
 }

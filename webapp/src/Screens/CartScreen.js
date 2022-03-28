@@ -12,25 +12,47 @@ class CartScreen extends React.Component {
         this.state = {
             cartInfo:[],
             items:[],
-            itemDetails:[]
+            itemDetails:[],
+            serviceList:[],
+            serviceDetails:[],
         }
 
-        this.deleteItem = this.deleteItem.bind(this);
+        // this.deleteItem = this.deleteItem.bind(this);
     }
+
+    
 
     componentDidMount(){
 
         CartService.getUserId(this.props.match.params.id).then((response) => {
+            console.log("Product");
             console.log(response.data.products);
-            this.setState({ cartInfo: response.data})
-            this.setState({ items: response.data.products}) 
+            console.log("Service");
+            console.log(response.data.services);
+            this.setState({ 
+                cartInfo: response.data,
+                cartID: response.data.cartId,
+                userID: this.props.match.params.id
+            })
+            this.setState({ 
+                items: response.data.products,
+                serviceList: response.data.services
+            }) 
 
                 CartService.getAllProducts(this.state.items).then((response) => {
+                    console.log("Product");
                     console.log(response.data);
                     this.setState({ itemDetails: response.data})
-                })           
+                });
+                CartService.getAllServices(this.state.serviceList).then((response) => {
+                    console.log("Service");
+                    console.log(response.data);
+                    this.setState({ serviceDetails: response.data})
+                })              
                      
         });
+
+        
 
     }
 
@@ -39,11 +61,23 @@ class CartScreen extends React.Component {
         console.log("Here")
         console.log(pId)
         CartService.deleteProduct(pId, this.state.cartInfo.cartId).then((response) => {
-            console.log(response.data);
-            this.setState({items: response.data})
+            console.log(response);
+            if (response.status = 200) {
+                window.location.reload(false);
+            }
         })
+    }
 
-        // onClick={this.deleteItem(item.cartId)}
+    deleteServices(e, sId){
+        e.preventDefault();
+        console.log("HERE")
+        console.log(sId)
+        CartService.deleteService(sId, this.state.cartInfo.cartId).then((response) => {
+            console.log(response.data);
+            if (response.status = 200) {
+                window.location.reload(false);
+            }
+        })
     }
 
     calculateTotal()
@@ -53,8 +87,28 @@ class CartScreen extends React.Component {
         {
             total += this.state.itemDetails[i].catalogItemPrice;
         }
+        for(let i = 0; i < this.state.serviceDetails.length; i++)
+        {
+            total += this.state.serviceDetails[i].servicePrice;
+        }
         console.log(total);
         return total;
+    }
+
+    createPaymentObj(e, cartID, userID, total)
+    {
+        e.preventDefault();
+        console.log(e)
+        var payment = {
+            "orderId": cartID,
+            "customerId": userID,
+            "paymentType": "debit",
+            "total": total
+        }
+
+        CartService.createPayment(payment).then((response) => {
+            console.log(response);
+        });
     }
 
 // https://designmodo.com/shopping-cart-ui/
@@ -69,12 +123,11 @@ class CartScreen extends React.Component {
                 </div>
                 <div className="columnNames">
                     <div>Item</div>
-                    <div>Quantity</div>
                     <div>Price</div>
                     <div>Remove</div>
                 </div>
                 
-                {/* {<!-- Items -->} */}
+                {/* {<!-- Product Items -->} */}
                 
                 {this.state.itemDetails.map(
                     
@@ -89,31 +142,41 @@ class CartScreen extends React.Component {
                             <span width="20px">{item.catalogName}</span>
                             <span>{item.catalogBrand}</span>
                             <span>{item.catalogCategory}</span>
-                        </div>
-
-                        <div className="quantity"> {item.quantity}
-                            {/* <button class="plus-btn" type="button" name="button">
-                                <link rel="stylesheet" href="https://unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.css"></link>
-                                <i class="ti ti-plus"></i>
-                            </button>
-
-                            <input type="text" name="name" defaultValue="1"></input>
-
-                            <button class="minus-btn" type="button" name="button">
-                                <link rel="stylesheet" href="https://unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.css"></link>
-                                <i class="ti ti-minus"></i>
-                            </button> */}
-                        </div>
 
                         <div className="total-price">${item.catalogItemPrice}</div>
 
-                        <button className="delete-btn" onClick={(e) => this.deleteItem(e, item.cartId)}>
+                        <button className="delete-btn" onClick={(e) => this.deleteItem(e, item.catalogId)}>
                             <link href='https://css.gg/close.css' rel='stylesheet'></link>
                             <i className="gg-close"></i>
-                            {/* <Link to={'cart/'+ this.state.items.cartId}>{product.catalogName}</Link> */}
                         </button>
 
                         </div>
+                    </div>
+
+                )}
+
+
+                {/* {<!-- Service List -->} */}
+                
+                {this.state.serviceDetails.map(
+                    
+                    (service, j) =>
+                        <div className="item" key={j}>
+
+                        <div className="description">
+                            <span width="20px">{service.serviceName}</span>
+                            <span>{service.serviceType}</span>
+                            <span>{service.serviceProvider}</span>
+
+                        <div className="total-price">${service.servicePrice}</div>
+
+                        <button className="delete-btn" onClick={(e) => this.deleteServices(e, service.serviceID)}>
+                            <link href='https://css.gg/close.css' rel='stylesheet'></link>
+                            <i className="gg-close"></i>
+                        </button>
+
+                        </div>
+                    </div>
 
                 )}
 
@@ -122,7 +185,7 @@ class CartScreen extends React.Component {
                 <div className="checkout">
                 <div className="total">Total: ${this.calculateTotal()}</div>
                 {/* <div class="items">2 items</div> */}
-                <button className="checkout-button">Checkout</button>
+                <button className="checkout-button" onClick={(e) => this.createPaymentObj(e, this.state.cartInfo.cartId,this.state.cartInfo.userId, this.calculateTotal())}>Checkout</button>
                 </div>
                 
                 

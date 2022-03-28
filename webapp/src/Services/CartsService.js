@@ -79,6 +79,51 @@ class CartService {
         });
 
     }
+
+    deleteService(serviceId, cartId)
+    {
+        console.log("Here");
+        console.log(serviceId);
+        return axios({
+            method: 'delete',
+            url: CARTS_REST_API_URL + 'services/' + cartId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            data: serviceId
+        });
+
+    }
+
+    getAllServices(serviceArr) {
+        return axios({
+                method: 'post',
+                url: 'http://localhost:9002/services/allServices',
+                withCredentials: false,
+                headers: {
+                    'Access-Control-Allow-Origin':'*',
+                    'Content-Type': 'application/json',
+                },
+                data: serviceArr // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
+                
+            });
+    }
+
+    createPayment(paymentObj) {
+        return axios({
+                method: 'post',
+                url: 'http://localhost:9004/payments/',
+                withCredentials: false,
+                headers: {
+                    'Access-Control-Allow-Origin':'*',
+                    'Content-Type': 'application/json',
+                },
+                data: paymentObj // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
+                
+            });
+    }
     
 }
 
