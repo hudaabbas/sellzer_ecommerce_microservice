@@ -35,8 +35,14 @@ public class CartController {
         return cartservice.findByCartId(cartId);
     }
 
+    @GetMapping("/userId/{id}")
+    public Cart findByUserId(@PathVariable("id") String userId) {
+        //log.info("inside findCartById() method of CartController");
+        return cartservice.findByUserId(userId);
+    }
+
     @DeleteMapping("/{id}")
-    public Map<String, Boolean>  deleteCartById(@PathVariable("id") String cartId) {
+    public Map<String, Boolean> deleteCartById(@PathVariable("id") String cartId) {
         return cartservice.deleteCartById(cartId);
     }
 

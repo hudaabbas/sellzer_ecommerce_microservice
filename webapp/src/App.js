@@ -35,7 +35,7 @@ function App() {
 
                 <div className="header-links">
                     {/* <a href="signin">Sign In</a> */}
-                    <Link to="/cart">Cart</Link>
+                    <Link to="/cart/:id">Cart</Link>
                     <Link to="/register">Register</Link>
                     <Link to="/signin">Sign In</Link>
                     {/* <a href="cart.html">Cart</a> */}
@@ -64,7 +64,7 @@ function App() {
                   <Route path="/service-home/" component={ServicesScreen} />
                   <Route path="/service-home/:id" component={ServiceJobScreen} />
                   <Route path="/" exact= {true} component={HomeScreen}/>
-                  <Route path="/cart" component={CartScreen}/>
+                  <Route path="/cart/:id" component={CartScreen}/>
                   <Route path="/signin" component={SigninScreen}/>
                   <Route path="/register" component={RegisterScreen} />
                 </div>
