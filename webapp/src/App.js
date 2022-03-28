@@ -42,7 +42,6 @@ function App() {
                     <Link to={"/payment/"+ window.localStorage.getItem('cart_id')}></Link>
                     <Link to="/register">Register</Link>
                     <Link to="/signin">Sign In</Link>
-                    <Link to="/payment/:id">Payment</Link>
                     {/* <a href="cart.html">Cart</a> */}
                 </div>
             </header> 
