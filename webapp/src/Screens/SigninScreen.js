@@ -20,15 +20,18 @@ constructor(props) {
   this.submituserRegistrationForm = this.submituserRegistrationForm.bind(this);
 }
 
-handleChangeEmail(e) {
+handleChangeEmail(e) 
+{
   this.setState({email:e.target.value});
 }
 
-handleChangePassword(e) {
+handleChangePassword(e) 
+{
   this.setState({password:e.target.value});
 }
 
-submituserRegistrationForm(e) {
+submituserRegistrationForm(e) 
+{
   e.preventDefault();
   if (this.validateForm()) {
     var data={
@@ -42,7 +45,7 @@ submituserRegistrationForm(e) {
         users: response.data
       });
       if(response.data.password == this.state.password){
-        localStorage.setItem("u_code", encodeURIComponent(JSON.stringify(response.data.loginId)));
+        localStorage.setItem("u_code", response.data.loginId);
         localStorage.setItem('is_done', true);
         window.location.href = "/";
         console.log("Login successfull");
@@ -122,9 +125,9 @@ render() {
             <div className="d-flex justify-content-center links">
               Don't have an account? <Link href="/register" to="/register" className="linka">Sign Up</Link>
             </div>
-            <div className="d-flex justify-content-center links">
+            {/* <div className="d-flex justify-content-center links">
               <a className="linka">Forgot your password?</a>
-            </div>
+            </div> */}
           </div>
         </Form>
       </div> 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,4 +41,18 @@ public class PaymentService {
        return response;
     }
 
+    public Payment findByOrderId(String orderId) {
+        log.info("inside findByOrderId() method of PaymentService");
+        return paymentRepository.findByOrderId(orderId);
+    }
+
+    public Payment updateTotal(String orderId, String total) {
+        Payment payment = paymentRepository.findByOrderId(orderId);
+        if(payment == null) {
+            return null;
+        } else {
+            payment.setTotal(total);
+            return paymentRepository.save(payment);
+        }
+    }
 }

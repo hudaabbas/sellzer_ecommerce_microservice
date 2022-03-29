@@ -35,8 +35,14 @@ public class CartController {
         return cartservice.findByCartId(cartId);
     }
 
+    @GetMapping("/userId/{id}")
+    public Cart findByUserId(@PathVariable("id") String userId) {
+        //log.info("inside findCartById() method of CartController");
+        return cartservice.findByUserId(userId);
+    }
+
     @DeleteMapping("/{id}")
-    public Map<String, Boolean>  deleteCartById(@PathVariable("id") String cartId) {
+    public Map<String, Boolean> deleteCartById(@PathVariable("id") String cartId) {
         return cartservice.deleteCartById(cartId);
     }
 
@@ -66,6 +72,27 @@ public class CartController {
     public Cart deleteServiceCart(@PathVariable("id") String cartId, @RequestBody String services)
     {
         return cartservice.deleteService(cartId, services);
+    }
+
+    @PostMapping("/productExists/{id}")
+    public Boolean findIfProductExistsByProductId(@PathVariable("id") String userId, @RequestBody String productId) {
+        log.info("inside ;ol");
+        Cart cart = findByUserId(userId);
+        ArrayList<String> products = cart.getProducts();
+        productId = productId.replaceAll("^\"|\"$", "");
+        return products.contains(productId);
+    }
+
+    @PostMapping("/serviceExists/{id}")
+    public Boolean findIfServiceExistsByServiceId(@PathVariable("id") String userId, @RequestBody String serviceId) {
+        log.info("inside ;ol");
+        Cart cart = findByUserId(userId);
+        log.info(cart.getServices().toString());
+        log.info(serviceId);
+        ArrayList<String>services = cart.getServices();
+        serviceId = serviceId.replaceAll("^\"|\"$", "");
+        log.info(serviceId);
+        return services.contains(serviceId);
     }
 
 }
