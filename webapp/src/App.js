@@ -15,6 +15,7 @@ import AddProductScreen from "./Screens/AddProductScreen";
 import AddServiceScreen from "./Screens/AddServiceScreen";
 import PaymentScreen from './Screens/PaymentScreen';
 import OrderConfirmationScreen from './Screens/OrderConfirmationScreen'
+import ProductHomeScreen from "./Screens/ProductHomeScreen";
 
 function App() {
   const openMenu=() =>{
@@ -49,11 +50,11 @@ function App() {
             
 
             <aside className="sidebar">
-                <h3 className="menu-title">Categories</h3>
+                <h2 className="menu-title">Categories</h2>
                 <button className="sidebar-close-button" onClick={closeMenu}>x</button>
                 <ul className="menu">
                     <li className="sidebar-category">
-                        <Link to="/" className="menu-category"> Products</Link>
+                        <Link to="/product-home/" className="menu-category"> Products</Link>
                         {/* <a href="index.html">Products</a> */}
                     </li>
 
@@ -68,9 +69,10 @@ function App() {
             {/* Note: Currently assume main product page (/product) is same as home screen (/) */}
             <main className="main">
                 <div className="content">
-                  <Route path="/product/:id" exact= {true} component={ProductScreen} />
                   <Route path="/service-home/" exact= {true} component={ServicesScreen} />
                   <Route path="/service-home/:id" exact= {true} component={ServiceJobScreen} />
+                  <Route path="/product-home/" exact= {true} component={ProductHomeScreen} />
+                  <Route path="/product-home/:id" exact= {true} component={ProductScreen} />
                   <Route path="/" exact= {true} component={HomeScreen}/>
                   <Route path="/cart/:id" component={CartScreen}/>
                   <Route path="/signin" component={SigninScreen}/>

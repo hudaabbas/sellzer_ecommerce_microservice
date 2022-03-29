@@ -123,7 +123,7 @@ class ServicesScreen extends React.Component {
                         </button>
                     </div>
                     <div className="column">
-                        <Link to="/add-service" className="toggleButton">  Post A New Service  </Link>
+                        <Link to="/add-service/" className="toggleButton">  Post A New Service  </Link>
                     </div>
                 </div>
             </div>
