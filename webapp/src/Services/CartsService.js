@@ -48,7 +48,7 @@ class CartService {
     getAllProducts(idArr) {
         return axios({
                 method: 'post',
-                url: 'http://localhost:9005/catalogs/allProducts',
+                url: 'https://sellzer-catalog.herokuapp.com/catalogs/allProducts',
                 withCredentials: false,
                 headers: {
                     'Access-Control-Allow-Origin':'*',
@@ -96,7 +96,7 @@ class CartService {
     getAllServices(serviceArr) {
         return axios({
                 method: 'post',
-                url: 'http://localhost:9002/services/allServices',
+                url: 'https://sellzer-service.herokuapp.com/services/allServices',
                 withCredentials: false,
                 headers: {
                     'Access-Control-Allow-Origin':'*',
@@ -110,7 +110,7 @@ class CartService {
     createPayment(paymentObj) {
         return axios({
                 method: 'post',
-                url: 'http://localhost:9004/payments/',
+                url: 'https://sellzer-payment.herokuapp.com/payments/',
                 withCredentials: false,
                 headers: {
                     'Access-Control-Allow-Origin':'*',
