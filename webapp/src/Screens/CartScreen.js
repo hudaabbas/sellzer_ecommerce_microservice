@@ -102,7 +102,9 @@ class CartScreen extends React.Component {
         if(PaymentService.getPaymentByOrderId(cartID)!=null)//payment already exists
         {
             console.log("Already exists will not create new payment object");
-            PaymentService.updatePayment(cartID, total);
+            PaymentService.updatePayment(cartID, total).then ((response) => {
+                console.log(response.data);
+            });
         }else //payment does not exist
         {
             e.preventDefault();

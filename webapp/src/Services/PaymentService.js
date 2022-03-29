@@ -56,6 +56,7 @@ class PaymentService {
     }
 
     updatePayment(orderId, total){
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
         return axios({
             method: 'put',
             url: 'http://localhost:9004/payments/updatePayment/' + orderId,
