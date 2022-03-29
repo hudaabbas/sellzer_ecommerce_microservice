@@ -4,17 +4,20 @@ import data from '../data';
 import CatalogService from '../Services/CatalogService';
 import {Button} from 'reactstrap';
 import '../index.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import '../animation.css'
+import ServiceJobService from "../Services/ServiceJobService";
+
 class HomeScreen extends React.Component {
 
     constructor(props){
         super(props)
         this.state = {
-            products:[],
-            name : ''
+            products: [],
+            services: [],
         }
-        this.handleChangeName = this.handleChangeName.bind(this);
-        this.submitSearchName = this.submitSearchName.bind(this);
-        this.handleRefresh = this.handleRefresh.bind(this);
+
     }
 
     componentDidMount(){
@@ -23,100 +26,113 @@ class HomeScreen extends React.Component {
             console.log(response.data);
             this.setState({ products: response.data})
         });
-        this.state = {isToggleOn: true};
-        this.handleClick = this.handleClick.bind(this);
-    }
 
-    handleClick() {
-        this.setState(prevState => ({
-            isToggleOn: !prevState.isToggleOn
-        }));
-
-        {this.state.isToggleOn ?
-            (CatalogService.getProductsAscend().then((response) => {
-                console.log(response.data);
-                this.setState({ products :  response.data })
-            }))
-            :
-            (CatalogService.getProductsDescend().then((response) => {
-                console.log(response.data);
-                this.setState({ products :  response.data })
-            }))}
-    }
-
-    handleRefresh() {
-        CatalogService.getCatalog().then((response) => {
+        ServiceJobService.getService().then((response) => {
             console.log(response.data);
-            this.setState({ products :  response.data })
-        })
+            this.setState({ services :  response.data })
+        });
     }
 
 
-    handleChangeName(e) {
-        this.setState({name:e.target.value});
-    }
 
-    submitSearchName(e) {
-        e.preventDefault();
-        console.log(this.state.name);
-        (CatalogService.searchByName(this.state.name).then((response) => {
-            console.log(response.data);
-            this.setState({ products :  response.data })
-        }))
-        this.setState({name : ''});
-    }
 
     render (){
     return (
-    <div> 
-        <h2>Featured Products</h2>
 
-        <div className="wrap">
-            <div className="row">
-                <div className="column">
-                    Toggle: <span> </span>
-                    <button onClick={this.handleClick} className="toggleButton">
-                        {this.state.isToggleOn ? 'Low to High' : 'High to Low'}
-                    </button>
-                </div>
-                <div className="column">
-                    <form onSubmit= {this.submitSearchName}>
-                        <input type="text" className="searchTerm" placeholder="search by name"
-                               value={this.state.name} onChange={this.handleChangeName}/>
-                        <button type="submit" className="searchButton">
-                            <i className="fa fa-search">send</i>
-                        </button>
-                    </form>
-                </div>
-                <div className="column">
-                    <button onClick={this.handleRefresh} className="toggleButton">
-                        Back To All Products
-                    </button>
-                </div>
-                <div className="column">
-                    <Link to="/product" className="toggleButton">  Post A New Product  </Link>
+        <div>
+        <section id="title">
+
+            <div className="container-fluid">
+
+                <div className="row">
+                    <div className="col-lg-6">
+                        <img src="https://i.imgur.com/rQ8A1Cy.png" className="title-image" alt="..."></img>
+                    </div>
+
+                    <div className="col-lg-6">
+                        <br></br><br></br>
+                            <h1> e-commerce, the right way!</h1>
+                            <br></br><br></br>
+                            <h4> Sellzer makes the process of buying and selling online easier, efficient, and accessible.
+                                We aim to use this platform to build resilient communities.</h4>
+                        <br></br><br></br>
+                    </div>
+
                 </div>
             </div>
-        </div>
 
-        <ul className="products">
-            {this.state.products.map(
-                product =>
-                <li>
-                <div className="product">
-                <Link to={'product/' +product.catalogId}></Link>
-                <img className="product-image" src={product.imageId} alt="product"></img>
-                    <div className="product-name">
-                        <Link to={'product/' +product.catalogId}>{product.catalogName}</Link>
-                        {/* <a href="product.html">{product.name}</a> */}
-                    </div>
-                    <div className="product-brand">{product.catalogBrand}</div>
-                    <div className="product-price"> ${product.catalogItemPrice}</div>
-                    <div className="product-rating">{product.catalogCategory}</div>
+            <br></br><br></br>
+            <div className="loop-wrapper">
+                <div className='titleOnPage'>
+                    <br></br><br></br>
+                    <h2>Experience the Difference</h2>
                 </div>
-            </li>)
-            }
-        </ul>
-  </div>)}
+                <div className="mountain"></div>
+                <div className="hill"></div>
+                <div className="tree"></div>
+                <div className="tree"></div>
+                <div className="tree"></div>
+                <div className="rock"></div>
+                <div className="truck"></div>
+                <div className="wheels"></div>
+            </div>
+            <br></br><br></br>
+
+            <div className="container-fluid">
+                    <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel" >
+                        <div className="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                                    className="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                        </div>
+                        <div className="carousel-inner" >
+                            <div className="carousel-item active">
+                                <ul className="">
+                                        <div className="row" >
+                                            {this.state.products.slice(0, 6).map(
+                                                product =>
+                                                    <div className="small-box">
+                                                        <img className="product-image" src={product.imageId} width="250px" height="250"  alt="product"></img>
+                                                    </div>)
+                                            }
+                                        </div>
+                                </ul>
+                                    <div className="carousel-caption d-none d-md-block">
+                                        <h2><a href="/service-home/">Products</a></h2>
+                                    </div>
+                            </div>
+                            <div className="carousel-item">
+                                <ul className="">
+                                    <div className="row">
+                                        {this.state.services.slice(0, 6).map(
+                                            service =>
+                                                <div className="small-box">
+                                                    <img className="product-image" src={service.serviceImageId} width="250px" height="250"  alt="services"></img>
+                                                </div>)
+                                        }
+                                    </div>
+                                </ul>
+                                    <div className="carousel-caption d-none d-md-block">
+                                        <h2><a href="/service-home/">Services</a></h2>
+                                    </div>
+                            </div>
+                        </div>
+                        <button className="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Previous</span>
+                        </button>
+                        <button className="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Next</span>
+                        </button>
+                    </div>
+            </div>
+
+        </section>
+    </div>
+    )}
 }
 export default HomeScreen;
