@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import PaymentService from '../Services/PaymentService';
 import PaymentForm from '../components/PaymentForm'
 import { useHistory } from "react-router-dom";
+import '../Login.css';
 class PaymentScreen extends React.Component {
        // const product= data.products.find( x=> x._id === props.match.params.id);
     constructor(props){
@@ -54,7 +55,7 @@ class PaymentScreen extends React.Component {
                 class="css" />
         </head>
         <body>
-            <div class="container">
+            <div class="form">
             <div class="main-content">
             </div>
         
@@ -67,7 +68,7 @@ class PaymentScreen extends React.Component {
                 <p>Pay using Credit or Debit card</p>
         
                 <div class="card-number">
-                <label> Card Number </label>
+                <label className="payment-text"> Card Number </label>
                 <input
                     type="text"
                     class="card-number-field"
@@ -75,29 +76,29 @@ class PaymentScreen extends React.Component {
                 </div>
                 <br />
                 <div class="date-number">
-                <label> Expiry Date </label>
+                <label className="payment-text"> Expiry Date </label>
                 <input type="text" class="date-number-field" 
                         placeholder="DD-MM-YY" />
                 </div>
         
                 <div class="cvv-number">
-                <label> CVV number </label>
+                <label className="payment-text"> CVV number </label>
                 <input type="text" class="cvv-number-field" 
                         placeholder="xxx" />
                 </div>
                 <div class="nameholder-number">
-                <label> Card Holder name </label>
+                <label className="payment-text"> Card Holder name </label>
                 <input
                     type="text"
                     class="card-name-field"
                     placeholder="Enter your Name"/>
                 </div>
                 <div class="shipping-address">
-                <label> Shipping Address </label>
+                <label className="payment-text"> Shipping Address </label>
                 <input
                     type="text"
                     class="card-name-field"
-                    placeholder="Enter your Name"/>
+                    placeholder="Enter your Address"/>
                 </div>
             <Link to={"/confirmation/"+this.state.payments.paymentId} className="btn btn-primary">Submit</Link>
             </div>
