@@ -52,6 +52,8 @@ class OrderConfirmationScreen extends React.Component {
             <div class="rentalinfo">
             <h1>Your order has been confirmed!</h1>
             </div>
+            {/* <section class="rentsection">
+            <h3>transaction details</h3>
             <section class="rentsection">
             <h3 className="transaction-details"> Transaction Details</h3>
                 <ul class="rentalgrid">
@@ -104,7 +106,7 @@ class OrderConfirmationScreen extends React.Component {
                 </li>
                 </ul>
                 
-            </section>
+            </section> */}
             </div>
 
         )

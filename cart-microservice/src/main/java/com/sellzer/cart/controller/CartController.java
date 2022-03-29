@@ -53,6 +53,13 @@ public class CartController {
         return cartservice.updateCartProducts(cartId, products);
     }
 
+    //updating Cart by adding new product
+    @PutMapping("/clearCart/{id}")
+    public Cart clearCartProducts(@PathVariable("id") String cartId)
+    {
+        return cartservice.clearCartProducts(cartId);
+    }
+
     //updating Cart by adding new service
     @PutMapping("/services/{id}")
     public Cart updateService(@PathVariable("id") String cartId, @RequestBody String services)
