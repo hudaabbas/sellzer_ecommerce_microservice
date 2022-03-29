@@ -4,20 +4,16 @@ const CARTS_REST_API_URL = 'http://localhost:9003/carts/';
 
 class CartService {
 
-    addCarts(){
+    addCarts(body){
         return axios({
             method: 'post',
             url: CARTS_REST_API_URL,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
-                'Content-Type': 'application/json;charset=UTF-8',
+                'Content-Type': 'application/json;',
             },
-            data: {
-                'userId': 6785439,
-                'products': ["Nike Air Forces", "Puma Socks"],
-                'services': []
-            }
+            data: body
         });
     }
 
@@ -123,6 +119,71 @@ class CartService {
                 data: paymentObj // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
                 
             });
+    }
+
+    productExists(userId, productId)
+    {
+        return axios({
+            method: 'post',
+            url: 'http://localhost:9003/carts/productExists/' + userId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: productId // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
+            
+        });
+    }
+
+    serviceExists(userId, serviceId)
+    {
+        return axios({
+            method: 'post',
+            url: 'http://localhost:9003/carts/serviceExists/' + userId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: serviceId // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
+            
+        });
+    }
+
+    addProduct(cartId, prodId)
+    {
+        console.log("In addProduct");
+        console.log(prodId);
+        console.log(JSON.stringify(prodId));
+        return axios({
+            method: 'put',
+            url: 'http://localhost:9003/carts/products/' + cartId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: prodId // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
+            
+        });
+    }
+
+    addService(cartId, servId)
+    {
+        console.log("In addService");
+        console.log(servId);
+        return axios({
+            method: 'put',
+            url: 'http://localhost:9003/carts/services/' + cartId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: servId // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
+            
+        });
     }
     
 }

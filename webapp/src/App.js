@@ -39,7 +39,6 @@ function App() {
                 <div className="header-links">
                     {/* <a href="signin">Sign In</a> */}
                     <Link to={"/cart/"+ window.localStorage.getItem('u_code')}>Cart</Link>
-                    <Link to={"/payment/"+ window.localStorage.getItem('cart_id')}></Link>
                     <Link to="/register">Register</Link>
                     <Link to="/signin">Sign In</Link>
                     {/* <a href="cart.html">Cart</a> */}
@@ -73,7 +72,7 @@ function App() {
                   <Route path="/cart/:id" component={CartScreen}/>
                   <Route path="/signin" component={SigninScreen}/>
                   <Route path="/register" component={RegisterScreen} />
-                  <Route path="/product" component={AddProductScreen} />
+                  <Route path="/product" exact= {true} component={AddProductScreen} />
                   <Route path="/payment/:id" component={PaymentScreen} />
                   <Route path="/confirmation/:id" component={OrderConfirmationScreen} />
                 </div>
