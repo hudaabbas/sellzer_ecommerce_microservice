@@ -35,7 +35,7 @@ public class CatalogController {
     @GetMapping(value = "/")
     public List<Catalog> getAllCatalogs() {
         log.info("getAllCatalogs");
-        return catalogRepository.findAll();
+        return catalogService.getAllCatalogs();
     }
 
     @GetMapping(value = "/ascendSort/")
