@@ -12,7 +12,13 @@ class PaymentScreen extends React.Component {
         console.log(props.match.params.id);
         super(props)
         this.state = {
-            payments:[]
+            payments:[],
+            cardNumber: '',
+            expiryDate: '',
+            CvvNumber: '',
+            cardHolderName: '',
+            shippingAddress: '',
+            errors: {}
         }
     }
 
@@ -41,9 +47,93 @@ class PaymentScreen extends React.Component {
         };
         document.getElementsByTagName("head")[0].appendChild(sqPaymentScript);
     }
+
+    submituserPaymentForm(e) {
+        e.preventDefault();
+        if (this.validateForm()) 
+        {
+            console.log(data);
+            console.log(this.state);
+        }
+    }
+
+    handleChangeCardNumber(e) {
+        this.setState({cardNumber:e.target.value});
+    }
+
+    handleExpiryDate(e) {
+        this.setState({expiryDate:e.target.value});
+    }
+
+    handleCvvNumber(e) {
+        this.setState({CvvNumber:e.target.value});
+    }
+
+    handleCardHolderName(e) {
+        this.setState({cardHolderName:e.target.value});
+    }
+
+    handleShippingAddress(e) {
+        this.setState({shippingAddress:e.target.value});
+    }
+
+    validateForm() {
+        let errors = {};
+        let formIsValid = true;
+        if (!this.state.cardNumber) {
+            formIsValid = false;
+            errors["cardNumber"] = "Please enter your card number";
+        }
+
+        if (typeof this.state.cardNumber !== "undefined") {
+            //regular expression for email validation
+            const numeric = this.state.cardNumber.replace(/\D/g,'');
+            var pattern = new RegExp(/^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/i);
+            if (!pattern.test(this.state.cardNumber)) {
+                formIsValid = false;
+                errors["cardNumber"] = "Please enter a valid cardNumber.";
+            }
+        }
+
+        if (!this.state.expiryDate) {
+            formIsValid = false;
+            errors["expiryDate"] = "Please enter expiry date.";
+        } 
+
+        if(typeof this.state.expiryDate !== "undefined"){
+            //nuha add regex for expiry date
+        }
+
+        if (!this.state.CvvNumber) {
+            formIsValid = false;
+            errors["CvvNumber"] = "Please enter cvv number.";
+        } 
+
+        if(typeof this.state.CvvNumber !== "undefined"){
+            //nuha add regex for expiry date
+        }
+
+        if (!this.state.cardHolderName) {
+            formIsValid = false;
+            errors["cardHolderName"] = "Please enter Card Holder Name.";
+        } 
+
+        if (!this.state.shippingAddress) {
+            formIsValid = false;
+            errors["shippingAddress"] = "Please enter Shipping Address.";
+        } 
+
+        this.setState({
+            errors: errors
+        });
+
+        return formIsValid;
+    }
+
+    
     
      render() {
-    return (
+        return (
         <html lang="en">
         <head>
             <meta charset="UTF-8" />
@@ -69,43 +159,63 @@ class PaymentScreen extends React.Component {
                 <p>Pay using Credit or Debit card</p>
         
                 <div class="card-number">
-                <label className="payment-text"> Card Number </label>
-                <input
-                    type="text"
-                    class="card-number-field"
-                    placeholder="###-###-###"
-                    required minlength="9" maxlength="9"
+                    <label className="payment-text"> Card Number </label>
+                    <input
+                        type="text"
+                        class="card-number-field"
+                        placeholder="###-###-###"
+                        required minlength="9" maxlength="9"
+                        value={this.state.cardNumber} 
+                        onChange={this.handleChangeCardNumber} 
                     />
+                    <div className="errorMsg">{this.state.errors.cardNumber}</div>
                 </div>
+
                 <br />
                 <div class="date-number">
-                <label className="payment-text"> Expiry Date </label>
-                <input type="text" class="date-number-field" 
+                    <label className="payment-text"> Expiry Date </label>
+                    <input type="text" class="date-number-field" 
                         placeholder="DD-MM-YY" 
                         required minlength="6" maxlength="6"
-                        />
+                        value={this.state.expiryDate} 
+                        onChange={this.handleExpiryDate} 
+                    />
+                    <div className="errorMsg">{this.state.errors.expiryDate}</div>
                 </div>
         
                 <div class="cvv-number">
-                <label className="payment-text"> CVV number </label>
-                <input type="text" class="cvv-number-field" 
+                    <label className="payment-text"> CVV number </label>
+                    <input type="text" class="cvv-number-field" 
                         placeholder="xxx" 
                         required minlength="3" maxlength="3"
-                        />
+                        value={this.state.CvvNumber} 
+                        onChange={this.handleCvvNumber} 
+                    />
+                    <div className="errorMsg">{this.state.errors.CvvNumber}</div>
                 </div>
+
                 <div class="nameholder-number">
-                <label className="payment-text"> Card Holder name </label>
-                <input
-                    type="text"
-                    class="card-name-field"
-                    placeholder="Enter your Name"/>
+                    <label className="payment-text"> Card Holder name </label>
+                    <input
+                        type="text"
+                        class="card-name-field"
+                        placeholder="Enter your Name"
+                        value={this.state.cardHolderName} 
+                        onChange={this.handleCardHolderName}
+                    />
+                    <div className="errorMsg">{this.state.errors.cardHolderName}</div>
                 </div>
+
                 <div class="shipping-address">
-                <label className="payment-text"> Shipping Address </label>
-                <input
-                    type="text"
-                    class="card-name-field"
-                    placeholder="Enter your Address"/>
+                    <label className="payment-text"> Shipping Address </label>
+                    <input
+                        type="text"
+                        class="card-name-field"
+                        placeholder="Enter your Address"
+                        value={this.state.shippingAddress} 
+                        onChange={this.handleShippingAddress}
+                    />
+                    <div className="errorMsg">{this.state.errors.shippingAddress}</div>
                 </div>
             <Link to={"/confirmation/"+this.state.payments.paymentId} className="btn btn-primary" onClick={(e) => CartsService.clearCart(e, this.props.match.params.id)}>Checkout</Link>
             </div>
