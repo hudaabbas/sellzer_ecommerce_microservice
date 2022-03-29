@@ -53,18 +53,19 @@ class PaymentScreen extends React.Component {
         if (this.validateForm()) 
         {
             CartsService.clearCart(e, this.props.match.params.id).then((response) => {
-            console.log(response);
-            if(response.status = 200){
-                console.log("Item added successfully");
-                window.location.href = "/confirmation/"+this.state.payments.paymentId;
-            }else{
-                alert(response.statusText);
-            }
+                console.log(response);
+                if(response.status = 200){
+                    console.log("Item added successfully");
+                    window.location.href = "/confirmation/"+this.state.payments.paymentId;
+                }else{
+                    alert(response.statusText);
+                }
             }).catch(function (error) {
                 console.log(error);
             });
-                console.log(data);
-                console.log(this.state);
+            
+            console.log(data);
+            console.log(this.state);
         }
     }
 

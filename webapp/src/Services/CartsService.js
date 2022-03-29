@@ -191,7 +191,7 @@ class CartService {
     {
         return axios({
             method: 'put',
-            url: 'http://localhost:9003/carts/clearCart/' + cartId,
+            url: CARTS_REST_API_URL + 'clearCart/' + cartId,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
