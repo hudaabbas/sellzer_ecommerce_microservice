@@ -56,7 +56,7 @@ class CartMicroserviceApplicationTests {
 
 	@Test
 	@DisplayName("GET /carts/1 - Not Found")
-	void testGetWidgetByIdNotFound() throws Exception {
+	void testGetCartByIdNotFound() throws Exception {
 		// Setup our mocked service
 		Cart cart = new Cart();
 		doReturn(cart).when(service).findByCartId("1");
@@ -69,7 +69,7 @@ class CartMicroserviceApplicationTests {
 
 	@Test
 	@DisplayName("POST /carts/")
-	void testCreateWidget() throws Exception {
+	void testCreateCart() throws Exception {
 		// Setup our mocked service
 		Cart cartToPost = new Cart("1","john",new ArrayList<String>(),new ArrayList<String>());
 		Cart cartToReturn = new Cart("1","john",new ArrayList<String>(),new ArrayList<String>());

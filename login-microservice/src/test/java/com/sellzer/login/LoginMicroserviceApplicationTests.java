@@ -13,8 +13,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.ArrayList;
-
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -56,7 +54,7 @@ class LoginMicroserviceApplicationTests {
 
 	@Test
 	@DisplayName("GET /logins/1 - Not Found")
-	void testGetWidgetByIdNotFound() throws Exception {
+	void testGetLoginByIdNotFound() throws Exception {
 		// Setup our mocked service
 		Login login = new Login();
 		doReturn(login).when(service).findLoginById("1");
@@ -69,7 +67,7 @@ class LoginMicroserviceApplicationTests {
 
 	@Test
 	@DisplayName("POST /logins/")
-	void testCreateWidget() throws Exception {
+	void testCreateLogin() throws Exception {
 		// Setup our mocked service
 		Login loginToPost = new Login("1","john@email.com","password",true,false);
 		Login loginToReturn = new Login("1","john@email.com","password",true,false);
