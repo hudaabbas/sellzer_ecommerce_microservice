@@ -9,7 +9,6 @@ class ProductScreen extends React.Component {
     
     constructor(props){
         console.log(props.match.params.id);
-        console.log(props.match.params.uid);
         super(props)
         this.state = {
             products:[]
@@ -27,12 +26,12 @@ class ProductScreen extends React.Component {
     {
         console.log("Product id");
         console.log(productId);
-        CartsService.productExists(this.props.match.params.uid, productId).then((response) => {
+        CartsService.productExists(window.localStorage.getItem('u_code'), productId).then((response) => {
             console.log("Product Exists:");
             console.log(response.data);
             if(response.data == false)
             {
-                CartsService.getUserId(this.props.match.params.uid).then((response) => {
+                CartsService.getUserId(window.localStorage.getItem('u_code')).then((response) => {
                     console.log(response.data);
                     CartsService.addProduct(response.data.cartId, productId).then((response) => {
                         console.log(response.data);
