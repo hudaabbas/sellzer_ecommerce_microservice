@@ -84,30 +84,36 @@ class ServicesScreen extends React.Component {
     }
 
     render (){
-        return (<div> <h2>Featured Services</h2>
+        return (<div>
+            <div className='titleOnPage'>
+                <br></br><br></br>
+                <h2>Featured Services</h2>
+            </div>
+
             <div className="wrap">
                 <div className="row">
                     <div className="column">
-                        <span> Toggle: </span>
                         <button onClick={this.handleClick} className="toggleButton">
-                            {this.state.isToggleOn ? 'Low to High' : 'High to Low'}
+                            {
+                                (this.state.isToggleOn ? 'Low to High' : 'High to Low')
+                            }
                         </button>
                     </div>
-                    <div className="column">
+                    <div className="column-search">
                         <form onSubmit= {this.submitSearchName}>
                             <input type="text" className="searchTerm" placeholder="search by service"
                                    value={this.state.name} onChange={this.handleChangeName}/>
                             <button type="submit" className="searchButton">
-                                <i className="fa fa-search">send</i>
+                                <i className="fa fa-search"></i>
                             </button>
                         </form>
                     </div>
-                    <div className="column">
+                    <div className="column-search">
                         <form onSubmit= {this.submitSearchLocation}>
                             <input type="text" className="searchTerm" placeholder="search by location"
                                    value={this.state.location} onChange={this.handleChangeLocation}/>
                             <button type="submit" className="searchButton">
-                                <i className="fa fa-search">send</i>
+                                <i className="fa fa-search"></i>
                             </button>
                         </form>
                     </div>
@@ -128,10 +134,13 @@ class ServicesScreen extends React.Component {
                         <li>
                             <div className="service">
                                 <Link to={'service-home/' +service.serviceID}></Link>
-                                {/*<img className="service-image" src={service.imageId} alt="service"></img>*/}
+                                { service.serviceImageId == null ?
+                                    ( <img className="service-image" src={"https://fl-1.cdn.flockler.com/embed/no-image.svg"} alt="service"></img> )
+                                    :
+                                    ( <img className="service-image" src={service.serviceImageId} alt="service"></img> )
+                                }
                                 <div className="service-name">
                                     <Link to={service.serviceID}>{service.serviceName}</Link>
-                                    {/* <a href="service.html">{service.name}</a> */}
                                 </div>
                                 <div className="service-type">{service.serviceType}</div>
                                 <div className="service-price"> ${service.servicePrice}</div>

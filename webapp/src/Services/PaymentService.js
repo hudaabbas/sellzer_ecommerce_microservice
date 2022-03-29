@@ -6,7 +6,7 @@ class PaymentService {
          axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
         return axios({
             method: 'get',
-            url: 'http://localhost:9004/payments/'+id,
+            url: 'https://sellzer-payment.herokuapp.com/payments/'+id,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
@@ -19,7 +19,7 @@ class PaymentService {
         axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
         return axios({
             method: 'get',
-            url: 'http://localhost:9004/payments/orderId/'+orderId,
+            url: 'https://sellzer-payment.herokuapp.com/payments/orderId/'+orderId,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
@@ -31,7 +31,7 @@ class PaymentService {
     postPayment(body){
             return axios({
             method: 'post',
-            url: 'http://localhost:9004/payments/',
+            url: 'https://sellzer-payment.herokuapp.com/payments/',
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
@@ -48,7 +48,7 @@ class PaymentService {
     }
    
     deletePayment(paymentId){
-          fetch("http://localhost:9004/payments/6234a51750851c05d8c4ce71" + paymentId).then((response) => {
+          fetch("https://sellzer-payment.herokuapp.com/payments/" + paymentId).then((response) => {
                 return response.json();
             }).then((result) => {
                 // do what you want with the response here
@@ -59,7 +59,7 @@ class PaymentService {
         axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
         return axios({
             method: 'put',
-            url: 'http://localhost:9004/payments/updatePayment/' + orderId,
+            url: 'https://sellzer-payment.herokuapp.com/payments/updatePayment/' + orderId,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
