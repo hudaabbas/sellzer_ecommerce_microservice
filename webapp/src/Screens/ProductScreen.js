@@ -67,26 +67,24 @@ class ProductScreen extends React.Component {
                     <Link to="/product-home/" className="toggleButton">  Back to results  </Link>
                 </div>
 
-                {<div className='details'>
+                {
+                <div className='details'>
+
                     <div className='details-image'>
                         <img className="product-image" src={this.state.products.imageId} alt="product"></img>
                         {/* if(this.state.products.imageId != null)
                         <video width="820" height="540" loop autoplay="autoplay">
-                             <source src="https://static.nike.com/a/videos/q_90,vc_vp9/d0f7de5f-a845-4614-9b89-9b9455714b0d/video.webm" type="video/mp4"/>
+                            <source src="https://static.nike.com/a/videos/q_90,vc_vp9/d0f7de5f-a845-4614-9b89-9b9455714b0d/video.webm" type="video/mp4"/>
                         </video>                 */}
                     </div>
+
                     <div className='details-info'>
                         <ul>
-                            <li>
+                            <li padding=''>
                                 <h4>{this.state.products.catalogName}</h4>
                             </li>
-
-                            <li>
-                                <b>{this.state.products.catalogItemPrice}</b>
-                            </li>
-
-                            <li>
-                                Description:
+                            <li class="product-description">
+                                <b>Description:</b>
                                 <div>
                                     {this.state.products.catalogDescription}
                                 </div>
@@ -97,22 +95,12 @@ class ProductScreen extends React.Component {
                     <div className='details-action'>
                         <ul>
                             <li>
-                                Price: ${this.state.products.catalogItemPrice}
+                                <b>Price: ${this.state.products.catalogItemPrice}</b>
                             </li>
 
                             {<li>
-                                Category: {this.state.products.catalogCategory}
+                                <b>Category: {this.state.products.catalogCategory}</b>
                             </li> }
-
-                            <li>
-                                Qty: <select>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </li>
 
                             <li>
                                 <button className="button-primary-add" onClick={(e) => this.addToCart(e, this.state.products.catalogId)}> Add to Cart</button>
