@@ -58,8 +58,13 @@ class ProductScreen extends React.Component {
     render (){
         return (
             <div>
+                <div className='titleOnPage'>
+                    <br></br><br></br>
+                    <h2>Product Details</h2>
+                </div>
+
                 <div className='back-2-result'>
-                    <Link to="/">Back to results</Link>
+                    <Link to="/" className="toggleButton">  Back to results  </Link>
                 </div>
 
                 {<div className='details'>

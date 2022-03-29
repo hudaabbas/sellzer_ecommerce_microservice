@@ -58,13 +58,23 @@ class ServiceJobScreen extends React.Component {
     render (){
         return (
             <div>
-                <div className='back-2-result'>
-                    <Link to="/">Back to results</Link>
+                <div className='titleOnPage'>
+                    <br></br><br></br>
+                    <h2>Service Details</h2>
                 </div>
 
+                <div className='back-2-result'>
+                    <Link to="/service-home" className="toggleButton">  Back to results  </Link>
+                </div>
+
+                <br></br>
                 {<div className='details'>
                     <div className='details-image'>
-                        {/*<img className="service-image" src={this.state.service.imageId} alt="product"></img>*/}
+                        { this.state.service.serviceImageId == null ?
+                            ( <img className="service-image" src={"https://fl-1.cdn.flockler.com/embed/no-image.svg"} alt="service"></img> )
+                            :
+                            ( <img className="service-image" src={this.state.service.serviceImageId} alt="service"></img> )
+                        }
                     </div>
                     <div className='details-info'>
                         <ul>
