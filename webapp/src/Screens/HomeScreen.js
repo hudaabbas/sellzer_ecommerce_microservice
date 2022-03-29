@@ -68,13 +68,15 @@ class HomeScreen extends React.Component {
 
     render (){
     return (
-    <div> 
-        <h2>Featured Products</h2>
+    <div>
+        <div className='titleOnPage'>
+            <br></br><br></br>
+            <h2>Featured Products</h2>
+        </div>
 
         <div className="wrap">
             <div className="row">
                 <div className="column">
-                    Toggle: <span> </span>
                     <button onClick={this.handleClick} className="toggleButton">
                         {this.state.isToggleOn ? 'Low to High' : 'High to Low'}
                     </button>
