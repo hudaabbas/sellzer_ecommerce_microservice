@@ -18,7 +18,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 .checkmark_ok {
   position: absolute;
-  animation: grow 1.4s cubic-bezier(0.42, 0, 0.275, 1.155) both;
+  animation: grow 1.4s cubic-bezier(0.42, 0, 0.275, 1.155) both 1;
 }
 .checkmark_ok:nth-child(1) {
   width: 12px;
@@ -134,9 +134,12 @@ body {
     border-bottom: 3px solid gray;
   }
 
+  .checkmark{
+    animation-iteration-count: infinite;
+  }
   .checkmark_ok {
     position: absolute;
-    animation: grow 1.4s cubic-bezier(0.42, 0, 0.275, 1.155) both;
+    animation: grow 1.4s cubic-bezier(0.42, 0, 0.275, 1.155) both infinite;
   }
   .checkmark_ok:nth-child(1) {
     width: 12px;
@@ -196,8 +199,9 @@ body {
   .checkmark {
     position: relative;
     padding: 30px;
-  /*   animation: checkmark 5.6s cubic-bezier(0.42, 0, 0.275, 1.155) both; */
-    animation: checkmark 5.6s cubic-bezier(0.42, 0, 0.275, 1.155) both;
+    /* Use if you want it to appear and leave */
+  /*   animation: checkmark 5.6s cubic-bezier(0.42, 0, 0.275, 1.155) both infinite; */
+    animation:  5.6s cubic-bezier(0.42, 0, 0.275, 1.155) both infinite;
   }
   
   .checkmark__check {
@@ -210,7 +214,7 @@ body {
   }
   
   .checkmark__back {
-    animation: rotate 35s linear both infinite;
+    animation: rotate 35s linear both;
   }
   
   @keyframes rotate {
