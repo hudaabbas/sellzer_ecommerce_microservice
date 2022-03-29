@@ -48,67 +48,14 @@ class OrderConfirmationScreen extends React.Component {
         </div>
         </div>
     </div>
-    </div>
-            <div class="rentalinfo">
+    <div class="rentalinfo">
             <h1>Your order has been confirmed!</h1>
             </div>
-            {/* <section class="rentsection">
-            <h3>transaction details</h3>
-            <section class="rentsection">
-            <h3 className="transaction-details"> Transaction Details</h3>
-                <ul class="rentalgrid">
-                <li>
-                    <h5>Date</h5>
-                    <p>May 20th, 2019</p>
-                </li>
-                <li>
-                    <h5>Total</h5>
-                    <p>60€</p>
-                </li>
-                <li>
-                    <h5>Payment method</h5>
-                    <p>Credit Card</p>
-                </li>
-                </ul>
             
-            </section>
-            
-            
-            <section class="rentsection">
-                <h3 className="transaction">Product Details</h3>
-            <ul class="rentalgrid">
-                <li>
-                    <h5>Booking ID</h5>
-                    <p>#1234</p>
-                </li>
-            
-                <li>
-                    <h5>Pick Up</h5>
-                    <p>may 22th, 2019</p>
-                </li>
-                <li>
-                    <h5>Return</h5>
-                    <p>may 29th, 2019€</p>
-                </li>
-                
-                <li>
-                    <h5>Duration</h5>
-                    <p>8 days</p>
-                </li>
-                <li>
-                    <h5>Product</h5>
-                    <p>stroller</p>
-                </li>
-                <li>
-                    <h5>Add-ons</h5>
-                    <p>raincover</p>
-                <p>ridingboard</p>
-                </li>
-                </ul>
-                
-            </section> */}
             </div>
 
+    </div>
+            
         )
     }
 }

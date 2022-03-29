@@ -4,11 +4,14 @@ background-color: #191919;
 }
 
 .container {
-margin: 100px auto;
-height: 500px;
+margin: 10px 0px;
+/* height: 500px; */
 padding: 100px 0;
 display: flex;
-	width: 100%;
+text-align: center;
+justify-content: center;
+align-items: center;
+	/* width: 100%; */
 background-color: #FCFCFC;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -101,7 +104,7 @@ body {
 
   /* Your order has been confirmed */
   .rentalinfo {
-    background: #f4f8fc;
+    /* background: #ffffff; */
     padding: 2rem 4rem;
     border-radius: 16px;
     max-width: 600px;
