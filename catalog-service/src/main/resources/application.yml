@@ -6,5 +6,14 @@ spring:
     url: jdbc:h2:mem:localhost;DB_CLOSE_ON_EXIT=FALSE
     username: admin
     password:
+  application:
+    name: catalog-service
 
-
+management:
+  endpoint:
+    restart:
+      enabled: true
+    health:
+      enabled: true
+    info:
+      enabled: true
