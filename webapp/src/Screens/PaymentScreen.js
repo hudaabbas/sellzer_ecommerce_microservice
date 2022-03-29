@@ -165,24 +165,13 @@ class PaymentScreen extends React.Component {
 
      render() {
         return (
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta
-            name="viewport"
-            content="width=device-width,
-                    initial-scale=1.0"/>
-            <link rel="stylesheet" href="style.css" 
-                class="css" />
-        </head>
-        <body>
+        
             <div class="form">
             <div class="main-content">
             </div>
         
             <div class="centre-content">
-                <h1 class="price"><span>$</span>{console.log(this.state.payments.total)}{this.state.payments.total}</h1>
+                <h1 class="price"><span>Your total is $</span>{console.log(this.state.payments.total)}{this.state.payments.total}</h1>
                 <p class="course">
                 </p>
             </div>
@@ -250,8 +239,8 @@ class PaymentScreen extends React.Component {
             <Link className="btn btn-primary" onClick={(e) =>this.submituserPaymentForm(e)} to={"/confirmation/"+this.state.payments.paymentId}>Checkout</Link>
             </div>
             </div>
-        </body>
-        </html>
+        
+        
     )
   }
   
