@@ -15,6 +15,7 @@ import AddProductScreen from "./Screens/AddProductScreen";
 import AddServiceScreen from "./Screens/AddServiceScreen";
 import PaymentScreen from './Screens/PaymentScreen';
 import OrderConfirmationScreen from './Screens/OrderConfirmationScreen'
+import LogoutScreen from './Screens/LogoutScreen'
 
 function App() {
   const openMenu=() =>{
@@ -41,8 +42,12 @@ function App() {
                     {/* <a href="signin">Sign In</a> */}
                     <Link to={"/cart/"+ window.localStorage.getItem('u_code')}>Cart</Link>
                     <Link to="/register">Register</Link>
-                    <Link to="/signin">Sign In</Link>
-                    {/* <a href="cart.html">Cart</a> */}
+                    {
+                      window.localStorage.getItem('u_code') === null ? 
+                        <Link to="/signin">Login</Link>
+                        : 
+                        <Link to="/logout">Logout</Link>             
+                      }
                 </div>
             </header> 
 
@@ -79,6 +84,7 @@ function App() {
                   <Route path="/add-service" component={AddServiceScreen} />
                   <Route path="/payment/:id" component={PaymentScreen} />
                   <Route path="/confirmation/:id" component={OrderConfirmationScreen} />
+                  <Route path="/logout" exact={true} component={LogoutScreen} />
                 </div>
             </main>
 
