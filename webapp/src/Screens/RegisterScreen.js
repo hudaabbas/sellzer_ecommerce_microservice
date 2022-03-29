@@ -103,6 +103,13 @@ render() {
       <div className="heading">Register</div>
       <div className="form">
         <Form method="post" name="userRegistrationForm" onSubmit= {this.submituserRegistrationForm} >
+        <FormGroup>
+            <div className="input-container">
+              <Label for="exampleName">Name</Label>
+              <Input type="name" name="name" id="exampleEmail" placeholder="Enter your name" />
+              <div className="errorMsg">{this.state.errors.name}</div>
+            </div>
+          </FormGroup>
           <FormGroup>
             <div className="input-container">
               <Label for="exampleEmail">Email</Label>
@@ -114,6 +121,13 @@ render() {
             <div className="input-container">
             <Label for="examplePassword">Password</Label>
             <Input type="password" name="password" id="examplePassword" value={this.state.password} onChange={this.handleChangePassword} placeholder="Enter your password" />
+            <div className="errorMsg">{this.state.errors.password}</div>
+            </div>
+          </FormGroup>
+          <FormGroup>
+            <div className="input-container">
+            <Label for="rePassword">Re-Enter Password</Label>
+            <Input type="password" name="rePassword" id="rePassword" placeholder="Confirm password" />
             <div className="errorMsg">{this.state.errors.password}</div>
             </div>
           </FormGroup>
