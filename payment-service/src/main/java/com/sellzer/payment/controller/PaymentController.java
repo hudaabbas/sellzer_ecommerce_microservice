@@ -35,6 +35,13 @@ public class PaymentController {
         return paymentService.findByOrderId(orderId);
     }
 
+    //updating Cart by adding new product
+    @PutMapping("/updatePayment/{orderId}")
+    public Payment updateTotal(@PathVariable("orderId") String orderId, @RequestBody String total)
+    {
+        return paymentService.updateTotal(orderId, total);
+    }
+
     @DeleteMapping("/{id}")
     public Map<String, Boolean> deletePayment(@PathVariable("id") String paymentId) {
         log.info("inside deletePayment() method of PaymentController");

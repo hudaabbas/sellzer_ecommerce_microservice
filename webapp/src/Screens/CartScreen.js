@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import CartService from '../Services/CartsService';
-
+import PaymentService from '../Services/PaymentService';
 
 class CartScreen extends React.Component {
 
@@ -99,27 +99,32 @@ class CartScreen extends React.Component {
 
     createPaymentObj(e, cartID, userID, total)
     {
-        e.preventDefault();
-        console.log(e)
-        var payment = {
-            "orderId": cartID,
-            "customerId": userID,
-            "paymentType": "debit",
-            "total": total
-        }
+        if(PaymentService.getPaymentByOrderId(cartID)!=null)//payment already exists
+        {
+            console.log("Already exists will not create new payment object");
+            
+        }else //payment does not exist
+        {
+            e.preventDefault();
+            console.log(e)
+            var payment = {
+                "orderId": cartID,
+                "customerId": userID,
+                "paymentType": "debit",
+                "total": total
+            }
 
-        CartService.createPayment(payment).then((response) => {
-            console.log(response);
-            if (response.status = 200) {
-                console.log("Checkout successfull");
-            }
-            else
-            {
-                alert("Failed to checkout");
-            }
-            
-            
+            CartService.createPayment(payment).then((response) => {
+                console.log(response);
+                if (response.status = 200) {
+                    console.log("Checkout successfull");
+                }
+                else
+                {
+                    alert("Failed to checkout");
+                }
         });
+    }
     }
 
 // https://designmodo.com/shopping-cart-ui/
