@@ -49,7 +49,7 @@ function App() {
             
 
             <aside className="sidebar">
-                <h3 className="menu-title">Categories</h3>
+                <h2 className="menu-title">Categories</h2>
                 <button className="sidebar-close-button" onClick={closeMenu}>x</button>
                 <ul className="menu">
                     <li className="sidebar-category">
