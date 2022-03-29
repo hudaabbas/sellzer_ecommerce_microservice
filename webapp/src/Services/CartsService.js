@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const CARTS_REST_API_URL = 'http://localhost:9003/carts/';
+const CARTS_REST_API_URL = 'https://sellzer-cart.herokuapp.com/carts/';
 
 class CartService {
 
@@ -35,7 +35,7 @@ class CartService {
 
         return axios({
             method: 'get',
-            url: CARTS_REST_API_URL+ 'userId/' + id,
+            url: CARTS_REST_API_URL + 'userId/' + id,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
@@ -125,7 +125,7 @@ class CartService {
     {
         return axios({
             method: 'post',
-            url: 'http://localhost:9003/carts/productExists/' + userId,
+            url: CARTS_REST_API_URL + 'productExists/' + userId,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
@@ -140,7 +140,7 @@ class CartService {
     {
         return axios({
             method: 'post',
-            url: 'http://localhost:9003/carts/serviceExists/' + userId,
+            url: CARTS_REST_API_URL + 'serviceExists/' + userId,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
@@ -158,7 +158,7 @@ class CartService {
         console.log(JSON.stringify(prodId));
         return axios({
             method: 'put',
-            url: 'http://localhost:9003/carts/products/' + cartId,
+            url: CARTS_REST_API_URL + 'products/' + cartId,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
@@ -175,7 +175,7 @@ class CartService {
         console.log(servId);
         return axios({
             method: 'put',
-            url: 'http://localhost:9003/carts/services/' + cartId,
+            url: CARTS_REST_API_URL + 'services/' + cartId,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
