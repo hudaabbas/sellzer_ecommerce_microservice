@@ -38,7 +38,7 @@ body{
   padding: 0.5rem;
 }
 .brand a{
-  color: #ffffff;
+  color: #EECDA3;
   font-size: 3rem;
   font-weight: bold;
   text-decoration: none;
@@ -75,7 +75,8 @@ a{
   text-decoration: none;
 }
 a:hover{
-  color:#ffffff;
+  color:#242331;
+  box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
 }
 
 .titleOnPage{
@@ -128,6 +129,11 @@ a:hover{
 }
 .product-rating{
   margin-bottom: 1rem;
+}
+.product-description {
+  background-color: #EECDA3;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 /* SERVICE HOME SCREEN */
@@ -330,10 +336,12 @@ a:hover{
 
 .details{
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
   flex-wrap: wrap;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .details-action{
@@ -376,7 +384,8 @@ a:hover{
   border: .1rem #808080 solid;
   border-radius: 0.5rem;
   background-color: whitesmoke;
-  padding-right: 10%;
+  padding: 2%;
+  
 
 }
 
@@ -547,6 +556,7 @@ input[type="submit"]:hover {
   background-color: #242331;
   text-decoration: none;
   height: 100%;
+  z-index: 1000;
 }
 
 .sidebar.open{
@@ -803,10 +813,9 @@ button[class*=btn] {
   margin-top: 2px;
 }
 .delete-btn {
-  /* border: 3px solid red; */
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding-right: 28px;
 }
 
 
@@ -875,11 +884,14 @@ input:focus {
     width: 66%;
     float: right;
     margin-right: 5%;
-   }
+  }
    .checkout{
     float: right;
     margin-right: 5%;
     width: 28%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
    }
 
    .total{

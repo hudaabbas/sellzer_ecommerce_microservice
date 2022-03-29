@@ -146,13 +146,15 @@ class CartScreen extends React.Component {
                     <div>Remove</div>
                 </div>
                 
-                {/* {<!-- Product Items -->} */}
+                {/* {<!-- All Items -->} */}
                 
                 <div className="all-items">
+
+                    {/* {<!-- Product Items -->} */}
                     {this.state.itemDetails.map(
                     
                     (item, i) =>
-                        <div className="product-item" key={i}>
+                    <div className="product-item" key={i}>
 
                         <div className='product-items'>
                             <div className="image">
@@ -163,59 +165,53 @@ class CartScreen extends React.Component {
                                 <span width="20px">{item.catalogName}</span>
                                 <span>{item.catalogBrand}</span>
                                 <span>{item.catalogCategory}</span>
-                        </div>
+                            </div>
 
-                        <div className="total-price">${item.catalogItemPrice}</div>
+                            <div className="total-price">${item.catalogItemPrice}</div>
 
-                        <button className="delete-btn" onClick={(e) => this.deleteItem(e, item.catalogId)}>
-                            <link href='https://css.gg/close.css' rel='stylesheet'></link>
-                            <i className="gg-close"></i>
-                        </button>
+                            <button className="delete-btn" onClick={(e) => this.deleteItem(e, item.catalogId)}>
+                                <link href='https://css.gg/trash.css' rel='stylesheet'></link>
+                                <i class="gg-trash"></i>
+                            </button>
 
                         </div>
                     </div>
                
-                )} 
-                </div>
-
-
-                {/* {<!-- Service List -->} */}
-                <div className="all-items">
-                {this.state.serviceDetails.map(
+                    )} 
                     
-                    (service, j) =>
-                    <div className="service-item" key={j}>
-                        <div className="service-items">
-                            <div className="image">
-                            {/* <img width="50%"></img> */}
-                            <img width="80px" src={service.imageId} alt="" />
-                            </div>
-                            <div className="description">
-                                <span width="20px">{service.serviceName}</span>
-                                <span>{service.serviceType}</span>
-                                <span>{service.serviceProvider}</span>
-                            </div>
+                    {/* {<!-- Service Items -->} */}
+                    {this.state.serviceDetails.map(
                         
-                        <div className="total-price">${service.servicePrice}</div>
+                        (service, j) =>
+                        <div className="service-item" key={j}>
+                            <div className="service-items">
+                                <div className="image">
+                                <img width="80px" src={service.serviceImageId} alt="" />
+                                </div>
+                                <div className="description">
+                                    <span width="20px">{service.serviceName}</span>
+                                    <span>{service.serviceType}</span>
+                                    <span>{service.serviceProvider}</span>
+                                </div>
+                            
+                                <div className="total-price">${service.servicePrice}</div>
 
-                        <button className="delete-btn" onClick={(e) => this.deleteServices(e, service.serviceID)}>
-                            <link href='https://css.gg/trash.css' rel='stylesheet'></link>
-                            <i class="gg-trash"></i>
-                        </button>
-                       </div> 
-                    </div>
-
-                )}
+                                <button className="delete-btn" onClick={(e) => this.deleteServices(e, service.serviceID)}>
+                                    <link href='https://css.gg/trash.css' rel='stylesheet'></link>
+                                    <i class="gg-trash"></i>
+                                </button>
+                            </div> 
+                        </div>
+                    )}
                 </div>
 
                 {/*Checkout Section*/}
                 <hr></hr>
                 <div className="checkout">
-                <div className="total">Total: ${this.calculateTotal()}</div>
-                {/* <div class="items">2 items</div> */}
-                <button className="checkout-button" onClick={(e) => this.createPaymentObj(e, this.state.cartInfo.cartId,this.state.cartInfo.userId, this.calculateTotal())}>
-                    <Link to={"/payment/" + this.state.cartInfo.cartId} className="checkout">Checkout</Link>
-                </button>
+                    <div className="total">Total: ${this.calculateTotal()}</div>
+                    <button className="checkout-button" onClick={(e) => this.createPaymentObj(e, this.state.cartInfo.cartId,this.state.cartInfo.userId, this.calculateTotal())}>
+                        <Link to={"/payment/" + this.state.cartInfo.cartId} className="checkout">Checkout</Link>
+                    </button>
                 </div>
                 
                 
