@@ -62,7 +62,7 @@ class CatalogServiceApplicationTests {
 
 	@Test
 	@DisplayName("GET all /catalogs/ success")
-	void testGetPaymentsAll() throws Exception {
+	void testGetCatalogsAll() throws Exception {
 		// Setup our mocked service
 		Catalog catalog1 = new Catalog("1","Air Max","shoes","fun","nike","image","image2","Large","video",5,34.00,false);
 		Catalog catalog2 = new Catalog("2","Air Max","shirt","nice","adidas","image","image2","Large","video",2,84.00,true);
@@ -104,7 +104,7 @@ class CatalogServiceApplicationTests {
 
 	@Test
 	@DisplayName("GET /catalogs/1 - Not Found")
-	void testGetWidgetByIdNotFound() throws Exception {
+	void testGetCatalogsByIdNotFound() throws Exception {
 		// Setup our mocked service
 		Catalog catalog = new Catalog();
 		doReturn(catalog).when(service).findCatalogById("1");
@@ -117,7 +117,7 @@ class CatalogServiceApplicationTests {
 
 	@Test
 	@DisplayName("POST /catalogs/")
-	void testCreateWidget() throws Exception {
+	void testCreateCatalogs() throws Exception {
 		// Setup our mocked service
 		Catalog catalogToPost = new Catalog("1","Air Max","shoes","fun","nike","image","image2","Large","video",5,34.00,false);
 		Catalog catalogToReturn = new Catalog("1","Air Max","shoes","fun","nike","image","image2","Large","video",5,34.00,false);
