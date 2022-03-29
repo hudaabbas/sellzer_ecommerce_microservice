@@ -185,6 +185,8 @@ class CartService {
             
         });
     }
+
+    //NUHA add clear cart after checkout button is clicked
     
 }
 
