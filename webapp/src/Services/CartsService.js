@@ -186,8 +186,8 @@ class CartService {
         });
     }
 
-    //NUHA add clear cart after checkout button is clicked
-    clearCart(cartId)
+    //clear cart after checkout button is clicked
+    clearCart(e, cartId)
     {
         return axios({
             method: 'put',

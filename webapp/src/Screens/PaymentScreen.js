@@ -3,6 +3,7 @@ import data from '../data';
 import {Link} from 'react-router-dom';
 import PaymentService from '../Services/PaymentService';
 import PaymentForm from '../components/PaymentForm'
+import CartsService from '../Services/CartsService';
 import { useHistory } from "react-router-dom";
 import '../Login.css';
 class PaymentScreen extends React.Component {
@@ -72,19 +73,25 @@ class PaymentScreen extends React.Component {
                 <input
                     type="text"
                     class="card-number-field"
-                    placeholder="###-###-###"/>
+                    placeholder="###-###-###"
+                    required minlength="9" maxlength="9"
+                    />
                 </div>
                 <br />
                 <div class="date-number">
                 <label className="payment-text"> Expiry Date </label>
                 <input type="text" class="date-number-field" 
-                        placeholder="DD-MM-YY" />
+                        placeholder="DD-MM-YY" 
+                        required minlength="6" maxlength="6"
+                        />
                 </div>
         
                 <div class="cvv-number">
                 <label className="payment-text"> CVV number </label>
                 <input type="text" class="cvv-number-field" 
-                        placeholder="xxx" />
+                        placeholder="xxx" 
+                        required minlength="3" maxlength="3"
+                        />
                 </div>
                 <div class="nameholder-number">
                 <label className="payment-text"> Card Holder name </label>
@@ -100,7 +107,7 @@ class PaymentScreen extends React.Component {
                     class="card-name-field"
                     placeholder="Enter your Address"/>
                 </div>
-            <Link to={"/confirmation/"+this.state.payments.paymentId} className="btn btn-primary">Submit</Link>
+            <Link to={"/confirmation/"+this.state.payments.paymentId} className="btn btn-primary" onClick={(e) => CartsService.clearCart(e, this.props.match.params.id)}>Checkout</Link>
             </div>
             </div>
         </body>

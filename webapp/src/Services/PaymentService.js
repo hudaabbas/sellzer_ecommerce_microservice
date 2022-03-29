@@ -48,7 +48,7 @@ class PaymentService {
     }
    
     deletePayment(paymentId){
-          fetch("http://localhost:9004/payments/6234a51750851c05d8c4ce71" + paymentId).then((response) => {
+          fetch("http://localhost:9004/payments/" + paymentId).then((response) => {
                 return response.json();
             }).then((result) => {
                 // do what you want with the response here
