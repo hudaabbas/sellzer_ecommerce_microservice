@@ -68,15 +68,15 @@ function App() {
             {/* Note: Currently assume main product page (/product) is same as home screen (/) */}
             <main className="main">
                 <div className="content">
-                  <Route path="/product/:id" component={ProductScreen} />
+                  <Route path="/product/:id" exact= {true} component={ProductScreen} />
                   <Route path="/service-home/" exact= {true} component={ServicesScreen} />
-                  <Route path="/service-home/:id" component={ServiceJobScreen} />
+                  <Route path="/service-home/:id" exact= {true} component={ServiceJobScreen} />
                   <Route path="/" exact= {true} component={HomeScreen}/>
                   <Route path="/cart/:id" component={CartScreen}/>
                   <Route path="/signin" component={SigninScreen}/>
                   <Route path="/register" component={RegisterScreen} />
-                  <Route path="/add-product/" component={AddProductScreen} />
-                  <Route path="/add-service" component={AddServiceScreen} />
+                  <Route path="/add-product/" exact= {true} component={AddProductScreen} />
+                  <Route path="/add-service" exact= {true} component={AddServiceScreen} />
                   <Route path="/payment/:id" component={PaymentScreen} />
                   <Route path="/confirmation/:id" component={OrderConfirmationScreen} />
                 </div>

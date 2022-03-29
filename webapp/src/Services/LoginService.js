@@ -7,7 +7,7 @@ class LoginService {
 
         return axios({
             method: 'get',
-            url: 'http://localhost:9000/logins/' + id,
+            url: 'https://ancient-brook-14889.herokuapp.com/logins/' + id,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
@@ -18,7 +18,7 @@ class LoginService {
     getEmail(email){
         return axios({
             method: 'get',
-            url: 'http://localhost:9000/logins/email/' + email,
+            url: 'https://ancient-brook-14889.herokuapp.com/logins/email/' + email,
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',
@@ -30,7 +30,7 @@ class LoginService {
     addUser(body){
         return axios({
             method: 'post',
-            url: 'http://localhost:9000/logins/',
+            url: 'https://ancient-brook-14889.herokuapp.com/logins/',
             withCredentials: false,
             headers: {
                 'Access-Control-Allow-Origin':'*',

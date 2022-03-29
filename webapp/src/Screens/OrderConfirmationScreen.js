@@ -17,6 +17,7 @@ class OrderConfirmationScreen extends React.Component {
             </div> */}
             
     <div class="container">
+        <h2>Thank you for your purchase!</h2>
 	<div class="row mx-auto">
 		<div class="col-12">
 		<div class="checkmark">
@@ -53,6 +54,8 @@ class OrderConfirmationScreen extends React.Component {
             </div>
             {/* <section class="rentsection">
             <h3>transaction details</h3>
+            <section class="rentsection">
+            <h3 className="transaction-details"> Transaction Details</h3>
                 <ul class="rentalgrid">
                 <li>
                     <h5>Date</h5>
@@ -71,25 +74,25 @@ class OrderConfirmationScreen extends React.Component {
             </section>
             
             
-                <section class="rentsection">
-                <h3>product details</h3>
+            <section class="rentsection">
+                <h3 className="transaction">Product Details</h3>
             <ul class="rentalgrid">
                 <li>
-                    <h5>booking id</h5>
+                    <h5>Booking ID</h5>
                     <p>#1234</p>
                 </li>
             
                 <li>
-                    <h5>pick up</h5>
+                    <h5>Pick Up</h5>
                     <p>may 22th, 2019</p>
                 </li>
                 <li>
-                    <h5>return</h5>
+                    <h5>Return</h5>
                     <p>may 29th, 2019€</p>
                 </li>
                 
                 <li>
-                    <h5>duration</h5>
+                    <h5>Duration</h5>
                     <p>8 days</p>
                 </li>
                 <li>
