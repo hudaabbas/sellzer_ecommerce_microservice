@@ -91,9 +91,13 @@ class ServiceJobScreen extends React.Component {
                                 Price: ${this.state.service.servicePrice}
                             </li>
 
-                            {<li>
+                            <li>
                                 Type: {this.state.service.serviceType}
-                            </li> }
+                            </li>
+
+                            <li>
+                                Location: {this.state.service.serviceLocation}
+                            </li>
 
                             <li>
                                 <button className="button-primary-add" onClick={(e) => this.addToCart(e, this.state.service.serviceID)}> Add to Cart</button>
