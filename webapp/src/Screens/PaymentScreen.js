@@ -17,6 +17,7 @@ class PaymentScreen extends React.Component {
     componentDidMount(){
         PaymentService.getPaymentByOrderId(this.props.match.params.id).then((response) => {
             console.log(response.data);
+            console.log(response.data.total);
             this.setState({ payments: response.data})
         });
     }
@@ -58,7 +59,7 @@ class PaymentScreen extends React.Component {
             </div>
         
             <div class="centre-content">
-                <h1 class="price"><span>$</span>{this.state.payments.total}</h1>
+                <h1 class="price"><span>$</span>{console.log(this.state.payments.total)}{this.state.payments.total}</h1>
                 <p class="course">
                 </p>
             </div>

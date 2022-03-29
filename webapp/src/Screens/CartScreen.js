@@ -94,7 +94,7 @@ class CartScreen extends React.Component {
             total += this.state.serviceDetails[i].servicePrice;
         }
         console.log(total);
-        return total;
+        return total.toString();
     }
 
     createPaymentObj(e, cartID, userID, total)
