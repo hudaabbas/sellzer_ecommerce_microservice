@@ -25,7 +25,8 @@ class ProductScreen extends React.Component {
 
     addToCart(e, productId)
     {
-        console.log("Product id: " + productId);
+        console.log("Product id");
+        console.log(productId);
         CartsService.productExists(this.props.match.params.uid, productId).then((response) => {
             console.log("Product Exists:");
             console.log(response.data);

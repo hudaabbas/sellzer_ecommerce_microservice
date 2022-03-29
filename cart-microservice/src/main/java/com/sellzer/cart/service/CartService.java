@@ -51,10 +51,14 @@ public class CartService {
         if(cart == null) {
             return null;
         } else {
+            log.info(products);
+            products = products.replaceAll("^\"|\"$", "");
+            log.info(products);
             ArrayList<String> newproducts = cart.getProducts();
             newproducts.add(products);
             //newproducts.remove(products);
             cart.setProducts(newproducts);
+            log.info(cart.getProducts().toString());
             return cartRepository.save(cart);
         }
     }

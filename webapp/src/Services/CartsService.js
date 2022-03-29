@@ -138,6 +138,9 @@ class CartService {
 
     addProduct(cartId, prodId)
     {
+        console.log("In addProduct");
+        console.log(prodId);
+        console.log(JSON.stringify(prodId));
         return axios({
             method: 'put',
             url: 'http://localhost:9003/carts/products/' + cartId,

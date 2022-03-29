@@ -82,6 +82,14 @@ public class CartController {
         return products.contains(productId);
     }
 
+    @PostMapping("/serviceExists/{id}")
+    public Boolean findIfServiceExistsByServiceId(@PathVariable("id") String userId, @RequestBody String serviceId) {
+        log.info("inside ;ol");
+        Cart cart = findByUserId(userId);
+        ArrayList<String>services = cart.getServices();
+        return services.contains(serviceId);
+    }
+
 }
 
     /*  Adding/updating a product/service in the cart
