@@ -8,7 +8,7 @@ import com.sellzer.payment.entity.Payment;
 
 public interface PaymentRepository extends MongoRepository<Payment, String> {
     Payment findByPaymentId(String paymentId);
-    Payment[] findByOrderId(String orderId);
+    Payment findByOrderId(String orderId);
 }
 
 

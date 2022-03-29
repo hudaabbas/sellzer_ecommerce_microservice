@@ -30,7 +30,7 @@ public class PaymentController {
     }
 
     @GetMapping("/orderId/{orderId}")
-    public Payment[] findByOrderId(@PathVariable("orderId") String orderId) {
+    public Payment findByOrderId(@PathVariable("orderId") String orderId) {
         log.info("inside findByOrderId() method of PaymentController");
         return paymentService.findByOrderId(orderId);
     }
