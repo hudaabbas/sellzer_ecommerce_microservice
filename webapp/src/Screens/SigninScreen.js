@@ -119,7 +119,7 @@ render() {
             </div>
           </FormGroup>
           <div className="d-flex justify-content-center mt-3 login_container">
-            <Button type="submit" className="btn btn-login">Submit</Button>
+            <Button type="submit" className="btn btn-login">Login</Button>
           </div>
           <div className="input-container">
             <div className="d-flex justify-content-center links">
