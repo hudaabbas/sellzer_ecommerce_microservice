@@ -74,7 +74,13 @@ body{
 a{
   text-decoration: none;
 }
-a:hover{
+
+.products a:hover{
+  color:#242331;
+  box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
+}
+
+.services a:hover{
   color:#242331;
   box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
 }
