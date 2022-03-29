@@ -74,7 +74,7 @@ function App() {
                   <Route path="/register" component={RegisterScreen} />
                   <Route path="/product" exact= {true} component={AddProductScreen} />
                   <Route path="/payment/:id" component={PaymentScreen} />
-                  <Route path="/confirmation" component={OrderConfirmationScreen} />
+                  <Route path="/confirmation/:id" component={OrderConfirmationScreen} />
                 </div>
             </main>
 

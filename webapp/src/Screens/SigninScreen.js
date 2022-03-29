@@ -20,15 +20,18 @@ constructor(props) {
   this.submituserRegistrationForm = this.submituserRegistrationForm.bind(this);
 }
 
-handleChangeEmail(e) {
+handleChangeEmail(e) 
+{
   this.setState({email:e.target.value});
 }
 
-handleChangePassword(e) {
+handleChangePassword(e) 
+{
   this.setState({password:e.target.value});
 }
 
-submituserRegistrationForm(e) {
+submituserRegistrationForm(e) 
+{
   e.preventDefault();
   if (this.validateForm()) {
     var data={
