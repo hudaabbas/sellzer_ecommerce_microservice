@@ -52,6 +52,7 @@ class PaymentScreen extends React.Component {
         e.preventDefault();
         if (this.validateForm()) 
         {
+            CartsService.clearCart(e, this.props.match.params.id);
             console.log(data);
             console.log(this.state);
         }
@@ -80,6 +81,8 @@ class PaymentScreen extends React.Component {
     validateForm() {
         let errors = {};
         let formIsValid = true;
+        let cardNum = console.log(document. getElementById("cardNumber").value);
+        let exprNum = document. getElementById("expiryDate").value;
         if (!this.state.cardNumber) {
             formIsValid = false;
             errors["cardNumber"] = "Please enter your card number";
@@ -95,7 +98,7 @@ class PaymentScreen extends React.Component {
             }
         }
 
-        if (!this.state.expiryDate) {
+        if (!exprNum) {
             formIsValid = false;
             errors["expiryDate"] = "Please enter expiry date.";
         } 
@@ -162,10 +165,11 @@ class PaymentScreen extends React.Component {
                     <label className="payment-text"> Card Number </label>
                     <input
                         type="text"
-                        class="card-number-field"
+                        //class="card-number-field"
+                        name = "cardNumber"
+                        id="cardNumber"
                         placeholder="###-###-###"
-                        required minlength="9" maxlength="9"
-                        value={this.state.cardNumber} 
+                        required minLength="9" maxLength="9"
                         onChange={this.handleChangeCardNumber} 
                     />
                     <div className="errorMsg">{this.state.errors.cardNumber}</div>
@@ -176,8 +180,8 @@ class PaymentScreen extends React.Component {
                     <label className="payment-text"> Expiry Date </label>
                     <input type="text" class="date-number-field" 
                         placeholder="DD-MM-YY" 
-                        required minlength="6" maxlength="6"
-                        value={this.state.expiryDate} 
+                        required minLength="6" maxLength="6"
+                        id="expiryDate"
                         onChange={this.handleExpiryDate} 
                     />
                     <div className="errorMsg">{this.state.errors.expiryDate}</div>
@@ -187,7 +191,7 @@ class PaymentScreen extends React.Component {
                     <label className="payment-text"> CVV number </label>
                     <input type="text" class="cvv-number-field" 
                         placeholder="xxx" 
-                        required minlength="3" maxlength="3"
+                        required minLength="3" maxLength="3"
                         value={this.state.CvvNumber} 
                         onChange={this.handleCvvNumber} 
                     />
@@ -198,7 +202,7 @@ class PaymentScreen extends React.Component {
                     <label className="payment-text"> Card Holder name </label>
                     <input
                         type="text"
-                        class="card-name-field"
+                        //class="card-name-field"
                         placeholder="Enter your Name"
                         value={this.state.cardHolderName} 
                         onChange={this.handleCardHolderName}
@@ -210,14 +214,14 @@ class PaymentScreen extends React.Component {
                     <label className="payment-text"> Shipping Address </label>
                     <input
                         type="text"
-                        class="card-name-field"
+                        //class="card-name-field"
                         placeholder="Enter your Address"
                         value={this.state.shippingAddress} 
                         onChange={this.handleShippingAddress}
                     />
                     <div className="errorMsg">{this.state.errors.shippingAddress}</div>
                 </div>
-            <Link to={"/confirmation/"+this.state.payments.paymentId} className="btn btn-primary" onClick={(e) => CartsService.clearCart(e, this.props.match.params.id)}>Checkout</Link>
+            <Link to={"/confirmation/"+this.state.payments.paymentId} className="btn btn-primary" onClick={(e) =>this.submituserPaymentForm(e)}>Checkout</Link>
             </div>
             </div>
         </body>
