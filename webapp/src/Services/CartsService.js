@@ -136,6 +136,21 @@ class CartService {
         });
     }
 
+    serviceExists(userId, serviceId)
+    {
+        return axios({
+            method: 'post',
+            url: 'http://localhost:9003/carts/serviceExists/' + userId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: serviceId // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
+            
+        });
+    }
+
     addProduct(cartId, prodId)
     {
         console.log("In addProduct");
@@ -150,6 +165,23 @@ class CartService {
                 'Content-Type': 'application/json',
             },
             data: prodId // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
+            
+        });
+    }
+
+    addService(cartId, servId)
+    {
+        console.log("In addService");
+        console.log(servId);
+        return axios({
+            method: 'put',
+            url: 'http://localhost:9003/carts/services/' + cartId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: servId // ["623d564bad4dfb09c67714e1", "623de973ad4dfb09c67714e2"],// JSON.stringify(idArr)
             
         });
     }

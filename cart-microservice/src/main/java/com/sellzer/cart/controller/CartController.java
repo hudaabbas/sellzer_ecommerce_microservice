@@ -79,6 +79,7 @@ public class CartController {
         log.info("inside ;ol");
         Cart cart = findByUserId(userId);
         ArrayList<String> products = cart.getProducts();
+        productId = productId.replaceAll("^\"|\"$", "");
         return products.contains(productId);
     }
 
@@ -86,7 +87,11 @@ public class CartController {
     public Boolean findIfServiceExistsByServiceId(@PathVariable("id") String userId, @RequestBody String serviceId) {
         log.info("inside ;ol");
         Cart cart = findByUserId(userId);
+        log.info(cart.getServices().toString());
+        log.info(serviceId);
         ArrayList<String>services = cart.getServices();
+        serviceId = serviceId.replaceAll("^\"|\"$", "");
+        log.info(serviceId);
         return services.contains(serviceId);
     }
 
