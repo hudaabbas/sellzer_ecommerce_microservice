@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 
@@ -86,6 +88,17 @@ public class ServiceController{
     public Map<String, Boolean> deleteService(@PathVariable("id") String serviceID) {
         log.info("inside deleteService method of Service");
         return serviceService.deleteService(serviceID);
+    }
+
+    @PostMapping("/allServices")
+    public ArrayList<ServiceJob> findCatalogByIds(@RequestBody String[] serviceIds) {
+        log.info("inside ;ol");
+        ArrayList<ServiceJob> services = new ArrayList<ServiceJob>();
+        for(String serviceId: serviceIds) {
+            services.add(serviceService.findServiceByID(serviceId));
+        }
+        log.info(String.valueOf(services));
+        return services;
     }
 
 }

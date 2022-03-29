@@ -74,6 +74,27 @@ public class CartController {
         return cartservice.deleteService(cartId, services);
     }
 
+    @PostMapping("/productExists/{id}")
+    public Boolean findIfProductExistsByProductId(@PathVariable("id") String userId, @RequestBody String productId) {
+        log.info("inside ;ol");
+        Cart cart = findByUserId(userId);
+        ArrayList<String> products = cart.getProducts();
+        productId = productId.replaceAll("^\"|\"$", "");
+        return products.contains(productId);
+    }
+
+    @PostMapping("/serviceExists/{id}")
+    public Boolean findIfServiceExistsByServiceId(@PathVariable("id") String userId, @RequestBody String serviceId) {
+        log.info("inside ;ol");
+        Cart cart = findByUserId(userId);
+        log.info(cart.getServices().toString());
+        log.info(serviceId);
+        ArrayList<String>services = cart.getServices();
+        serviceId = serviceId.replaceAll("^\"|\"$", "");
+        log.info(serviceId);
+        return services.contains(serviceId);
+    }
+
 }
 
     /*  Adding/updating a product/service in the cart

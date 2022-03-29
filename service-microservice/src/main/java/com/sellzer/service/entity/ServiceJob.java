@@ -17,6 +17,7 @@ public class ServiceJob{
 	private String serviceID;
     private String serviceName;
     private String serviceType;
+    private String serviceImageId;
     private Long servicePrice;
     private String serviceProvider;
     private String serviceLocation; // changed from initial design!

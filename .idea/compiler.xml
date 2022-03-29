@@ -20,9 +20,10 @@
       <module name="cart-microservice" target="11" />
       <module name="catalog-service" target="11" />
       <module name="eureka-server" target="11" />
-      <module name="login-microservice" target="11" />
+      <module name="login-microservice" target="1.8" />
       <module name="payment-service" target="11" />
       <module name="service-microservice" target="11" />
+      <module name="wrapper" target="1.5" />
       <module name="zuul" target="1.8" />
     </bytecodeTargetLevel>
   </component>

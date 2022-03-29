@@ -3,6 +3,7 @@ import {Redirect, Link, router } from 'react-router-dom';
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import './../Login.css';
 import LoginService from '../Services/LoginService';
+import CartsService from '../Services/CartsService';
 
 class RegisterScreen extends React.Component {
 
@@ -36,14 +37,25 @@ submituserRegistrationForm(e) {
       "subsidized": false
     }
 
+    var cart = {
+      'userId': '',
+      'products': [],
+      'services': []
+    }
+
     console.log(data);
     LoginService.addUser(data).then((response) => {
       console.log(response);
       if(response.status = 200){
-        localStorage.setItem("u_code", encodeURIComponent(JSON.stringify(response.data.loginId)));
-        localStorage.setItem('is_done', true);
-        window.location.href = "/";
+        localStorage.setItem("u_code", response.data.loginId);
         console.log("User registered successfull");
+        cart.userId = response.data.loginId;
+        CartsService.addCarts(cart).then((response) => {
+          console.log(response.data);
+          if(response.status = 200){
+            window.location.href = "/";
+          }
+        });
       }else{
         alert(response.statusText);
       }
