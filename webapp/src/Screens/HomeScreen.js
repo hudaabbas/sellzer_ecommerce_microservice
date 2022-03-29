@@ -69,56 +69,8 @@ class HomeScreen extends React.Component {
     render (){
     return (
     <div>
-        <div className='titleOnPage'>
-            <br></br><br></br>
-            <h2>Featured Products</h2>
-        </div>
 
-        <div className="wrap">
-            <div className="row">
-                <div className="column">
-                    <button onClick={this.handleClick} className="toggleButton">
-                        {this.state.isToggleOn ? 'Low to High' : 'High to Low'}
-                    </button>
-                </div>
-                <div className="column">
-                    <form onSubmit= {this.submitSearchName}>
-                        <input type="text" className="searchTerm" placeholder="search by name"
-                               value={this.state.name} onChange={this.handleChangeName}/>
-                        <button type="submit" className="searchButton">
-                            <i className="fa fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-                <div className="column">
-                    <button onClick={this.handleRefresh} className="toggleButton">
-                        Back To All Products
-                    </button>
-                </div>
-                <div className="column">
-                    <Link to="/product" className="toggleButton">  Post A New Product  </Link>
-                </div>
-            </div>
-        </div>
-
-        <ul className="products">
-            {this.state.products.map(
-                product =>
-                <li>
-                <div className="product">
-                <Link to={'product/' +product.catalogId}></Link>
-                <img className="product-image" src={product.imageId} alt="product"></img>
-                    <div className="product-name">
-                        <Link to={'product/' +product.catalogId}>{product.catalogName}</Link>
-                        {/* <a href="product.html">{product.name}</a> */}
-                    </div>
-                    <div className="product-brand">{product.catalogBrand}</div>
-                    <div className="product-price"> ${product.catalogItemPrice}</div>
-                    <div className="product-rating">{product.catalogCategory}</div>
-                </div>
-            </li>)
-            }
-        </ul>
-  </div>)}
+    </div>
+    )}
 }
 export default HomeScreen;

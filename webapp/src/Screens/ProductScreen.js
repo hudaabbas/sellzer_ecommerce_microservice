@@ -64,7 +64,7 @@ class ProductScreen extends React.Component {
                 </div>
 
                 <div className='back-2-result'>
-                    <Link to="/" className="toggleButton">  Back to results  </Link>
+                    <Link to="/product-home/" className="toggleButton">  Back to results  </Link>
                 </div>
 
                 {<div className='details'>
