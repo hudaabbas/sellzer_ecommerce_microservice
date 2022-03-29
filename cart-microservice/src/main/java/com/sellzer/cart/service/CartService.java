@@ -69,6 +69,7 @@ public class CartService {
             return null;
         } else {
             ArrayList<String> newservices = cart.getServices();
+            services = services.replaceAll("^\"|\"$", "");
             newservices.add(services);
             //newproducts.remove(products);
             cart.setServices(newservices);
