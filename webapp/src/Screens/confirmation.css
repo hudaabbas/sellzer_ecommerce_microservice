@@ -6,45 +6,6 @@
   margin: auto;
 }
 
-.balloon {
-  width: 150px;
-  height: 150px;
-  background: linear-gradient(to top, #fe4a2b, white);
-  border-radius: 50%;
-  border: 4px solid #fe4b2b;
-  position: relative;
-  left: 50%;
-  top: 50px;
-  transform: translate(-50%);
-  animation: moving-balloon 3s ease infinite;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 200px;
-    left: 50%;
-    transform: translate(-50%);
-    border-top: 60px solid #fe4b2b;
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    height: 0;
-    width: 70px;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 200px;
-    transform: translate(-50%);
-    width: 70px;
-    height: 25px;
-    background-color: #e86b5a;
-    border-radius: 5px;
-  }
-}
-
-//check mark
 body {
 background-color: #191919;
 }
@@ -165,78 +126,6 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transform: scale(1);
   }
 }
-
-
-//checkmark end
-
-/* .basket {
-  width: 42px;
-  height: 28px;
-  background: #d1c1a6;
-  border-radius: 0 0 3px 3px;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  top: 270px;
-  animation: moving-basket 3s ease infinite; */
-
-  /* &:before {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 10px;
-    background: #b2a082;
-    border-radius: 3px;
-    top: -10px;
-    left: 50%;
-    transform: translate(-50%);
-  }
-
-  &:after {
-    content: '';
-    width: 25px;
-    height: 35px;
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translate(-50%) perspective(50px) rotateX(-40deg);
-    border-left: 2px solid #b2a082;
-    border-right: 2px solid #b2a082;
-  }
-} */
-
-/* .cloud {
-  position: absolute;
-  top: 100px;
-  right: 40px;
-  width: 140px;
-  height: 30px;
-  background: #f4f8fc;
-  border-radius: 50px;
-  animation: moving-cloud 3s ease infinite;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -40px;
-    left: 20px;
-    width: 60px;
-    height: 60px;
-    background: #f4f8fc;
-    border-radius: 50%;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: -30px;
-    right: 25px;
-    width: 50px;
-    height: 50px;
-    background: #f4f8fc;
-    border-radius: 50%;
-  }
-} */
 
 @keyframes moving-balloon {
   0% {
