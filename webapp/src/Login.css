@@ -78,6 +78,40 @@ input{
     border-bottom: 3px solid gray;
 }
 
+
+/*Payment Screen*/
+input[type=text]{
+    /* border: 3px solid blue; */
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:white ;
+    border-style: none none solid;
+    border-bottom: 3px solid gray;
+    padding-top: 6px;
+    /* padding-bottom: 5px; */
+}
+
+/* .payment-text{
+    border: 3px solid blue;
+    padding-bottom: 16px;
+} */
+
+.card-number{
+    padding-bottom: 15px;
+}
+
+.date-number,.cvv-number, .nameholder-number, .shipping-address{
+    /* border: 3px solid blue; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+     */
+    margin-top: 3px;
+    padding-bottom: 36px;
+}
+
 /* for addProduct page*/
 select{
     display: flex;
@@ -124,7 +158,7 @@ button[type="submit"]{
     border-radius: 10px;
 }
 
-.btn-login{
+.btn-login, .btn.btn-primary{
     width: 25%;
     background: gold; 
     color:black; 
