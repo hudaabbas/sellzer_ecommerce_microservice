@@ -86,7 +86,7 @@ class HomeScreen extends React.Component {
                         <input type="text" className="searchTerm" placeholder="search by name"
                                value={this.state.name} onChange={this.handleChangeName}/>
                         <button type="submit" className="searchButton">
-                            <i className="fa fa-search">send</i>
+                            <i className="fa fa-search"></i>
                         </button>
                     </form>
                 </div>
