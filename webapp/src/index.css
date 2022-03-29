@@ -46,7 +46,7 @@ body{
 
 .brand > a:hover{
   color:#242331;
-	box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
+    box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
 }
 
 .header-links a{
@@ -58,7 +58,7 @@ body{
 
 .header-links > a:hover{
   color:#242331;
-	box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
+    box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
 }
 .main{
   grid-area: main;
@@ -342,47 +342,78 @@ a{
 
 .details{
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
-  padding: 2rem;
+  align-items: flex-start;
+  padding-top: 3%;
+  /* border: 3px solid gray; */
+  /* padding: 2% 15% 3%; */
+  /* flex-wrap: wrap; */
+
+  /* padding: 1rem; */
 }
 
-.details-action{
+/* .details-action{
   flex: 1 1 60rem;
   margin-right: 10%;
-}
+} */
 
 .details-image{
-  flex: 2 1 30rem;
-  padding-left: 10%;
+  /* border: 3px solid blue; */
+  /* flex: 2 1 30rem; */
+  display: inline;
+  /* padding-inline: 10%; */
+  margin-left: 6%;
+  padding-left:6% ;
+  padding-bottom: 35px;
 }
 
-.details-image img{
+/* .details-image img{
   max-width:60rem ;
   widows: 100%;
-}
+} */
 
 .details-info{
-  flex: 1 1 30rem;
+  display: flex;
+  /* border: 3px solid blue; */
+  width: 100%;
+  margin-right: 0%;
+  margin-left: 0%;
+  margin-top: 0px;
+  /* justify-content: space-around; */
+  flex: 0 0 36%;
+  border: 8px solid white;
+  border-radius: 10px;
+  opacity: 90%;
+  margin: 0% 5% 3%;
+  padding: 5px 5px;
+  padding-right: 3%;
+  background-color: white;
+}
+
+.item-title{
+  /* border:3px solid green; */
+  margin-top: 0%;
+  padding-top: 0px;
+}
+
+.details-info ul li:first-child{
+  margin-top: 0%;
 }
 
 .details-info ul, .details-action ul{
   list-style-type: none;
-  padding: 0;
+  /* padding: 0; */
 }
 
 .details-info li, .details-action li{
   margin-bottom:1rem;
-
+  margin-top: 0px;
 }
 
 .back-2-result{
   max-width: 200px;
-  padding: 1rem;
-  padding-left: 10%;
+  /* padding: 1rem; */
+  padding-left: 6%;
   position: center;
 }
 
@@ -390,15 +421,24 @@ a{
   border: .1rem #808080 solid;
   border-radius: 0.5rem;
   background-color: whitesmoke;
-  padding: 2%;
-  
-
+  margin: 0% 1% 3%;
+  width: 100%;
+  /* padding: 36px; */
 }
 
-.details-action ul li:last-child{
+/* .details-action ul li:last-child{
   display: flex;
   flex-direction: column;
-}
+} */
+
+/* .single-item-description{
+  border: 8px solid white;
+  border-radius: 10px;
+  opacity: 90%;
+  margin: 2% 5% 3%;
+  padding: 5px 0px 5px;
+  background-color: white;
+} */
 
 .button{
   padding: 1rem;
@@ -514,7 +554,7 @@ input[type="submit"]:hover {
 
 .brand > button:hover {
   color:#242331;
-	box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
+    box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
 }
 
 .menu-title{
@@ -551,7 +591,7 @@ input[type="submit"]:hover {
 
 .sidebar-category > a:hover{
   color:#242331;
-	box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
+    box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
 }
 
 .sidebar{
@@ -629,7 +669,7 @@ body {
 }
 
 .shopping-cart {
-  border: 8px solid white;
+    border: 8px solid white;
     border-radius: 10px;
     opacity: 90%;
     margin: 2% 15% 3%;
@@ -651,7 +691,8 @@ body {
   align-content: center; 
   flex-direction: row;
   width: 96%;
-  padding-bottom: 20px;
+  margin: 0%;
+  /* padding-bottom: 20px; */
 }
 
 .title {
@@ -676,7 +717,7 @@ body {
 }
 
 
-.product-item, .service-item {
+.product-item{
   display: flex;
   justify-content: space-around;
   /* border: 1px solid orange; */
@@ -687,7 +728,7 @@ body {
   padding-bottom: 20px;
 }
 
-.product-items, .service-items{
+.product-items{
   display: flex;
   justify-content: space-around;
   /* border: 1px solid green; */
@@ -696,6 +737,36 @@ body {
   align-content: center; 
   width: 100%;
   flex-direction: row;
+  padding-bottom: 20px;
+}
+
+.service-item{
+  display: flex;
+  justify-content: space-around;
+  /* border: 1px solid blue; */
+  /* background-color: yellow; */
+  border-bottom: 2px solid gray;
+  align-items: center; 
+  align-content: center; 
+  width: 100%;
+  flex-direction: row;
+  margin: 0px;
+  padding: 0px;
+  /* padding-bottom: 20px; */
+}
+
+ .service-items{
+  display: flex;
+  justify-content: space-around;
+  /* border: 1px solid blue; */
+  /* background-color: beige; */
+  border-bottom: 2px solid gray;
+  align-items: center; 
+  align-content: center; 
+  width: 100%;
+  flex-direction: row;
+  margin: 0px;
+  padding: 0px;
   padding-bottom: 20px;
 }
 
@@ -724,7 +795,16 @@ body {
   /* flex-direction: row; */
   /* flex-wrap: wrap; */
 }
- 
+
+.gg-trash{
+  /* border: 3px solid red; */
+  /* background-color: blue; */
+  margin: 0px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .item:nth-child(3) {
   border-top:  1px solid #E1E8EE;
   border-bottom:  1px solid #E1E8EE;
@@ -773,6 +853,18 @@ body {
   /* margin-right: 25px; */
   width: 16%;
 }
+
+.description-item {
+  /* border: 3px solid blue; */
+  display: inline;
+  justify-content: left;
+  /* align-items:stretch; */
+  /* padding-left: 16px; */
+  /* padding-right: 36px; */
+  margin-left: 0px;
+  /* margin-right: 25px; */
+  width: 350px;
+}
  
 /* .description span {
   display: flex;
@@ -819,16 +911,16 @@ button[class*=btn] {
   margin-top: 2px;
 }
 .delete-btn {
-  display: flex;
+  border: 3px solid red;
   justify-content: center;
   align-items: center;
+  padding-right: 28px;
 }
-
-
 
 link[href='https://css.gg/trash.css']{
   border: 3px solid red;
 }
+
 button:focus,
 input:focus {
   outline: 0;
@@ -859,12 +951,69 @@ input:focus {
   padding: 3px 15px;
  }
 
+ .checkout-button{
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  background: gold;
+  border: 1px solid gold;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 16px;
+  /* padding: 3px 15px; */
+}
+
+.checkout-button:hover{
+  border: .1rem darkgoldenrod solid;
+}
+
 @media (max-width: 800px) {
   .shopping-cart {
-    width: 100%;
-    height: auto;
+    border: 8px solid white;
+    border-radius: 10px;
+    opacity: 90%;
+    margin: 2% 15% 3%;
+    padding: 5px 0px 5px;
+    background-color: white;
     overflow: hidden;
   }
+
+  .all-items{
+    display: flexbox;
+    justify-content: space-around;
+    /* border: 1px solid red; */
+    align-items: center; 
+    align-content: center; 
+    flex-direction: row;
+    width: 96%;
+    padding-bottom: 20px;
+  }
+
+  .product-item, .service-item {
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid orange; */
+    align-items: center; 
+    align-content: center; 
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .product-items, .service-items{
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid green; */
+    border-bottom: 2px solid gray;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #E1E8EE;
+    align-items: center; 
+    align-content: center; 
+    flex-direction: row;
+    padding-bottom: 20px;
+  }
+
   .item {
     height: auto;
     flex-wrap: wrap;
@@ -873,13 +1022,28 @@ input:focus {
   .image img {
     width: 50%;
   }
-  
-  .quantity,
+
   .description {
     border: 3px solid red;
     width: 100%;
-    text-align: center;
+    /* text-align: center; */
     margin: 6px 0;
+    /* padding-right: 6px; */
+    /* border: 3px solid blue; */
+    display: inline;
+    justify-content: left;
+  /* align-items:flex-start; */
+  padding-left: 0px;
+  padding-right: 0px;
+  margin: 0%;
+
+  }
+
+  .total-price{
+    border: 3px solid red;
+    padding-left: 36px;
+    padding-right: 36px;
+    /* width: 100%; */
   }
   .buttons {
     margin-right: 20px;
@@ -890,7 +1054,7 @@ input:focus {
     width: 66%;
     float: right;
     margin-right: 5%;
-  }
+   }
    .checkout{
     float: right;
     margin-right: 5%;
@@ -930,3 +1094,45 @@ input:focus {
 /*===========================================================================================*/
 /* Cart Screen CSS END*/
 /*===========================================================================================*/
+
+/*Payment Screen*/
+.form{
+  border: 8px solid white;
+  border-radius: 10px;
+  /* opacity: 90%; */
+  margin: 2% 15% 3%;
+  padding: 5px 0px 5px;
+  background-color: white;
+}
+
+input[type=text]{
+  /* border: 3px solid blue; */
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:white ;
+  border-style: none none solid;
+  border-bottom: 3px solid gray;
+  padding-top: 6px;
+  /* padding-bottom: 5px; */
+}
+
+/* .payment-text{
+  border: 3px solid blue;
+  padding-bottom: 16px;
+} */
+
+.card-number{
+  padding-bottom: 15px;
+}
+
+.date-number,.cvv-number, .nameholder-number, .shipping-address{
+  /* border: 3px solid blue; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+   */
+  margin-top: 3px;
+  padding-bottom: 36px;
+}
