@@ -188,7 +188,7 @@ class CartScreen extends React.Component {
                     {this.state.serviceDetails.map(
                         
                         (service, j) =>
-                        <div className="service-item" key={j}>
+                        <div className="product-item" key={j}>
                             <div className="service-items">
                                 <div className="image">
                                 <img width="80px" src={service.serviceImageId} alt="" />
