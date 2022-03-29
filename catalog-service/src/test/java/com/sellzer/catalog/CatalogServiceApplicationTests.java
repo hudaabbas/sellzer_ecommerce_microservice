@@ -36,7 +36,7 @@ class CatalogServiceApplicationTests {
 	@DisplayName("GET /catalogs/1 success")
 	void testGetCatalogsByIdSuccess() throws Exception {
 		// Setup our mocked service
-		Catalog catalog = new Catalog("1","Air Max","shoes","fun","nike","image","image2","Large","video",5,34.00,false);
+		Catalog catalog = new Catalog("1","Air Max","shoes","fun","nike","image","image2","Large","video",(int)5,34.00,false);
 		doReturn(catalog).when(service).findCatalogById("1");
 
 		// Execute the GET request
