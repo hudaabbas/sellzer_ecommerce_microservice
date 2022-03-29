@@ -5,8 +5,10 @@ import com.sellzer.catalog.repository.CatalogRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -23,6 +25,10 @@ public class CatalogService {
     public Catalog findCatalogById(String catalogId) {
         log.info("inside findCatalogById() method of CataslogServoce");
         return catalogRepository.findByCatalogId(catalogId);
+    }
+
+    public List<Catalog> getAllCatalogs() {
+        return catalogRepository.findAll();
     }
 
     public Catalog[] findCatalogByCatalogItemPrice(double catalogItemPrice){

@@ -185,7 +185,20 @@ class CartService {
             
         });
     }
-    
+
+    //clear cart after checkout button is clicked
+    clearCart(e, cartId)
+    {
+        return axios({
+            method: 'put',
+            url: CARTS_REST_API_URL + 'clearCart/' + cartId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            }, 
+        });
+    }
 }
 
 export default new CartService();

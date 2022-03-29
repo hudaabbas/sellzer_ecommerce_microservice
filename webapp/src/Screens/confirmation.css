@@ -1,3 +1,79 @@
+
+body {
+background-color: #191919;
+}
+
+.container {
+margin: 10px 0px;
+/* height: 500px; */
+padding: 100px 0;
+display: flex;
+text-align: center;
+justify-content: center;
+align-items: center;
+	/* width: 100%; */
+background-color: #FCFCFC;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.checkmark_ok {
+  position: absolute;
+  animation: grow 1.4s cubic-bezier(0.42, 0, 0.275, 1.155) both 1;
+}
+.checkmark_ok:nth-child(1) {
+  width: 12px;
+  height: 12px;
+  left: 12px;
+  top: 16px;
+}
+.checkmark_ok:nth-child(2) {
+  width: 18px;
+  height: 18px;
+  left: 168px;
+  top: 84px;
+}
+.checkmark_ok:nth-child(3) {
+  width: 10px;
+  height: 10px;
+  left: 32px;
+  top: 162px;
+}
+.checkmark_ok:nth-child(4) {
+  width: 20px;
+  height: 20px;
+  left: 82px;
+  top: -12px;
+}
+.checkmark_ok:nth-child(5) {
+  width: 14px;
+  height: 14px;
+  left: 125px;
+  top: 162px;
+}
+.checkmark_ok:nth-child(6) {
+  width: 10px;
+  height: 10px;
+  left: 16px;
+  top: 16px;
+}
+.checkmark_ok:nth-child(1) {
+  animation-delay: 1.7s;
+}
+.checkmark_ok:nth-child(2) {
+  animation-delay: 1.4s;
+}
+.checkmark_ok:nth-child(3) {
+  animation-delay: 2.1s;
+}
+.checkmark_ok:nth-child(4) {
+  animation-delay: 2.8s;
+}
+.checkmark_ok:nth-child(5) {
+  animation-delay: 3.5s;
+}
+.checkmark_ok:nth-child(6) {
+	animation-delay: 4.2s;
+}
 body {
   background-color: #191919;
   }
@@ -28,7 +104,7 @@ body {
 
   /* Your order has been confirmed */
   .rentalinfo {
-    background: #f4f8fc;
+    /* background: #ffffff; */
     padding: 2rem 4rem;
     border-radius: 16px;
     max-width: 600px;
@@ -58,9 +134,12 @@ body {
     border-bottom: 3px solid gray;
   }
 
+  .checkmark{
+    animation-iteration-count: infinite;
+  }
   .checkmark_ok {
     position: absolute;
-    animation: grow 1.4s cubic-bezier(0.42, 0, 0.275, 1.155) both;
+    animation: grow 1.4s cubic-bezier(0.42, 0, 0.275, 1.155) both infinite;
   }
   .checkmark_ok:nth-child(1) {
     width: 12px;
@@ -120,8 +199,9 @@ body {
   .checkmark {
     position: relative;
     padding: 30px;
-  /*   animation: checkmark 5.6s cubic-bezier(0.42, 0, 0.275, 1.155) both; */
-    animation: checkmark 5.6s cubic-bezier(0.42, 0, 0.275, 1.155) both;
+    /* Use if you want it to appear and leave */
+  /*   animation: checkmark 5.6s cubic-bezier(0.42, 0, 0.275, 1.155) both infinite; */
+    animation:  5.6s cubic-bezier(0.42, 0, 0.275, 1.155) both infinite;
   }
   
   .checkmark__check {
@@ -134,7 +214,7 @@ body {
   }
   
   .checkmark__back {
-    animation: rotate 35s linear both infinite;
+    animation: rotate 35s linear both;
   }
   
   @keyframes rotate {
