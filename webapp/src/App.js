@@ -12,6 +12,7 @@ import CartScreen from './Screens/CartScreen';
 import ServicesScreen from "./Screens/ServicesScreen";
 import ServiceJobScreen from "./Screens/ServiceJobScreen";
 import AddProductScreen from "./Screens/AddProductScreen";
+import AddServiceScreen from "./Screens/AddServiceScreen";
 import PaymentScreen from './Screens/PaymentScreen';
 import OrderConfirmationScreen from './Screens/OrderConfirmationScreen'
 
@@ -48,31 +49,34 @@ function App() {
             
 
             <aside className="sidebar">
-                <h3>Categories</h3>
+                <h3 className="menu-title">Categories</h3>
                 <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-                <ul>
-                    <li>
-                        <Link to="/">Products</Link>
+                <ul className="menu">
+                    <li className="sidebar-category">
+                        <Link to="/" className="menu-category"> Products</Link>
                         {/* <a href="index.html">Products</a> */}
                     </li>
 
-                    <li>
-                        <Link to="/service-home/">Services</Link>
+                    <li className="sidebar-category">
+                        <Link to="/service-home/" className="menu-category">Services</Link>
                         {/*<a href="index.html">Services</a>*/}
                     </li>
                 </ul>
             </aside>
 
+
+            {/* Note: Currently assume main product page (/product) is same as home screen (/) */}
             <main className="main">
                 <div className="content">
                   <Route path="/product/:id" component={ProductScreen} />
-                  <Route path="/service-home/" component={ServicesScreen} />
+                  <Route path="/service-home/" exact= {true} component={ServicesScreen} />
                   <Route path="/service-home/:id" component={ServiceJobScreen} />
                   <Route path="/" exact= {true} component={HomeScreen}/>
                   <Route path="/cart/:id" component={CartScreen}/>
                   <Route path="/signin" component={SigninScreen}/>
                   <Route path="/register" component={RegisterScreen} />
-                  <Route path="/product" exact= {true} component={AddProductScreen} />
+                  <Route path="/add-product/" component={AddProductScreen} />
+                  <Route path="/add-service" component={AddServiceScreen} />
                   <Route path="/payment/:id" component={PaymentScreen} />
                   <Route path="/confirmation/:id" component={OrderConfirmationScreen} />
                 </div>
