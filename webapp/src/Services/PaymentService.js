@@ -55,6 +55,19 @@ class PaymentService {
         });
     }
 
+    updatePayment(orderId, total){
+        return axios({
+            method: 'put',
+            url: 'http://localhost:9004/payments/updatePayment/' + orderId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+            },
+            data: total
+        });
+    }
+
 }
 
 export default new PaymentService();
