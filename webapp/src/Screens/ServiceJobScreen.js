@@ -81,13 +81,11 @@ class ServiceJobScreen extends React.Component {
                             <li>
                                 <h4>{this.state.service.serviceName}</h4>
                             </li>
-
                             <li>
-                                <b>{this.state.service.servicePrice}</b>
+                                <b>Location: {this.state.service.serviceLocation}</b>
                             </li>
-
-                            <li>
-                                Description:
+                            <li class="product-description">
+                                <b>Description:</b>
                                 <div>
                                     {this.state.service.serviceType}
                                 </div>
@@ -98,15 +96,11 @@ class ServiceJobScreen extends React.Component {
                     <div className='details-action'>
                         <ul>
                             <li>
-                                Price: ${this.state.service.servicePrice}
+                                <b>Price: ${this.state.service.servicePrice}</b>
                             </li>
 
                             <li>
-                                Type: {this.state.service.serviceType}
-                            </li>
-
-                            <li>
-                                Location: {this.state.service.serviceLocation}
+                                <b>Type: {this.state.service.serviceType}</b>
                             </li>
 
                             <li>

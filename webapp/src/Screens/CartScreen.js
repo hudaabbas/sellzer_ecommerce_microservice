@@ -209,7 +209,7 @@ class CartScreen extends React.Component {
                 <hr></hr>
                 <div className="checkout">
                     <div className="total">Total: ${this.calculateTotal()}</div>
-                    <button className="checkout-button" onClick={(e) => this.createPaymentObj(e, this.state.cartInfo.cartId,this.state.cartInfo.userId, this.calculateTotal())}>
+                    <button className="btn btn-primary" onClick={(e) => this.createPaymentObj(e, this.state.cartInfo.cartId,this.state.cartInfo.userId, this.calculateTotal())}>
                         <Link to={"/payment/" + this.state.cartInfo.cartId} className="checkout">Checkout</Link>
                     </button>
                 </div>
