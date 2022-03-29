@@ -165,30 +165,8 @@ body {
     left: 125px;
     top: 162px;
   }
-<<<<<<< HEAD
-}
-
-
-
-/* .basket {
-  width: 42px;
-  height: 28px;
-  background: #d1c1a6;
-  border-radius: 0 0 3px 3px;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  top: 270px;
-  animation: moving-basket 3s ease infinite; */
-
-  /* &:before {
-    content: '';
-    position: absolute;
-    width: 50px;
-=======
   .checkmark_ok:nth-child(6) {
     width: 10px;
->>>>>>> main
     height: 10px;
     left: 16px;
     top: 16px;
@@ -202,9 +180,6 @@ body {
   .checkmark_ok:nth-child(3) {
     animation-delay: 2.1s;
   }
-<<<<<<< HEAD
-} */
-=======
   .checkmark_ok:nth-child(4) {
     animation-delay: 2.8s;
   }
@@ -401,4 +376,3 @@ body {
       border-radius: 50%;
     }
   } */
->>>>>>> main
