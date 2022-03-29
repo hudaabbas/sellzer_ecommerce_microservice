@@ -110,4 +110,19 @@ public class CartService {
         //log.info("inside findCartById() method of CartService");
         return cartRepository.findByUserId(userId);
     }
+
+    public Cart clearCartProducts(String cartId) {
+        Cart cart = cartRepository.findByCartId(cartId);
+        if(cart == null)
+        {
+            return null;
+        }
+        else{
+            ArrayList<String> newservices = new ArrayList<>();
+            ArrayList<String> newproducts= new ArrayList<>();
+            cart.setServices(newservices);
+            cart.setProducts(newproducts);
+            return cartRepository.save(cart);
+        }
+    }
 }
