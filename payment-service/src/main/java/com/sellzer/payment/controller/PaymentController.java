@@ -29,6 +29,12 @@ public class PaymentController {
         return paymentService.findPaymentById(paymentId);
     }
 
+    @GetMapping("/orderId/{orderId}")
+    public Payment[] findByOrderId(@PathVariable("orderId") String orderId) {
+        log.info("inside findByOrderId() method of PaymentController");
+        return paymentService.findByOrderId(orderId);
+    }
+
     @DeleteMapping("/{id}")
     public Map<String, Boolean> deletePayment(@PathVariable("id") String paymentId) {
         log.info("inside deletePayment() method of PaymentController");

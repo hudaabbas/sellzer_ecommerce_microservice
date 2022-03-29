@@ -40,4 +40,8 @@ public class PaymentService {
        return response;
     }
 
+    public Payment[] findByOrderId(String orderId) {
+        log.info("inside findByOrderId() method of PaymentService");
+        return paymentRepository.findByOrderId(orderId);
+    }
 }

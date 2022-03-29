@@ -15,7 +15,7 @@ class PaymentScreen extends React.Component {
     }
 
     componentDidMount(){
-        PaymentService.getPayment(this.props.match.params.id).then((response) => {
+        PaymentService.getPaymentByOrderId(this.props.match.params.id).then((response) => {
             console.log(response.data);
             this.setState({ payments: response.data})
         });

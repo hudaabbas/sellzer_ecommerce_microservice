@@ -15,6 +15,19 @@ class PaymentService {
         });
     }
 
+    getPaymentByOrderId(orderId){
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+        return axios({
+            method: 'get',
+            url: 'http://localhost:9004/payments/orderId/'+orderId,
+            withCredentials: false,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json;charset=UTF-8',
+            }
+        });
+    }
+
     postPayment(body){
             return axios({
             method: 'post',
