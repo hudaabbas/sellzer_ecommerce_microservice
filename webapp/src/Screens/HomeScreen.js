@@ -43,29 +43,29 @@ class HomeScreen extends React.Component {
         <section id="title">
 
             <div className="container-fluid">
-
-                <div className="row">
+                <div className="logo">
+                <div className="row-logo">
                     <div className="col-lg-6">
                         <img src="https://i.imgur.com/rQ8A1Cy.png" className="title-image" alt="..."></img>
                     </div>
 
-                    <div className="col-lg-6">
+                    <div className="col-lg-6-text">
                         <br></br><br></br>
                             <h1> e-commerce, the right way!</h1>
-                            <br></br><br></br>
                             <h4> Sellzer makes the process of buying and selling online easier, efficient, and accessible.
                                 We aim to use this platform to build resilient communities.</h4>
                         <br></br><br></br>
                     </div>
 
                 </div>
+                </div>
             </div>
 
             <br></br><br></br>
             <div className="loop-wrapper">
                 <div className='titleOnPage'>
-                    <br></br><br></br>
-                    <h2>Experience the Difference</h2>
+                   
+                    <h2 className="experience">Experience the Difference</h2>
                 </div>
                 <div className="mountain"></div>
                 <div className="hill"></div>
