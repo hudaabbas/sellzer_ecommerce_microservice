@@ -608,20 +608,22 @@ input[type="submit"]:hover {
   padding: 3px 3px 36px;
   color: white;
   background-color: #242331 ;
+  text-decoration: none;
   /* border: 3px solid gray; */
 }
 
 .menu-category{
   color: #EECDA3;
   /* font-weight: bold; */
-  padding:6px;
+  padding:0px;
   /* margin-left: 0px; */
-  margin-bottom: 6px ;
-  border-style: none none solid;
+  /* margin-bottom: 6px ; */
+  /* border-style: none none solid; */
   /* border: 3px solid gray; */
+  text-decoration: none;
 }
 
-.sidebar-category > a:hover{
+.menu > li:hover{
   color:#242331;
   box-shadow: 0 100px 10px rgba(238, 205, 163, 0.85) inset;
 }
