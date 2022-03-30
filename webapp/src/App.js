@@ -59,7 +59,7 @@ function App() {
                 <button className="sidebar-close-button" onClick={closeMenu}>x</button>
                 <ul className="menu">
                     <li className="sidebar-category">
-                        <Link to="/product-home/" className="menu-category"> Products</Link>
+                        <Link to="/product-home/" className="menu-category">Products</Link>
                         {/* <a href="index.html">Products</a> */}
                     </li>
 
