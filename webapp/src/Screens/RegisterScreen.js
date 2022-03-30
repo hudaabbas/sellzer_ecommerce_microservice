@@ -106,7 +106,7 @@ render() {
         <FormGroup>
             <div className="input-container">
               <Label for="exampleName">Name</Label>
-              <Input type="name" name="name" id="exampleEmail" placeholder="Enter your name" />
+              <Input type="text" name="name" id="exampleEmail" placeholder="Enter your name" />
               <div className="errorMsg">{this.state.errors.name}</div>
             </div>
           </FormGroup>

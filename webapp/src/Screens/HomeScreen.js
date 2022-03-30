@@ -99,7 +99,7 @@ class HomeScreen extends React.Component {
                                         </div>
                                 </ul>
                                     <div className="carousel-caption d-none d-md-block">
-                                        <h2><a href="/service-home/">Products</a></h2>
+                                        <h2><a href="/product-home/">Products</a></h2>
                                     </div>
                             </div>
                             <div className="carousel-item">

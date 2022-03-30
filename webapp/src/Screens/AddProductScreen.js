@@ -78,7 +78,7 @@ submituserRegistrationForm(e) {
     CatalogService.addProduct(data).then((response) => {
       console.log(response);
       if(response.status = 200){
-        window.location.href = "/";
+        window.location.href = "/product-home/";
         console.log("Item added successfully");
       }else{
         alert(response.statusText);

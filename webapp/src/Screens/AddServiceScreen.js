@@ -70,7 +70,7 @@ class AddServiceScreen extends React.Component {
                 console.log(response);
                 if(response.status = 200){
                     localStorage.setItem('is_done', true);
-                    window.location.href = "/";
+                    window.location.href = "/service-home/";
                     console.log("Service added successfully");
                 }else{
                     alert(response.statusText);

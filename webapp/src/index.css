@@ -623,7 +623,7 @@ input[type="submit"]:hover {
 
 .sidebar-category > a:hover{
   color:#242331;
-    box-shadow: 0 100px 10px rgba(238, 205, 163,0.85) inset;
+  box-shadow: 0 100px 10px rgba(238, 205, 163, 0.85) inset;
 }
 
 .sidebar{

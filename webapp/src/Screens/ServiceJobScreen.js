@@ -64,7 +64,7 @@ class ServiceJobScreen extends React.Component {
                 </div>
 
                 <div className='back-2-result'>
-                    <Link to="/service-home" className="toggleButton">  Back to results  </Link>
+                    <Link to="/service-home/" className="toggleButton">  Back to results  </Link>
                 </div>
 
                 <br></br>
